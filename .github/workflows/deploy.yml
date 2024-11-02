@@ -14,10 +14,30 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - name: Checkout
+    - name: Checkout modular-server
       uses: actions/checkout@v4
       with:
         persist-credentials: false
+    - name: Checkout blog-posts
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        repository: caiocampos/blog-posts
+        path: out/blog-posts
+    - name: Copy blog-posts files
+      run: |
+           cp -r ./out/blog-posts/back/src ./src/modules/blog-posts
+           rm -rf ./out/blog-posts
+    - name: Checkout asteroid-score
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        repository: caiocampos/asteroid-score
+        path: out/asteroid-score
+    - name: Copy asteroid-score files
+      run: |
+           cp -r ./out/asteroid-score/src ./src/modules/asteroid-score
+           rm -rf ./out/asteroid-score
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
