@@ -1,0 +1,10 @@
+import { DynamicModule, ForwardReference, Type } from '@nestjs/common';
+import * as AsteroidScoreModules from './modules/asteroid-score/modules-expose';
+import * as BlogPostsModules from './modules/blog-posts/modules-expose';
+
+export const moduleList: (
+  | Type<any>
+  | DynamicModule
+  | Promise<DynamicModule>
+  | ForwardReference<any>
+)[] = [...AsteroidScoreModules.moduleList, ...BlogPostsModules.moduleList];
