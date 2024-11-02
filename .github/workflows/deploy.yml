@@ -26,7 +26,7 @@ jobs:
         path: out/blog-posts
     - name: Copy blog-posts files
       run: |
-           mkdir ./src/modules/blog-posts
+           mkdir -p ./src/modules/blog-posts
            cp -r ./out/blog-posts/back/src ./src/modules/blog-posts
            rm -rf ./out/blog-posts
     - name: Checkout asteroid-score
@@ -37,7 +37,7 @@ jobs:
         path: out/asteroid-score
     - name: Copy asteroid-score files
       run: |
-           mkdir ./src/modules/asteroid-score
+           mkdir -p ./src/modules/asteroid-score
            cp -r ./out/asteroid-score/src ./src/modules/asteroid-score
            rm -rf ./out/asteroid-score
     - name: Use Node.js ${{ matrix.node-version }}
