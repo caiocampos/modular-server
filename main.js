@@ -1250,7 +1250,7 @@ __decorate([
     __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
 ], LinksController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':shrt'),
+    (0, common_1.Get)('@/:shrt'),
     __param(0, (0, common_1.Res)()),
     __param(1, (0, common_1.Param)('shrt')),
     __metadata("design:type", Function),
