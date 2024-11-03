@@ -1,4 +1,6 @@
-#!/bin/bash -v
+#!/bin/bash
+
+set -x
 
 sleep_random () {
   SLEEP_TIME=$((10 + RANDOM % 21));
