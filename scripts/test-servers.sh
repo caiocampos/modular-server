@@ -18,7 +18,7 @@ test_servers () {
   URLS=(
     "https://modular-server.onrender.com/authors/count"
     "https://modular-server.onrender.com/score/count"
-    "https://shrtr.onrender.com/@/count"
+    "https://modular-server.onrender.com/links/count"
   );
   NAMES=(
     "blog-posts"
