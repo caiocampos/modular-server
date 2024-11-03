@@ -54,7 +54,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.moduleList = void 0;
 const AsteroidScoreModules = __webpack_require__(6);
 const BlogPostsModules = __webpack_require__(20);
-exports.moduleList = [...AsteroidScoreModules.moduleList, ...BlogPostsModules.moduleList];
+const ShrtrModules = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './modules/shrtr/modules-expose'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+exports.moduleList = [
+    ...AsteroidScoreModules.moduleList,
+    ...BlogPostsModules.moduleList,
+    ...ShrtrModules.moduleList,
+];
 
 
 /***/ }),
