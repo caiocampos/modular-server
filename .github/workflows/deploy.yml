@@ -51,7 +51,7 @@ jobs:
     - name: Copy shrtr files
       run: |
            mkdir -p ./src/modules/shrtr
-           cp -r ./out/shrtr/src/* ./src/modules/shrtr
+           cp -r ./out/shrtr/shrtr/src/* ./src/modules/shrtr
            rm -rf ./out/shrtr
            ls ./src/modules/shrtr
     - name: Use Node.js ${{ matrix.node-version }}
