@@ -42,6 +42,18 @@ jobs:
            cp -r ./out/asteroid-score/src/* ./src/modules/asteroid-score
            rm -rf ./out/asteroid-score
            ls ./src/modules/asteroid-score
+    - name: Checkout shrtr
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        repository: caiocampos/shrtr
+        path: out/shrtr
+    - name: Copy shrtr files
+      run: |
+           mkdir -p ./src/modules/shrtr
+           cp -r ./out/shrtr/src/* ./src/modules/shrtr
+           rm -rf ./out/shrtr
+           ls ./src/modules/shrtr
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
