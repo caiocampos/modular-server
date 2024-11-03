@@ -29,6 +29,7 @@ jobs:
            mkdir -p ./src/modules/blog-posts
            cp -r ./out/blog-posts/back/src ./src/modules/blog-posts
            rm -rf ./out/blog-posts
+           ls ./src/modules/blog-posts
     - name: Checkout asteroid-score
       uses: actions/checkout@v4
       with:
@@ -40,6 +41,7 @@ jobs:
            mkdir -p ./src/modules/asteroid-score
            cp -r ./out/asteroid-score/src ./src/modules/asteroid-score
            rm -rf ./out/asteroid-score
+           ls ./src/modules/asteroid-score
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
