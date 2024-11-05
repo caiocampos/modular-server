@@ -1,8 +1,8 @@
 {
-  "name": "asteroid-score",
+  "name": "modular-server",
   "private": true,
   "version": "1.0.0",
-  "description": "Asteroids Back-end",
+  "description": "Servidor modular mesclando outros servidores nest.js",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
