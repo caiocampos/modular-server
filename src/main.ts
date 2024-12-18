@@ -15,6 +15,9 @@ const bootstrap = async () => {
   app.enableCors();
   app.use(helmet());
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(
+    process.env.PORT ?? 3000,
+    process.env.ADDRESS ?? '127.0.0.1',
+  );
 };
 bootstrap();
