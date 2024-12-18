@@ -4,6 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import helmet from 'helmet';
 import { AppModule } from './app.module';
 
 const bootstrap = async () => {
@@ -12,6 +13,7 @@ const bootstrap = async () => {
     new FastifyAdapter(),
   );
   app.enableCors();
+  app.use(helmet());
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT ?? 3000);
 };
