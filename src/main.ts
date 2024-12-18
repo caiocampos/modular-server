@@ -17,7 +17,7 @@ const bootstrap = async () => {
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(
     process.env.PORT ?? 3000,
-    process.env.ADDRESS ?? '127.0.0.1',
+    process.env.ADDRESS ?? 'localhost',
   );
 };
 bootstrap();
