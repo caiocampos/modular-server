@@ -1528,12 +1528,6 @@ const bootstrap = async () => {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter());
     app.enableCors();
     app.useGlobalPipes(new common_1.ValidationPipe());
-    app.use((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
-        res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
-        next();
-    });
     await app.listen((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000);
 };
 bootstrap();
