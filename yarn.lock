@@ -413,13 +413,13 @@
     ajv-formats "^3.0.1"
     fast-uri "^3.0.0"
 
-"@fastify/cors@10.0.2":
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-10.0.2.tgz#088df281ff847dcb10a083925cd84d4f62f91b4b"
-  integrity sha512-DGdxOG36sS/tZv1NFiCJGi7wGuXOSPL2CmNX5PbOVKx0C6LuIALRMrqLByHTCcX1Rbl8NJ9IWlJex32bzydvlw==
+"@fastify/cors@11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-11.0.0.tgz#acf0b6c2cfaf570fb7b7bf55f5468f9fd20da84a"
+  integrity sha512-41Bx0LVGr2a6DnnhDN/SgfDlTRNZtEs8niPxyoymV6Hw09AIdz/9Rn/0Fpu+pBOs6kviwS44JY2mB8NcU2qSAA==
   dependencies:
     fastify-plugin "^5.0.0"
-    mnemonist "0.39.8"
+    mnemonist "0.40.0"
 
 "@fastify/error@^4.0.0":
   version "4.0.0"
@@ -1105,13 +1105,14 @@
   integrity sha512-Nsw/eW5ZptIgwv3gPumKe6UtZu/0HZqixwkkO8Hqn6wZyrLeaTpBFi/z3DGY36dp66uPw14huradDY7OTPDYJA==
 
 "@nestjs/platform-fastify@^11.0":
-  version "11.0.10"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-11.0.10.tgz#50c4ecefe0d373952465f74c2bb7161b1df2e6d7"
-  integrity sha512-aOvuFsSUsfGziy6OmJwVDNx6aXougCMeUpEAlphuCLehSwfZQxhpy4SpThxTAtHU7RdmgGO7VfUGH+uUY8vHdQ==
+  version "11.0.11"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-11.0.11.tgz#bcfa19d07ea4c6b9b511bb66af1d03e03bffbe64"
+  integrity sha512-Ts7jMc3GE35k8KMY8m7/qtc4/Zqo4BFSXsfUy646o+JeJSkUZOSofevxkkI2smhX6w9SKJzyfEpRHzMZNs/oRA==
   dependencies:
-    "@fastify/cors" "10.0.2"
+    "@fastify/cors" "11.0.0"
     "@fastify/formbody" "8.0.2"
     "@fastify/middie" "9.0.3"
+    fast-querystring "1.1.2"
     fastify "5.2.1"
     light-my-request "6.6.0"
     path-to-regexp "8.2.0"
@@ -2551,7 +2552,7 @@ fast-levenshtein@^2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
-fast-querystring@^1.0.0, fast-querystring@^1.1.2:
+fast-querystring@1.1.2, fast-querystring@^1.0.0, fast-querystring@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/fast-querystring/-/fast-querystring-1.1.2.tgz#a6d24937b4fc6f791b4ee31dcb6f53aeafb89f53"
   integrity sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==
@@ -3768,12 +3769,12 @@ minipass@^7.1.2:
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.1.2.tgz#93a9626ce5e5e66bd4db86849e7515e92340a707"
   integrity sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==
 
-mnemonist@0.39.8:
-  version "0.39.8"
-  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.39.8.tgz#9078cd8386081afd986cca34b52b5d84ea7a4d38"
-  integrity sha512-vyWo2K3fjrUw8YeeZ1zF0fy6Mu59RHokURlld8ymdUPjMlD9EC9ov1/YPqTgqRvUN9nTr3Gqfz29LYAmu0PHPQ==
+mnemonist@0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.40.0.tgz#72e866d7f1e261d0c589717ff2bcfd6feb802db2"
+  integrity sha512-kdd8AFNig2AD5Rkih7EPCXhu/iMvwevQFX/uEiGhZyPZi7fHqOoF4V4kHLpCfysxXMgQ4B52kdPMCwARshKvEg==
   dependencies:
-    obliterator "^2.0.1"
+    obliterator "^2.0.4"
 
 mongodb-connection-string-url@^3.0.0:
   version "3.0.2"
@@ -3876,7 +3877,7 @@ object-inspect@^1.13.3:
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.13.3.tgz#f14c183de51130243d6d18ae149375ff50ea488a"
   integrity sha512-kDCGIbxkDSXE3euJZZXzc6to7fCrKHNI/hSRQnRuQ+BWjFNzZwiFF8fj/6o2t2G9/jTj8PSIYTfCLelLZEeRpA==
 
-obliterator@^2.0.1:
+obliterator@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.5.tgz#031e0145354b0c18840336ae51d41e7d6d2c76aa"
   integrity sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==
