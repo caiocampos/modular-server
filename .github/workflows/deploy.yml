@@ -14,15 +14,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [24.x]
 
     steps:
     - name: Checkout modular-server
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         persist-credentials: false
     - name: Checkout blog-posts
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         persist-credentials: false
         repository: caiocampos/blog-posts
@@ -34,7 +34,7 @@ jobs:
            rm -rf ./out/blog-posts
            ls ./src/modules/blog-posts
     - name: Checkout asteroid-score
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         persist-credentials: false
         repository: caiocampos/asteroid-score
@@ -46,7 +46,7 @@ jobs:
            rm -rf ./out/asteroid-score
            ls ./src/modules/asteroid-score
     - name: Checkout shrtr
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         persist-credentials: false
         repository: caiocampos/shrtr
@@ -58,7 +58,7 @@ jobs:
            rm -rf ./out/shrtr
            ls ./src/modules/shrtr
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
