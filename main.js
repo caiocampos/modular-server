@@ -65,12 +65,19 @@ exports.AppModule = void 0;
 const common_1 = __webpack_require__(1);
 const config_1 = __webpack_require__(6);
 const modules_expose_1 = __webpack_require__(7);
+const schedule_1 = __webpack_require__(49);
+const check_services_module_1 = __webpack_require__(50);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), ...modules_expose_1.moduleList],
+        imports: [
+            config_1.ConfigModule.forRoot(),
+            schedule_1.ScheduleModule.forRoot(),
+            check_services_module_1.CheckServicesModule,
+            ...modules_expose_1.moduleList,
+        ],
     })
 ], AppModule);
 
@@ -1702,6 +1709,148 @@ const forceNumber = (num) => Number(num) || 0;
 exports.forceNumber = forceNumber;
 const forceString = (str) => String(str) || '';
 exports.forceString = forceString;
+
+
+/***/ }),
+/* 49 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/schedule");
+
+/***/ }),
+/* 50 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CheckServicesModule = void 0;
+const common_1 = __webpack_require__(1);
+const check_services_service_1 = __webpack_require__(51);
+let CheckServicesModule = class CheckServicesModule {
+};
+exports.CheckServicesModule = CheckServicesModule;
+exports.CheckServicesModule = CheckServicesModule = __decorate([
+    (0, common_1.Module)({
+        providers: [check_services_service_1.CheckServicesService],
+        exports: [],
+    })
+], CheckServicesModule);
+
+
+/***/ }),
+/* 51 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var CheckServicesService_1;
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CheckServicesService = void 0;
+const common_1 = __webpack_require__(1);
+const schedule_1 = __webpack_require__(49);
+const axios_1 = __importDefault(__webpack_require__(52));
+const class_transformer_1 = __webpack_require__(53);
+const api_to_check_1 = __webpack_require__(54);
+let CheckServicesService = CheckServicesService_1 = class CheckServicesService {
+    constructor() {
+        this.logger = new common_1.Logger(CheckServicesService_1.name);
+    }
+    async CheckServices() {
+        var _a;
+        const checkAllAPIs = ((_a = process.env.CHECK_ALL_APIS) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === 'true';
+        let apisToCheck = [];
+        try {
+            apisToCheck = (0, class_transformer_1.plainToInstance)(api_to_check_1.ApiToCheck, JSON.parse(process.env.APIS_TO_CHECK || '[]'));
+        }
+        catch (error) {
+            this.logger.error('Error casting Env var APIS_TO_CHECK', error);
+            return false;
+        }
+        return checkAllAPIs
+            ? this.checkAllAPIs(apisToCheck)
+            : this.checkRandomAPI(apisToCheck);
+    }
+    async checkAllAPIs(apisToCheck) {
+        for (const api of apisToCheck) {
+            try {
+                await axios_1.default.get(api.uri);
+            }
+            catch (error) {
+                this.logger.error(`Error checking API: ${api.name}`, error);
+                return false;
+            }
+        }
+        return true;
+    }
+    async checkRandomAPI(apisToCheck) {
+        const api = apisToCheck[Math.floor(Math.random() * apisToCheck.length)];
+        try {
+            await axios_1.default.get(api.uri);
+        }
+        catch (error) {
+            this.logger.error(`Error checking API: ${api.name}`, error);
+            return false;
+        }
+        return true;
+    }
+};
+exports.CheckServicesService = CheckServicesService;
+__decorate([
+    (0, schedule_1.Cron)('0/6 0-2,8-23 * * 1-5'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", typeof (_a = typeof Promise !== "undefined" && Promise) === "function" ? _a : Object)
+], CheckServicesService.prototype, "CheckServices", null);
+exports.CheckServicesService = CheckServicesService = CheckServicesService_1 = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [])
+], CheckServicesService);
+
+
+/***/ }),
+/* 52 */
+/***/ ((module) => {
+
+module.exports = require("axios");
+
+/***/ }),
+/* 53 */
+/***/ ((module) => {
+
+module.exports = require("class-transformer");
+
+/***/ }),
+/* 54 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ApiToCheck = void 0;
+class ApiToCheck {
+    constructor(name, uri) {
+        this.name = name;
+        this.uri = uri;
+    }
+}
+exports.ApiToCheck = ApiToCheck;
 
 
 /***/ })
