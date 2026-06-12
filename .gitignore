@@ -402,3 +402,5 @@ build
 # Modules
 
 src/modules/*
+!src/modules/check-services
+!src/modules/check-services/**
