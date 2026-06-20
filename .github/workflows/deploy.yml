@@ -28,11 +28,7 @@ jobs:
         repository: caiocampos/blog-posts
         path: out/blog-posts
     - name: Copy blog-posts files
-      run: |
-           mkdir -p ./src/modules/blog-posts
-           cp -r ./out/blog-posts/back/src/* ./src/modules/blog-posts
-           rm -rf ./out/blog-posts
-           ls ./src/modules/blog-posts
+      run: bash copy-module.sh blog-posts back
     - name: Checkout asteroid-score
       uses: actions/checkout@v6
       with:
@@ -40,11 +36,7 @@ jobs:
         repository: caiocampos/asteroid-score
         path: out/asteroid-score
     - name: Copy asteroid-score files
-      run: |
-           mkdir -p ./src/modules/asteroid-score
-           cp -r ./out/asteroid-score/src/* ./src/modules/asteroid-score
-           rm -rf ./out/asteroid-score
-           ls ./src/modules/asteroid-score
+      run: bash copy-module.sh asteroid-score
     - name: Checkout shrtr
       uses: actions/checkout@v6
       with:
@@ -52,11 +44,7 @@ jobs:
         repository: caiocampos/shrtr
         path: out/shrtr
     - name: Copy shrtr files
-      run: |
-           mkdir -p ./src/modules/shrtr
-           cp -r ./out/shrtr/shrtr/src/* ./src/modules/shrtr
-           rm -rf ./out/shrtr
-           ls ./src/modules/shrtr
+      run: bash copy-module.sh shrtr shrtr
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
