@@ -22,6 +22,7 @@ mkdir -p "$FINAL_PATH"
 
 if [ -d "$ORIGIN_PATH" ]; then
     cp -r "$ORIGIN_PATH"/* "$FINAL_PATH"
+    rm "$FINAL_PATH/main.ts"
     rm -rf "./out/$MODULE"
     
     ls "$FINAL_PATH"
