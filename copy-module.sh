@@ -9,7 +9,7 @@ MODULE="$1"
 SUBFOLDER="$2"
 
 ORIGIN_PATH=
-FINAL_PATH= "./src/modules/$MODULE"
+FINAL_PATH="./src/modules/$MODULE"
 
 
 if [ -z "$2" ]; then
