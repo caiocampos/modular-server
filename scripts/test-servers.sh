@@ -1,7 +1,8 @@
 #!/bin/bash
 
 sleep_random () {
-  SLEEP_TIME=$((1 + RANDOM % 5));
+  SLEEP_TIME=$((10 + RANDOM % 21));
+  echo "sleeping ${SLEEP_TIME}s";
   sleep $SLEEP_TIME;
 };
 
