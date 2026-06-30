@@ -18,11 +18,11 @@ jobs:
 
     steps:
     - name: Checkout modular-server
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         persist-credentials: false
     - name: Checkout blog-posts
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         persist-credentials: false
         repository: caiocampos/blog-posts
@@ -30,7 +30,7 @@ jobs:
     - name: Copy blog-posts files
       run: bash copy-module.sh blog-posts back
     - name: Checkout asteroid-score
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         persist-credentials: false
         repository: caiocampos/asteroid-score
@@ -38,7 +38,7 @@ jobs:
     - name: Copy asteroid-score files
       run: bash copy-module.sh asteroid-score
     - name: Checkout shrtr
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         persist-credentials: false
         repository: caiocampos/shrtr
