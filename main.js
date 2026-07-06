@@ -19,7 +19,7 @@ const bootstrap = async () => {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter());
     app.enableCors();
     app.use((0, helmet_1.default)());
-    app.useGlobalPipes(new common_1.ValidationPipe());
+    app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
     await app.listen((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000, (_b = process.env.ADDRESS) !== null && _b !== void 0 ? _b : 'localhost');
 };
 bootstrap();
@@ -338,9 +338,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var ScoresService_1;
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -349,7 +346,7 @@ const common_1 = __webpack_require__(1);
 const mongoose_1 = __webpack_require__(9);
 const mongoose_2 = __webpack_require__(14);
 const score_entity_1 = __webpack_require__(11);
-const score_response_dto_1 = __importDefault(__webpack_require__(15));
+const score_response_dto_1 = __webpack_require__(15);
 const utils_1 = __webpack_require__(16);
 const mongoose_connection_1 = __webpack_require__(18);
 let ScoresService = ScoresService_1 = class ScoresService {
@@ -364,7 +361,7 @@ let ScoresService = ScoresService_1 = class ScoresService {
                 query = query.where('playerName').regex(new RegExp(playerName, 'i'));
             }
             const scores = await query.sort('-score').exec();
-            return scores.map(score_response_dto_1.default.from);
+            return scores.map(score_response_dto_1.ScoreResponseDTO.from);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao buscar as pontuações', common_1.HttpStatus.BAD_REQUEST);
@@ -390,7 +387,7 @@ let ScoresService = ScoresService_1 = class ScoresService {
             newScore.endTime = new Date(requestDto.endTime);
             newScore.difficulty = requestDto.difficulty;
             const score = await newScore.save();
-            return score_response_dto_1.default.from(score);
+            return score_response_dto_1.ScoreResponseDTO.from(score);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao gravar a pontuação', common_1.HttpStatus.BAD_REQUEST);
@@ -417,6 +414,7 @@ module.exports = require("mongoose");
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScoreResponseDTO = void 0;
 class ScoreResponseDTO {
     constructor(id, playerName, score, creationDate, difficulty) {
         this.id = id;
@@ -426,8 +424,8 @@ class ScoreResponseDTO {
         this.difficulty = difficulty;
     }
 }
+exports.ScoreResponseDTO = ScoreResponseDTO;
 ScoreResponseDTO.from = ({ _id, playerName, score, endTime, difficulty, }) => new ScoreResponseDTO(_id.toHexString(), playerName, score, endTime, difficulty);
-exports["default"] = ScoreResponseDTO;
 
 
 /***/ }),
@@ -506,45 +504,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScoreAddRequestDTO = void 0;
 const class_validator_1 = __webpack_require__(20);
 const validation_messages_constants_1 = __webpack_require__(21);
 class ScoreAddRequestDTO {
-    constructor(playerName, score, startTime, endTime, difficulty, _h, _n) {
-        this.playerName = playerName;
-        this.score = score;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.difficulty = difficulty;
-        this._h = _h;
-        this._n = _n;
-    }
 }
-exports["default"] = ScoreAddRequestDTO;
+exports.ScoreAddRequestDTO = ScoreAddRequestDTO;
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     __metadata("design:type", String)
 ], ScoreAddRequestDTO.prototype, "playerName", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     (0, class_validator_1.IsInt)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_NUMBER }),
+    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     __metadata("design:type", Number)
 ], ScoreAddRequestDTO.prototype, "score", void 0);
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     (0, class_validator_1.IsDateString)({}, { message: validation_messages_constants_1.ValidationMessages.IS_NOT_DATE }),
     __metadata("design:type", String)
 ], ScoreAddRequestDTO.prototype, "startTime", void 0);
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     (0, class_validator_1.IsDateString)({}, { message: validation_messages_constants_1.ValidationMessages.IS_NOT_DATE }),
     __metadata("design:type", String)
 ], ScoreAddRequestDTO.prototype, "endTime", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     (0, class_validator_1.IsInt)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_NUMBER }),
+    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     __metadata("design:type", Number)
 ], ScoreAddRequestDTO.prototype, "difficulty", void 0);
 __decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], ScoreAddRequestDTO.prototype, "_n", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     __metadata("design:type", String)
 ], ScoreAddRequestDTO.prototype, "_h", void 0);
@@ -1474,9 +1473,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var LinksService_1;
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -1485,7 +1481,7 @@ const common_1 = __webpack_require__(1);
 const mongoose_1 = __webpack_require__(9);
 const mongoose_2 = __webpack_require__(14);
 const link_entity_1 = __webpack_require__(40);
-const link_response_dto_1 = __importDefault(__webpack_require__(43));
+const link_response_dto_1 = __webpack_require__(43);
 const mongoose_connection_1 = __webpack_require__(44);
 const { ObjectId } = mongoose_2.Types;
 let LinksService = LinksService_1 = class LinksService {
@@ -1499,7 +1495,7 @@ let LinksService = LinksService_1 = class LinksService {
             if (link === null) {
                 return null;
             }
-            return link_response_dto_1.default.from(link);
+            return link_response_dto_1.LinkResponseDTO.from(link);
         }
         catch (error) {
             const message = 'Error finding the link by alias';
@@ -1514,7 +1510,7 @@ let LinksService = LinksService_1 = class LinksService {
             if (link === null) {
                 return null;
             }
-            return link_response_dto_1.default.from(link);
+            return link_response_dto_1.LinkResponseDTO.from(link);
         }
         catch (error) {
             const message = 'Error finding the link';
@@ -1525,7 +1521,7 @@ let LinksService = LinksService_1 = class LinksService {
     async findAll() {
         try {
             const links = await this.linkModel.find().exec();
-            return links.map(link_response_dto_1.default.from);
+            return links.map(link_response_dto_1.LinkResponseDTO.from);
         }
         catch (error) {
             const message = 'Error finding links';
@@ -1562,9 +1558,9 @@ let LinksService = LinksService_1 = class LinksService {
         try {
             const newLink = new this.linkModel();
             newLink.link = requestDto.link;
-            newLink.shrt = (_a = requestDto.shrt) !== null && _a !== void 0 ? _a : "";
+            newLink.shrt = (_a = requestDto.shrt) !== null && _a !== void 0 ? _a : '';
             const link = await newLink.save();
-            return link_response_dto_1.default.from(link);
+            return link_response_dto_1.LinkResponseDTO.from(link);
         }
         catch (error) {
             const message = 'Error adding the link';
@@ -1615,6 +1611,7 @@ exports.LinksService = LinksService = LinksService_1 = __decorate([
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LinkResponseDTO = void 0;
 class LinkResponseDTO {
     constructor(id, link, shrt) {
         this.id = id;
@@ -1622,8 +1619,8 @@ class LinkResponseDTO {
         this.shrt = shrt;
     }
 }
+exports.LinkResponseDTO = LinkResponseDTO;
 LinkResponseDTO.from = ({ _id, link, shrt }) => new LinkResponseDTO(_id.toHexString(), link, shrt);
-exports["default"] = LinkResponseDTO;
 
 
 /***/ }),
@@ -1651,20 +1648,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LinkAddRequestDTO = void 0;
 const class_validator_1 = __webpack_require__(20);
 const validation_messages_constants_1 = __webpack_require__(46);
 class LinkAddRequestDTO {
-    constructor(link, shrt) {
-        this.shrt = shrt;
-        this.link = link;
-    }
 }
-exports["default"] = LinkAddRequestDTO;
+exports.LinkAddRequestDTO = LinkAddRequestDTO;
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
     __metadata("design:type", String)
 ], LinkAddRequestDTO.prototype, "link", void 0);
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], LinkAddRequestDTO.prototype, "shrt", void 0);
