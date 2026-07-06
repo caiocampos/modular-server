@@ -12,7 +12,11 @@ const bootstrap = async () => {
     AppModule,
     new FastifyAdapter(),
   );
-  app.enableCors();
+  app.enableCors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    credentials: true,
+  });
   app.use(helmet());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   await app.listen(
