@@ -17,7 +17,11 @@ const app_module_1 = __webpack_require__(5);
 const bootstrap = async () => {
     var _a, _b;
     const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter());
-    app.enableCors();
+    app.enableCors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+        credentials: true,
+    });
     app.use((0, helmet_1.default)());
     app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
     await app.listen((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000, (_b = process.env.ADDRESS) !== null && _b !== void 0 ? _b : 'localhost');
