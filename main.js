@@ -270,15 +270,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ScoresController = void 0;
 const common_1 = __webpack_require__(1);
 const scores_service_1 = __webpack_require__(13);
-const score_add_request_dto_1 = __importDefault(__webpack_require__(19));
+const score_add_request_dto_1 = __webpack_require__(19);
 let ScoresController = class ScoresController {
     constructor(scoresService) {
         this.scoresService = scoresService;
@@ -312,7 +309,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_d = typeof score_add_request_dto_1.default !== "undefined" && score_add_request_dto_1.default) === "function" ? _d : Object]),
+    __metadata("design:paramtypes", [typeof (_d = typeof score_add_request_dto_1.ScoreAddRequestDTO !== "undefined" && score_add_request_dto_1.ScoreAddRequestDTO) === "function" ? _d : Object]),
     __metadata("design:returntype", typeof (_e = typeof Promise !== "undefined" && Promise) === "function" ? _e : Object)
 ], ScoresController.prototype, "add", null);
 exports.ScoresController = ScoresController = __decorate([
@@ -880,9 +877,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var AuthorsService_1;
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -891,10 +885,10 @@ const common_1 = __webpack_require__(1);
 const mongoose_1 = __webpack_require__(9);
 const class_validator_1 = __webpack_require__(20);
 const mongoose_2 = __webpack_require__(14);
-const post_response_dto_1 = __importDefault(__webpack_require__(30));
+const post_response_dto_1 = __webpack_require__(30);
 const post_entity_1 = __webpack_require__(24);
 const author_entity_1 = __webpack_require__(25);
-const author_response_dto_1 = __importDefault(__webpack_require__(31));
+const author_response_dto_1 = __webpack_require__(31);
 const mongoose_connection_1 = __webpack_require__(32);
 const { ObjectId } = mongoose_2.Types;
 let AuthorsService = AuthorsService_1 = class AuthorsService {
@@ -914,7 +908,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
     async findAll() {
         try {
             const authors = await this.authorModel.find().exec();
-            return authors.map(author_response_dto_1.default.from);
+            return authors.map(author_response_dto_1.AuthorResponseDTO.from);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao buscar os autores', common_1.HttpStatus.BAD_REQUEST);
@@ -926,7 +920,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         if (author === null) {
             return null;
         }
-        return author_response_dto_1.default.from(author);
+        return author_response_dto_1.AuthorResponseDTO.from(author);
     }
     async add(requestDto) {
         await (0, class_validator_1.validateOrReject)(requestDto);
@@ -936,7 +930,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
             newAuthor.nickname = requestDto.nickname;
             newAuthor.birthDate = requestDto.birthDate;
             const author = await newAuthor.save();
-            return author_response_dto_1.default.from(author);
+            return author_response_dto_1.AuthorResponseDTO.from(author);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao gravar o autor', common_1.HttpStatus.BAD_REQUEST);
@@ -954,7 +948,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
             newPost.author = author;
             newPost.creationDate = new Date().toISOString().slice(0, 10);
             const post = await newPost.save();
-            return post_response_dto_1.default.from(post);
+            return post_response_dto_1.PostResponseDTO.from(post);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao gravar a postagem', common_1.HttpStatus.BAD_REQUEST);
@@ -1179,9 +1173,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var PostsService_1;
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -1190,7 +1181,7 @@ const common_1 = __webpack_require__(1);
 const mongoose_1 = __webpack_require__(9);
 const mongoose_2 = __webpack_require__(14);
 const post_entity_1 = __webpack_require__(24);
-const post_response_dto_1 = __importDefault(__webpack_require__(30));
+const post_response_dto_1 = __webpack_require__(30);
 const author_entity_1 = __webpack_require__(25);
 const mongoose_connection_1 = __webpack_require__(32);
 let PostsService = PostsService_1 = class PostsService {
@@ -1212,7 +1203,7 @@ let PostsService = PostsService_1 = class PostsService {
                 query = query.where('author').in(authors.map((author) => author._id));
             }
             const posts = await query.populate('author').sort('-creationDate').exec();
-            return posts.map(post_response_dto_1.default.from);
+            return posts.map(post_response_dto_1.PostResponseDTO.from);
         }
         catch (error) {
             throw new common_1.HttpException('Erro ao buscar as postagens', common_1.HttpStatus.BAD_REQUEST);
@@ -1358,16 +1349,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var LinksController_1;
 var _a, _b, _c, _d, _e, _f, _g;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LinksController = void 0;
 const common_1 = __webpack_require__(1);
 const links_service_1 = __webpack_require__(42);
-const link_add_request_dto_1 = __importDefault(__webpack_require__(45));
+const link_add_request_dto_1 = __webpack_require__(45);
 const http_interfaces_1 = __webpack_require__(47);
 let LinksController = LinksController_1 = class LinksController {
     constructor(linksService) {
@@ -1447,7 +1435,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_f = typeof link_add_request_dto_1.default !== "undefined" && link_add_request_dto_1.default) === "function" ? _f : Object]),
+    __metadata("design:paramtypes", [typeof (_f = typeof link_add_request_dto_1.LinkAddRequestDTO !== "undefined" && link_add_request_dto_1.LinkAddRequestDTO) === "function" ? _f : Object]),
     __metadata("design:returntype", typeof (_g = typeof Promise !== "undefined" && Promise) === "function" ? _g : Object)
 ], LinksController.prototype, "add", null);
 exports.LinksController = LinksController = LinksController_1 = __decorate([
