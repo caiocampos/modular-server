@@ -30,8 +30,8 @@ test_servers () {
     "shrtr"
     "restaurantes"
   );
-  HITS=("" "" "");
-  for i in `seq 1 $((1 + RANDOM % 4))`; do
+  HITS=("" "" "" "");
+  for i in `seq 1 $((1 + RANDOM % 5))`; do
     SLEEP=1;
     if [ $i -eq 1 ]; then
       SLEEP=0;
