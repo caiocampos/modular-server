@@ -22,7 +22,7 @@ test_servers () {
     "https://modular-server.onrender.com/authors/count"
     "https://modular-server.onrender.com/score/count"
     "https://modular-server.onrender.com/links/count"
-    "https://modular-server.onrender.com/restaurants/count"
+    "https://modular-server.onrender.com/restaurants-open/count"
   );
   NAMES=(
     "blog-posts"
