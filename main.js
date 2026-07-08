@@ -367,7 +367,9 @@ let ScoresService = ScoresService_1 = class ScoresService {
             return scores.map(score_response_dto_1.ScoreResponseDTO.from);
         }
         catch (error) {
-            throw new common_1.HttpException('Erro ao buscar as pontuações', common_1.HttpStatus.BAD_REQUEST);
+            const msg = 'Erro ao buscar as pontuações';
+            this.logger.error(msg, error);
+            throw new common_1.BadRequestException(msg);
         }
     }
     async count() {
@@ -375,12 +377,16 @@ let ScoresService = ScoresService_1 = class ScoresService {
             return await this.scoreModel.countDocuments().exec();
         }
         catch (error) {
-            throw new common_1.HttpException('Erro ao contar as pontuações', common_1.HttpStatus.BAD_REQUEST);
+            const msg = 'Erro ao contar as pontuações';
+            this.logger.error(msg, error);
+            throw new common_1.BadRequestException(msg);
         }
     }
     async add(requestDto) {
         if (!(0, utils_1.testHash)(requestDto)) {
-            throw new common_1.HttpException('O hash não é válido', common_1.HttpStatus.BAD_REQUEST);
+            const msg = 'O hash não é válido';
+            this.logger.error(msg);
+            throw new common_1.BadRequestException('O hash não é válido');
         }
         try {
             const newScore = new this.scoreModel();
@@ -393,7 +399,9 @@ let ScoresService = ScoresService_1 = class ScoresService {
             return score_response_dto_1.ScoreResponseDTO.from(score);
         }
         catch (error) {
-            throw new common_1.HttpException('Erro ao gravar a pontuação', common_1.HttpStatus.BAD_REQUEST);
+            const msg = 'Erro ao gravar a pontuação';
+            this.logger.error(msg, error);
+            throw new common_1.BadRequestException(msg);
         }
     }
 };
@@ -909,7 +917,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao contar os autores';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -920,7 +928,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao buscar os autores';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -935,7 +943,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao buscar o autor';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -951,7 +959,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao gravar o autor';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -963,7 +971,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
             const author = await this.authorModel.findById(_id).exec();
             if (author === null) {
                 const msg = 'Erro ao gravar a postagem, author não encontrado';
-                console.error(msg);
+                this.logger.error(msg);
                 throw new common_1.BadRequestException(msg);
             }
             newPost.author = author;
@@ -973,7 +981,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao gravar a postagem';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -985,7 +993,7 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
         }
         catch (error) {
             const msg = 'Erro ao apagar o autor';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -1232,7 +1240,7 @@ let PostsService = PostsService_1 = class PostsService {
         }
         catch (error) {
             const msg = 'Erro ao buscar as postagens';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -1243,7 +1251,7 @@ let PostsService = PostsService_1 = class PostsService {
         }
         catch (error) {
             const msg = 'Erro ao apagar a postagem';
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -2620,6 +2628,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var RestaurantsService_1;
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RestaurantsService = void 0;
@@ -2629,9 +2638,10 @@ const mongoose_2 = __webpack_require__(14);
 const restaurant_schema_1 = __webpack_require__(59);
 const paginate_1 = __webpack_require__(62);
 const mongoose_connection_1 = __webpack_require__(63);
-let RestaurantsService = class RestaurantsService {
+let RestaurantsService = RestaurantsService_1 = class RestaurantsService {
     constructor(restaurantModel) {
         this.restaurantModel = restaurantModel;
+        this.logger = new common_1.Logger(RestaurantsService_1.name);
     }
     async count() {
         try {
@@ -2639,7 +2649,7 @@ let RestaurantsService = class RestaurantsService {
         }
         catch (error) {
             const msg = "Erro ao contar os restaurantes";
-            console.error(msg, error);
+            this.logger.error(msg, error);
             throw new common_1.BadRequestException(msg);
         }
     }
@@ -2668,7 +2678,7 @@ let RestaurantsService = class RestaurantsService {
     }
 };
 exports.RestaurantsService = RestaurantsService;
-exports.RestaurantsService = RestaurantsService = __decorate([
+exports.RestaurantsService = RestaurantsService = RestaurantsService_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(restaurant_schema_1.Restaurant.name, mongoose_connection_1.connectionName)),
     __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
@@ -2827,7 +2837,12 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true, enum: role_enum_1.Role, default: role_enum_1.Role.USER }),
+    (0, mongoose_1.Prop)({
+        required: true,
+        type: String,
+        enum: role_enum_1.Role,
+        default: role_enum_1.Role.USER,
+    }),
     __metadata("design:type", typeof (_a = typeof role_enum_1.Role !== "undefined" && role_enum_1.Role) === "function" ? _a : Object)
 ], User.prototype, "role", void 0);
 __decorate([
