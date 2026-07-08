@@ -22,11 +22,13 @@ test_servers () {
     "https://modular-server.onrender.com/authors/count"
     "https://modular-server.onrender.com/score/count"
     "https://modular-server.onrender.com/links/count"
+    "https://modular-server.onrender.com/restaurants/count"
   );
   NAMES=(
     "blog-posts"
     "asteroids"
     "shrtr"
+    "restaurantes"
   );
   HITS=("" "" "");
   for i in `seq 1 $((1 + RANDOM % 4))`; do

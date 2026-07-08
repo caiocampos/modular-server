@@ -1,15 +1,14 @@
 name: Deploy
 
 on:
- # push:
-   # branches: [ master ]
+  # push:
+  # branches: [ master ]
   schedule:
-    - cron: "0 12 * * 0"
+    - cron: '0 12 * * 0'
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,46 +16,66 @@ jobs:
         node-version: [24.x]
 
     steps:
-    - name: Checkout modular-server
-      uses: actions/checkout@v7
-      with:
-        persist-credentials: false
-    - name: Checkout blog-posts
-      uses: actions/checkout@v7
-      with:
-        persist-credentials: false
-        repository: caiocampos/blog-posts
-        path: out/blog-posts
-    - name: Copy blog-posts files
-      run: bash copy-module.sh blog-posts back
-    - name: Checkout asteroid-score
-      uses: actions/checkout@v7
-      with:
-        persist-credentials: false
-        repository: caiocampos/asteroid-score
-        path: out/asteroid-score
-    - name: Copy asteroid-score files
-      run: bash copy-module.sh asteroid-score
-    - name: Checkout shrtr
-      uses: actions/checkout@v7
-      with:
-        persist-credentials: false
-        repository: caiocampos/shrtr
-        path: out/shrtr
-    - name: Copy shrtr files
-      run: bash copy-module.sh shrtr shrtr
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install
-      run: yarn install
-    - name: Build
-      run: yarn run build:full
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: dist
-        folder: dist
+      - name: Checkout modular-server
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Checkout blog-posts
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          repository: caiocampos/blog-posts
+          path: out/blog-posts
+
+      - name: Copy blog-posts files
+        run: bash copy-module.sh blog-posts back
+
+      - name: Checkout asteroid-score
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          repository: caiocampos/asteroid-score
+          path: out/asteroid-score
+
+      - name: Copy asteroid-score files
+        run: bash copy-module.sh asteroid-score
+
+      - name: Checkout shrtr
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          repository: caiocampos/shrtr
+          path: out/shrtr
+
+      - name: Copy shrtr files
+        run: bash copy-module.sh shrtr shrtr
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Checkout restaurantes-app
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          repository: caiocampos/restaurantes-app
+          path: out/restaurantes-app
+
+      - name: Copy restaurantes-app files
+        run: bash copy-module.sh restaurantes-app back
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn run build:full
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: dist
+          folder: dist

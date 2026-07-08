@@ -2,6 +2,7 @@ import { DynamicModule, ForwardReference, Type } from '@nestjs/common';
 import * as AsteroidScoreModules from './modules/asteroid-score/modules-expose';
 import * as BlogPostsModules from './modules/blog-posts/modules-expose';
 import * as ShrtrModules from './modules/shrtr/modules-expose';
+import * as RestaurantesModules from './modules/restaurantes-app/modules-expose';
 
 export const moduleList: (
   | Type<any>
@@ -12,4 +13,5 @@ export const moduleList: (
   ...AsteroidScoreModules.moduleList,
   ...BlogPostsModules.moduleList,
   ...ShrtrModules.moduleList,
+  ...RestaurantesModules.moduleList,
 ];
