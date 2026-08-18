@@ -31,7 +31,7 @@
     "@nestjs/mapped-types": "^2.1",
     "@nestjs/mongoose": "^11.0",
     "@nestjs/passport": "^11.0",
-    "@nestjs/platform-fastify": "^11.1",
+    "@nestjs/platform-fastify": "^11.2",
     "@nestjs/schedule": "^6.1",
     "axios": "^1.19",
     "bcrypt": "^6.0",
