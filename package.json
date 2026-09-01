@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "build:webpack": "nest build --webpack",
+    "build:rspack": "nest build --builder rspack",
     "build:full": "sh ./build.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "nest-gen": "nest generate",
@@ -24,14 +24,14 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^11.2",
+    "@nestjs/common": "^12.0",
     "@nestjs/config": "^12.0",
-    "@nestjs/core": "^11.2",
+    "@nestjs/core": "^12.0",
     "@nestjs/jwt": "^12.0",
     "@nestjs/mapped-types": "^2.1",
     "@nestjs/mongoose": "^12.0",
     "@nestjs/passport": "^12.0",
-    "@nestjs/platform-fastify": "^11.2",
+    "@nestjs/platform-fastify": "^12.0",
     "@nestjs/schedule": "^12.0",
     "axios": "^1.20",
     "bcrypt": "^6.0",
@@ -48,8 +48,9 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^12.0",
-    "@nestjs/schematics": "^11.1",
-    "@nestjs/testing": "^11.2",
+    "@nestjs/schematics": "^12.0",
+    "@nestjs/testing": "^12.0",
+    "@rspack/core": "^2.2.2",
     "@types/bcrypt": "^6.0",
     "@types/jest": "^30.0",
     "@types/node": "^26.3",
@@ -68,7 +69,9 @@
     "ts-loader": "^9.6",
     "ts-node": "^10.9",
     "tsconfig-paths": "^4.2",
-    "typescript": "^6.0"
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "typescript": "^6.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -3,7 +3,7 @@
 rm src/modules-expose.ts
 cp src/modules-expose.txt src/modules-expose.ts
 
-yarn build:webpack
+yarn build:rspack
 
 echo "require(\"./main\");" > dist/index.js
 
