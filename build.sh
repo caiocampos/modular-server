@@ -5,7 +5,7 @@ cp src/modules-expose.txt src/modules-expose.ts
 
 yarn build:rspack
 
-echo "await import './main.js';" > dist/index.js
+echo "(async () => { await import './main.js'; })()" > dist/index.js
 
 echo "# .gitignore
 node_modules/
