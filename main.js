@@ -1,291 +1,440 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const common_1 = __webpack_require__(1);
-const core_1 = __webpack_require__(2);
-const platform_fastify_1 = __webpack_require__(3);
-const helmet_1 = __importDefault(__webpack_require__(4));
-const app_module_1 = __webpack_require__(5);
-const bootstrap = async () => {
-    var _a, _b;
-    const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_fastify_1.FastifyAdapter());
-    app.enableCors({
-        origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-        credentials: true,
-    });
-    app.use((0, helmet_1.default)());
-    app.useGlobalPipes(new common_1.ValidationPipe({ transform: true }));
-    await app.listen((_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3000, (_b = process.env.ADDRESS) !== null && _b !== void 0 ? _b : 'localhost');
-};
-bootstrap();
-
-
-/***/ }),
-/* 1 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/common");
-
-/***/ }),
-/* 2 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/core");
-
-/***/ }),
-/* 3 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/platform-fastify");
-
-/***/ }),
-/* 4 */
-/***/ ((module) => {
-
-module.exports = require("helmet");
-
-/***/ }),
-/* 5 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+(() => {
+"use strict";
+var __webpack_modules__ = ({
+5(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AppModule: () => (AppModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_config__rspack_import_1 = __webpack_require__(6);
+/* import */ var _nestjs_config__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_config__rspack_import_1);
+/* import */ var _modules_expose__rspack_import_2 = __webpack_require__(7);
+/* import */ var _nestjs_schedule__rspack_import_3 = __webpack_require__(94);
+/* import */ var _nestjs_schedule__rspack_import_3_default = /*#__PURE__*/__webpack_require__.n(_nestjs_schedule__rspack_import_3);
+/* import */ var _modules_check_services_check_services_module__rspack_import_4 = __webpack_require__(95);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppModule = void 0;
-const common_1 = __webpack_require__(1);
-const config_1 = __webpack_require__(6);
-const modules_expose_1 = __webpack_require__(7);
-const schedule_1 = __webpack_require__(94);
-const check_services_module_1 = __webpack_require__(95);
-let AppModule = class AppModule {
-};
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
-    (0, common_1.Module)({
+}
+
+
+
+
+
+class AppModule {
+}
+AppModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
         imports: [
-            config_1.ConfigModule.forRoot(),
-            schedule_1.ScheduleModule.forRoot(),
-            check_services_module_1.CheckServicesModule,
-            ...modules_expose_1.moduleList,
-        ],
+            _nestjs_config__rspack_import_1.ConfigModule.forRoot(),
+            _nestjs_schedule__rspack_import_3.ScheduleModule.forRoot(),
+            _modules_check_services_check_services_module__rspack_import_4.CheckServicesModule,
+            ..._modules_expose__rspack_import_2.moduleList
+        ]
     })
 ], AppModule);
 
 
-/***/ }),
-/* 6 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/config");
-
-/***/ }),
-/* 7 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+},
+7(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  moduleList: () => (moduleList)
 });
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.moduleList = void 0;
-const AsteroidScoreModules = __importStar(__webpack_require__(8));
-const BlogPostsModules = __importStar(__webpack_require__(22));
-const ShrtrModules = __importStar(__webpack_require__(38));
-const RestaurantesModules = __importStar(__webpack_require__(49));
-exports.moduleList = [
-    ...AsteroidScoreModules.moduleList,
-    ...BlogPostsModules.moduleList,
-    ...ShrtrModules.moduleList,
-    ...RestaurantesModules.moduleList,
+/* import */ var _modules_asteroid_score_modules_expose__rspack_import_0 = __webpack_require__(8);
+/* import */ var _modules_blog_posts_modules_expose__rspack_import_1 = __webpack_require__(22);
+/* import */ var _modules_shrtr_modules_expose__rspack_import_2 = __webpack_require__(38);
+/* import */ var _modules_restaurantes_app_modules_expose__rspack_import_3 = __webpack_require__(49);
+
+
+
+
+const moduleList = [
+    ..._modules_asteroid_score_modules_expose__rspack_import_0.moduleList,
+    ..._modules_blog_posts_modules_expose__rspack_import_1.moduleList,
+    ..._modules_shrtr_modules_expose__rspack_import_2.moduleList,
+    ..._modules_restaurantes_app_modules_expose__rspack_import_3.moduleList
 ];
 
 
-/***/ }),
-/* 8 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+},
+21(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ValidationMessages: () => (ValidationMessages)
+});
+const ValidationMessages = Object.freeze({
+    IS_NOT_EMPTY: 'Campo $property não pode ser vazio.',
+    IS_NOT_DATE: 'Campo $property não é uma data válida.',
+    IS_NOT_NUMBER: 'Campo $property não é um número válido.'
+});
 
 
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.moduleList = void 0;
-const mongoose_1 = __webpack_require__(9);
-const scores_module_1 = __webpack_require__(10);
-const mongoose_connection_1 = __webpack_require__(18);
-const utils_1 = __webpack_require__(16);
-exports.moduleList = [
-    mongoose_1.MongooseModule.forRoot((0, utils_1.forceString)((_a = process.env.MONGO_URI_SCORE) !== null && _a !== void 0 ? _a : process.env.MONGO_URI), {
-        connectionName: mongoose_connection_1.connectionName,
+},
+16(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  forceNumber: () => (forceNumber),
+  forceString: () => (forceString),
+  testHash: () => (testHash)
+});
+/* import */ var crypto__rspack_import_0 = __webpack_require__(17);
+/* import */ var crypto__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(crypto__rspack_import_0);
+
+const saltHash = (object, num, text)=>{
+    const { _n, _h, ...origin } = {
+        ...object
+    };
+    const o = origin;
+    o._n = calcSalt(forceNumber(_n || 249));
+    o._ns = calcSalt(num || 47);
+    o._ts = text || '';
+    const hash = (0,crypto__rspack_import_0.createHash)('sha256');
+    hash.update(JSON.stringify(o));
+    return hash.digest('hex');
+};
+const coefficient = 1000000;
+const calcSalt = (n)=>{
+    const x = Math.trunc(Math.sin(n) * coefficient);
+    const ac = n > -1 && n < 1 ? Math.acos(n) : Math.acos(1 / n);
+    const aci = Math.trunc(ac * coefficient);
+    return (x + aci).toString();
+};
+const testHash = (object)=>object._h === saltHash(object, forceNumber(process.env.S_NUM), forceString(process.env.S_TEXT));
+const forceNumber = (num)=>Number(num) || 0;
+const forceString = (str)=>String(str) || '';
+
+
+},
+8(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  moduleList: () => (moduleList)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var _modules_scores_scores_module__rspack_import_1 = __webpack_require__(10);
+/* import */ var _mongoose_connection__rspack_import_2 = __webpack_require__(18);
+/* import */ var _common_utils__rspack_import_3 = __webpack_require__(16);
+
+
+
+
+const moduleList = [
+    _nestjs_mongoose__rspack_import_0.MongooseModule.forRoot((0,_common_utils__rspack_import_3.forceString)(process.env.MONGO_URI_SCORE ?? process.env.MONGO_URI), {
+        connectionName: _mongoose_connection__rspack_import_2.connectionName
     }),
-    scores_module_1.ScoresModule,
+    _modules_scores_scores_module__rspack_import_1.ScoresModule
 ];
 
 
-/***/ }),
-/* 9 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/mongoose");
-
-/***/ }),
-/* 10 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+19(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ScoreAddRequestDTO: () => (ScoreAddRequestDTO)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+/* import */ var _common_messages_validation_messages_constants__rspack_import_1 = __webpack_require__(21);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoresModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const score_entity_1 = __webpack_require__(11);
-const scores_controller_1 = __webpack_require__(12);
-const scores_service_1 = __webpack_require__(13);
-const mongoose_connection_1 = __webpack_require__(18);
-let ScoresModule = class ScoresModule {
-};
-exports.ScoresModule = ScoresModule;
-exports.ScoresModule = ScoresModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: score_entity_1.Score.name, schema: score_entity_1.ScoreSchema }], mongoose_connection_1.connectionName),
-        ],
-        providers: [scores_service_1.ScoresService],
-        controllers: [scores_controller_1.ScoresController],
-        exports: [],
-    })
-], ScoresModule);
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
 
 
-/***/ }),
-/* 11 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+class ScoreAddRequestDTO {
+    constructor(){
+        _define_property(this, "playerName", void 0);
+        _define_property(this, "score", void 0);
+        _define_property(this, "startTime", void 0);
+        _define_property(this, "endTime", void 0);
+        _define_property(this, "difficulty", void 0);
+        _define_property(this, "_n", void 0);
+        _define_property(this, "_h", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], ScoreAddRequestDTO.prototype, "playerName", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsInt)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_NUMBER
+    }),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", Number)
+], ScoreAddRequestDTO.prototype, "score", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    (0,class_validator__rspack_import_0.IsDateString)({}, {
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_DATE
+    }),
+    _ts_metadata("design:type", String)
+], ScoreAddRequestDTO.prototype, "startTime", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    (0,class_validator__rspack_import_0.IsDateString)({}, {
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_DATE
+    }),
+    _ts_metadata("design:type", String)
+], ScoreAddRequestDTO.prototype, "endTime", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsInt)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_NUMBER
+    }),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", Number)
+], ScoreAddRequestDTO.prototype, "difficulty", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsNumber)(),
+    (0,class_validator__rspack_import_0.IsOptional)(),
+    _ts_metadata("design:type", Number)
+], ScoreAddRequestDTO.prototype, "_n", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], ScoreAddRequestDTO.prototype, "_h", void 0);
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+15(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ScoreResponseDTO: () => (ScoreResponseDTO)
+});
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+class ScoreResponseDTO {
+    constructor(id, playerName, score, creationDate, difficulty){
+        _define_property(this, "id", void 0);
+        _define_property(this, "playerName", void 0);
+        _define_property(this, "score", void 0);
+        _define_property(this, "creationDate", void 0);
+        _define_property(this, "difficulty", void 0);
+        this.id = id;
+        this.playerName = playerName;
+        this.score = score;
+        this.creationDate = creationDate;
+        this.difficulty = difficulty;
+    }
+}
+_define_property(ScoreResponseDTO, "from", ({ _id, playerName, score, endTime, difficulty })=>new ScoreResponseDTO(_id.toHexString(), playerName, score, endTime, difficulty));
+
+
+},
+11(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Score: () => (Score),
+  ScoreSchema: () => (ScoreSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoreSchema = exports.Score = void 0;
-const mongoose_1 = __webpack_require__(9);
-let Score = class Score {
-    constructor(playerName, score, startTime, endTime, difficulty) {
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class Score {
+    constructor(playerName, score, startTime, endTime, difficulty){
+        _define_property(this, "playerName", void 0);
+        _define_property(this, "score", void 0);
+        _define_property(this, "startTime", void 0);
+        _define_property(this, "endTime", void 0);
+        _define_property(this, "difficulty", void 0);
         this.playerName = playerName;
         this.score = score;
         this.startTime = startTime;
         this.endTime = endTime;
         this.difficulty = difficulty;
     }
-};
-exports.Score = Score;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
 ], Score.prototype, "playerName", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: Number }),
-    __metadata("design:type", Number)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: Number
+    }),
+    _ts_metadata("design:type", Number)
 ], Score.prototype, "score", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: Date }),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: Date
+    }),
+    _ts_metadata("design:type", typeof Date === "undefined" ? Object : Date)
 ], Score.prototype, "startTime", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: Date }),
-    __metadata("design:type", typeof (_d = typeof Date !== "undefined" && Date) === "function" ? _d : Object)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: Date
+    }),
+    _ts_metadata("design:type", typeof Date === "undefined" ? Object : Date)
 ], Score.prototype, "endTime", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: Number }),
-    __metadata("design:type", Number)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: Number
+    }),
+    _ts_metadata("design:type", Number)
 ], Score.prototype, "difficulty", void 0);
-exports.Score = Score = __decorate([
-    (0, mongoose_1.Schema)({ collection: 'scores' }),
-    __metadata("design:paramtypes", [String, Number, typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object, typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object, Number])
+Score = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        collection: 'scores'
+    }),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        Number,
+        typeof Date === "undefined" ? Object : Date,
+        typeof Date === "undefined" ? Object : Date,
+        Number
+    ])
 ], Score);
-exports.ScoreSchema = mongoose_1.SchemaFactory.createForClass(Score);
+const ScoreSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Score);
 
 
-/***/ }),
-/* 12 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+12(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ScoresController: () => (ScoresController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _scores_service__rspack_import_1 = __webpack_require__(13);
+/* import */ var _dto_score_add_request_dto__rspack_import_2 = __webpack_require__(19);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d, _e;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoresController = void 0;
-const common_1 = __webpack_require__(1);
-const scores_service_1 = __webpack_require__(13);
-const score_add_request_dto_1 = __webpack_require__(19);
-let ScoresController = class ScoresController {
-    constructor(scoresService) {
-        this.scoresService = scoresService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+class ScoresController {
     findAll(playerName) {
         return this.scoresService.findAll(playerName);
     }
@@ -295,68 +444,159 @@ let ScoresController = class ScoresController {
     add(requestDto) {
         return this.scoresService.add(requestDto);
     }
-};
-exports.ScoresController = ScoresController;
-__decorate([
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)('playerName')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
+    constructor(scoresService){
+        _define_property(this, "scoresService", void 0);
+        this.scoresService = scoresService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Query)('playerName')),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], ScoresController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('count'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_c = typeof Promise !== "undefined" && Promise) === "function" ? _c : Object)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)('count'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], ScoresController.prototype, "count", null);
-__decorate([
-    (0, common_1.Post)(),
-    (0, common_1.HttpCode)(201),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_d = typeof score_add_request_dto_1.ScoreAddRequestDTO !== "undefined" && score_add_request_dto_1.ScoreAddRequestDTO) === "function" ? _d : Object]),
-    __metadata("design:returntype", typeof (_e = typeof Promise !== "undefined" && Promise) === "function" ? _e : Object)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    (0,_nestjs_common__rspack_import_0.HttpCode)(201),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_score_add_request_dto__rspack_import_2.ScoreAddRequestDTO === "undefined" ? Object : _dto_score_add_request_dto__rspack_import_2.ScoreAddRequestDTO
+    ]),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], ScoresController.prototype, "add", null);
-exports.ScoresController = ScoresController = __decorate([
-    (0, common_1.Controller)('score'),
-    __metadata("design:paramtypes", [typeof (_a = typeof scores_service_1.ScoresService !== "undefined" && scores_service_1.ScoresService) === "function" ? _a : Object])
+ScoresController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)('score'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _scores_service__rspack_import_1.ScoresService === "undefined" ? Object : _scores_service__rspack_import_1.ScoresService
+    ])
 ], ScoresController);
 
 
-/***/ }),
-/* 13 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+10(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ScoresModule: () => (ScoresModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _score_entity__rspack_import_2 = __webpack_require__(11);
+/* import */ var _scores_controller__rspack_import_3 = __webpack_require__(12);
+/* import */ var _scores_service__rspack_import_4 = __webpack_require__(13);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(18);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var ScoresService_1;
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoresService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const score_entity_1 = __webpack_require__(11);
-const score_response_dto_1 = __webpack_require__(15);
-const utils_1 = __webpack_require__(16);
-const mongoose_connection_1 = __webpack_require__(18);
-let ScoresService = ScoresService_1 = class ScoresService {
-    constructor(scoreModel) {
-        this.scoreModel = scoreModel;
-        this.logger = new common_1.Logger(ScoresService_1.name);
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+class ScoresModule {
+}
+ScoresModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _score_entity__rspack_import_2.Score.name,
+                    schema: _score_entity__rspack_import_2.ScoreSchema
+                }
+            ], _mongoose_connection__rspack_import_5.connectionName)
+        ],
+        providers: [
+            _scores_service__rspack_import_4.ScoresService
+        ],
+        controllers: [
+            _scores_controller__rspack_import_3.ScoresController
+        ],
+        exports: []
+    })
+], ScoresModule);
+
+
+},
+13(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ScoresService: () => (ScoresService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var mongoose__rspack_import_2 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_2);
+/* import */ var _score_entity__rspack_import_3 = __webpack_require__(11);
+/* import */ var _dto_score_response_dto__rspack_import_4 = __webpack_require__(15);
+/* import */ var _common_utils__rspack_import_5 = __webpack_require__(16);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(18);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+class ScoresService {
     async findAll(playerName) {
         try {
             let query = this.scoreModel.find();
@@ -364,29 +604,27 @@ let ScoresService = ScoresService_1 = class ScoresService {
                 query = query.where('playerName').regex(new RegExp(playerName, 'i'));
             }
             const scores = await query.sort('-score').exec();
-            return scores.map(score_response_dto_1.ScoreResponseDTO.from);
-        }
-        catch (error) {
+            return scores.map(_dto_score_response_dto__rspack_import_4.ScoreResponseDTO.from);
+        } catch (error) {
             const msg = 'Erro ao buscar as pontuações';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async count() {
         try {
             return await this.scoreModel.countDocuments().exec();
-        }
-        catch (error) {
+        } catch (error) {
             const msg = 'Erro ao contar as pontuações';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async add(requestDto) {
-        if (!(0, utils_1.testHash)(requestDto)) {
+        if (!(0,_common_utils__rspack_import_5.testHash)(requestDto)) {
             const msg = 'O hash não é válido';
             this.logger.error(msg);
-            throw new common_1.BadRequestException('O hash não é válido');
+            throw new _nestjs_common__rspack_import_0.BadRequestException('O hash não é válido');
         }
         try {
             const newScore = new this.scoreModel();
@@ -396,379 +634,239 @@ let ScoresService = ScoresService_1 = class ScoresService {
             newScore.endTime = new Date(requestDto.endTime);
             newScore.difficulty = requestDto.difficulty;
             const score = await newScore.save();
-            return score_response_dto_1.ScoreResponseDTO.from(score);
-        }
-        catch (error) {
+            return _dto_score_response_dto__rspack_import_4.ScoreResponseDTO.from(score);
+        } catch (error) {
             const msg = 'Erro ao gravar a pontuação';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
-};
-exports.ScoresService = ScoresService;
-exports.ScoresService = ScoresService = ScoresService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(score_entity_1.Score.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
+    constructor(scoreModel){
+        _define_property(this, "scoreModel", void 0);
+        _define_property(this, "logger", void 0);
+        this.scoreModel = scoreModel;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(ScoresService.name);
+    }
+}
+ScoresService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_score_entity__rspack_import_3.Score.name, _mongoose_connection__rspack_import_6.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model
+    ])
 ], ScoresService);
 
 
-/***/ }),
-/* 14 */
-/***/ ((module) => {
-
-module.exports = require("mongoose");
-
-/***/ }),
-/* 15 */
-/***/ ((__unused_webpack_module, exports) => {
+},
+18(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  connectionName: () => (connectionName)
+});
+const connectionName = 'asteroid-score';
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoreResponseDTO = void 0;
-class ScoreResponseDTO {
-    constructor(id, playerName, score, creationDate, difficulty) {
-        this.id = id;
-        this.playerName = playerName;
-        this.score = score;
-        this.creationDate = creationDate;
-        this.difficulty = difficulty;
-    }
-}
-exports.ScoreResponseDTO = ScoreResponseDTO;
-ScoreResponseDTO.from = ({ _id, playerName, score, endTime, difficulty, }) => new ScoreResponseDTO(_id.toHexString(), playerName, score, endTime, difficulty);
-
-
-/***/ }),
-/* 16 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.forceString = exports.forceNumber = exports.testHash = void 0;
-const crypto_1 = __webpack_require__(17);
-const saltHash = (object, num, text) => {
-    const _a = Object.assign({}, object), { _n, _h } = _a, origin = __rest(_a, ["_n", "_h"]);
-    const o = origin;
-    o._n = calcSalt((0, exports.forceNumber)(_n || 249));
-    o._ns = calcSalt(num || 47);
-    o._ts = text || '';
-    const hash = (0, crypto_1.createHash)('sha256');
-    hash.update(JSON.stringify(o));
-    return hash.digest('hex');
-};
-const coefficient = 1000000;
-const calcSalt = (n) => {
-    const x = Math.trunc(Math.sin(n) * coefficient);
-    const ac = n > -1 && n < 1 ? Math.acos(n) : Math.acos(1 / n);
-    const aci = Math.trunc(ac * coefficient);
-    return (x + aci).toString();
-};
-const testHash = (object) => object._h ===
-    saltHash(object, (0, exports.forceNumber)(process.env.S_NUM), (0, exports.forceString)(process.env.S_TEXT));
-exports.testHash = testHash;
-const forceNumber = (num) => Number(num) || 0;
-exports.forceNumber = forceNumber;
-const forceString = (str) => String(str) || '';
-exports.forceString = forceString;
-
-
-/***/ }),
-/* 17 */
-/***/ ((module) => {
-
-module.exports = require("crypto");
-
-/***/ }),
-/* 18 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.connectionName = void 0;
-exports.connectionName = 'asteroid-score';
-
-
-/***/ }),
-/* 19 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScoreAddRequestDTO = void 0;
-const class_validator_1 = __webpack_require__(20);
-const validation_messages_constants_1 = __webpack_require__(21);
-class ScoreAddRequestDTO {
-}
-exports.ScoreAddRequestDTO = ScoreAddRequestDTO;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], ScoreAddRequestDTO.prototype, "playerName", void 0);
-__decorate([
-    (0, class_validator_1.IsInt)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_NUMBER }),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", Number)
-], ScoreAddRequestDTO.prototype, "score", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    (0, class_validator_1.IsDateString)({}, { message: validation_messages_constants_1.ValidationMessages.IS_NOT_DATE }),
-    __metadata("design:type", String)
-], ScoreAddRequestDTO.prototype, "startTime", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    (0, class_validator_1.IsDateString)({}, { message: validation_messages_constants_1.ValidationMessages.IS_NOT_DATE }),
-    __metadata("design:type", String)
-], ScoreAddRequestDTO.prototype, "endTime", void 0);
-__decorate([
-    (0, class_validator_1.IsInt)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_NUMBER }),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", Number)
-], ScoreAddRequestDTO.prototype, "difficulty", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], ScoreAddRequestDTO.prototype, "_n", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], ScoreAddRequestDTO.prototype, "_h", void 0);
-
-
-/***/ }),
-/* 20 */
-/***/ ((module) => {
-
-module.exports = require("class-validator");
-
-/***/ }),
-/* 21 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ValidationMessages = void 0;
-exports.ValidationMessages = Object.freeze({
+},
+28(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ValidationMessages: () => (ValidationMessages)
+});
+const ValidationMessages = Object.freeze({
     IS_NOT_EMPTY: 'Campo $property não pode ser vazio.',
-    IS_NOT_DATE: 'Campo $property não é uma data válida.',
-    IS_NOT_NUMBER: 'Campo $property não é um número válido.',
+    IS_NOT_DATE: 'Campo $property não é uma data válida.'
 });
 
 
-/***/ }),
-/* 22 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+},
+37(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  forceNumber: () => (forceNumber),
+  forceString: () => (forceString)
+});
+const forceNumber = (num)=>Number(num) || 0;
+const forceString = (str)=>String(str) || '';
 
 
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.moduleList = void 0;
-const mongoose_1 = __webpack_require__(9);
-const authors_module_1 = __webpack_require__(23);
-const posts_module_1 = __webpack_require__(34);
-const mongoose_connection_1 = __webpack_require__(32);
-const utils_1 = __webpack_require__(37);
-exports.moduleList = [
-    mongoose_1.MongooseModule.forRoot((0, utils_1.forceString)((_a = process.env.MONGO_URI_BLOG) !== null && _a !== void 0 ? _a : process.env.MONGO_URI), { connectionName: mongoose_connection_1.connectionName }),
-    authors_module_1.AuthorsModule,
-    posts_module_1.PostsModule,
+},
+22(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  moduleList: () => (moduleList)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var _modules_authors_authors_module__rspack_import_1 = __webpack_require__(23);
+/* import */ var _modules_posts_posts_module__rspack_import_2 = __webpack_require__(34);
+/* import */ var _mongoose_connection__rspack_import_3 = __webpack_require__(32);
+/* import */ var _common_utils__rspack_import_4 = __webpack_require__(37);
+
+
+
+
+
+const moduleList = [
+    _nestjs_mongoose__rspack_import_0.MongooseModule.forRoot((0,_common_utils__rspack_import_4.forceString)(process.env.MONGO_URI_BLOG ?? process.env.MONGO_URI), {
+        connectionName: _mongoose_connection__rspack_import_3.connectionName
+    }),
+    _modules_authors_authors_module__rspack_import_1.AuthorsModule,
+    _modules_posts_posts_module__rspack_import_2.PostsModule
 ];
 
 
-/***/ }),
-/* 23 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+25(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Author: () => (Author),
+  AuthorSchema: () => (AuthorSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var mongoose__rspack_import_1 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_1);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorsModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const post_entity_1 = __webpack_require__(24);
-const author_entity_1 = __webpack_require__(25);
-const authors_controller_1 = __webpack_require__(26);
-const authors_service_1 = __webpack_require__(29);
-const mongoose_connection_1 = __webpack_require__(32);
-let AuthorsModule = class AuthorsModule {
-};
-exports.AuthorsModule = AuthorsModule;
-exports.AuthorsModule = AuthorsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: author_entity_1.Author.name, schema: author_entity_1.AuthorSchema },
-                { name: post_entity_1.Post.name, schema: post_entity_1.PostSchema },
-            ], mongoose_connection_1.connectionName),
-        ],
-        providers: [authors_service_1.AuthorsService],
-        controllers: [authors_controller_1.AuthorsController],
-        exports: [],
-    })
-], AuthorsModule);
-
-
-/***/ }),
-/* 24 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostSchema = exports.Post = void 0;
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const author_entity_1 = __webpack_require__(25);
-let Post = class Post {
-    constructor(title, body, creationDate, author) {
-        this.title = title;
-        this.body = body;
-        this.creationDate = creationDate;
-        this.author = author;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
-};
-exports.Post = Post;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
-], Post.prototype, "title", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
-], Post.prototype, "body", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
-], Post.prototype, "creationDate", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: mongoose_2.Types.ObjectId, ref: 'Author' }),
-    __metadata("design:type", typeof (_b = typeof author_entity_1.AuthorDocument !== "undefined" && author_entity_1.AuthorDocument) === "function" ? _b : Object)
-], Post.prototype, "author", void 0);
-exports.Post = Post = __decorate([
-    (0, mongoose_1.Schema)({ collection: 'posts' }),
-    __metadata("design:paramtypes", [String, String, String, typeof (_a = typeof author_entity_1.AuthorDocument !== "undefined" && author_entity_1.AuthorDocument) === "function" ? _a : Object])
-], Post);
-exports.PostSchema = mongoose_1.SchemaFactory.createForClass(Post);
-
-
-/***/ }),
-/* 25 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorSchema = exports.Author = void 0;
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-let Author = class Author {
-    constructor(realname, nickname, birthDate, posts) {
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class Author {
+    constructor(realname, nickname, birthDate, posts){
+        _define_property(this, "realname", void 0);
+        _define_property(this, "nickname", void 0);
+        _define_property(this, "birthDate", void 0);
+        _define_property(this, "posts", void 0);
         this.realname = realname;
         this.nickname = nickname;
         this.birthDate = birthDate;
         this.posts = posts;
     }
-};
-exports.Author = Author;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
 ], Author.prototype, "realname", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
 ], Author.prototype, "nickname", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
 ], Author.prototype, "birthDate", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: [{ type: mongoose_2.Types.ObjectId, ref: 'Post' }] }),
-    __metadata("design:type", typeof (_b = typeof Array !== "undefined" && Array) === "function" ? _b : Object)
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        type: [
+            {
+                type: mongoose__rspack_import_1.Types.ObjectId,
+                ref: 'Post'
+            }
+        ]
+    }),
+    _ts_metadata("design:type", typeof Array === "undefined" ? Object : Array)
 ], Author.prototype, "posts", void 0);
-exports.Author = Author = __decorate([
-    (0, mongoose_1.Schema)({ collection: 'authors' }),
-    __metadata("design:paramtypes", [String, String, String, typeof (_a = typeof Array !== "undefined" && Array) === "function" ? _a : Object])
+Author = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        collection: 'authors'
+    }),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        String,
+        String,
+        typeof Array === "undefined" ? Object : Array
+    ])
 ], Author);
-exports.AuthorSchema = mongoose_1.SchemaFactory.createForClass(Author);
+const AuthorSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Author);
 
 
-/***/ }),
-/* 26 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+26(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthorsController: () => (AuthorsController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _posts_dto_post_add_request_dto__rspack_import_1 = __webpack_require__(27);
+/* import */ var _authors_service__rspack_import_2 = __webpack_require__(29);
+/* import */ var _dto_author_add_request_dto__rspack_import_3 = __webpack_require__(33);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d, _e, _f, _g;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorsController = void 0;
-const common_1 = __webpack_require__(1);
-const post_add_request_dto_1 = __webpack_require__(27);
-const authors_service_1 = __webpack_require__(29);
-const author_add_request_dto_1 = __webpack_require__(33);
-let AuthorsController = class AuthorsController {
-    constructor(authorsService) {
-        this.authorsService = authorsService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+class AuthorsController {
     count() {
         return this.authorsService.count();
     }
@@ -784,152 +882,206 @@ let AuthorsController = class AuthorsController {
     delete(id) {
         return this.authorsService.delete(id);
     }
-};
-exports.AuthorsController = AuthorsController;
-__decorate([
-    (0, common_1.Get)('count'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
+    constructor(authorsService){
+        _define_property(this, "authorsService", void 0);
+        this.authorsService = authorsService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)('count'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], AuthorsController.prototype, "count", null);
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_c = typeof Promise !== "undefined" && Promise) === "function" ? _c : Object)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], AuthorsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Post)(),
-    (0, common_1.HttpCode)(201),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_d = typeof author_add_request_dto_1.AuthorAddRequestDTO !== "undefined" && author_add_request_dto_1.AuthorAddRequestDTO) === "function" ? _d : Object]),
-    __metadata("design:returntype", typeof (_e = typeof Promise !== "undefined" && Promise) === "function" ? _e : Object)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    (0,_nestjs_common__rspack_import_0.HttpCode)(201),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_author_add_request_dto__rspack_import_3.AuthorAddRequestDTO === "undefined" ? Object : _dto_author_add_request_dto__rspack_import_3.AuthorAddRequestDTO
+    ]),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], AuthorsController.prototype, "add", null);
-__decorate([
-    (0, common_1.Post)(':id/posts'),
-    (0, common_1.HttpCode)(201),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_f = typeof post_add_request_dto_1.PostAddRequestDTO !== "undefined" && post_add_request_dto_1.PostAddRequestDTO) === "function" ? _f : Object]),
-    __metadata("design:returntype", typeof (_g = typeof Promise !== "undefined" && Promise) === "function" ? _g : Object)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Post)(':id/posts'),
+    (0,_nestjs_common__rspack_import_0.HttpCode)(201),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)('id')),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        typeof _posts_dto_post_add_request_dto__rspack_import_1.PostAddRequestDTO === "undefined" ? Object : _posts_dto_post_add_request_dto__rspack_import_1.PostAddRequestDTO
+    ]),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], AuthorsController.prototype, "addPost", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Delete)(':id'),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)('id')),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], AuthorsController.prototype, "delete", null);
-exports.AuthorsController = AuthorsController = __decorate([
-    (0, common_1.Controller)('authors'),
-    __metadata("design:paramtypes", [typeof (_a = typeof authors_service_1.AuthorsService !== "undefined" && authors_service_1.AuthorsService) === "function" ? _a : Object])
+AuthorsController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)('authors'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _authors_service__rspack_import_2.AuthorsService === "undefined" ? Object : _authors_service__rspack_import_2.AuthorsService
+    ])
 ], AuthorsController);
 
 
-/***/ }),
-/* 27 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostAddRequestDTO = void 0;
-const class_validator_1 = __webpack_require__(20);
-const validation_messages_constants_1 = __webpack_require__(28);
-class PostAddRequestDTO {
-}
-exports.PostAddRequestDTO = PostAddRequestDTO;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], PostAddRequestDTO.prototype, "title", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], PostAddRequestDTO.prototype, "body", void 0);
-
-
-/***/ }),
-/* 28 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ValidationMessages = void 0;
-exports.ValidationMessages = Object.freeze({
-    IS_NOT_EMPTY: 'Campo $property não pode ser vazio.',
-    IS_NOT_DATE: 'Campo $property não é uma data válida.',
+},
+23(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthorsModule: () => (AuthorsModule)
 });
-
-
-/***/ }),
-/* 29 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _posts_post_entity__rspack_import_2 = __webpack_require__(24);
+/* import */ var _author_entity__rspack_import_3 = __webpack_require__(25);
+/* import */ var _authors_controller__rspack_import_4 = __webpack_require__(26);
+/* import */ var _authors_service__rspack_import_5 = __webpack_require__(29);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(32);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var AuthorsService_1;
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorsService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const class_validator_1 = __webpack_require__(20);
-const mongoose_2 = __webpack_require__(14);
-const post_response_dto_1 = __webpack_require__(30);
-const post_entity_1 = __webpack_require__(24);
-const author_entity_1 = __webpack_require__(25);
-const author_response_dto_1 = __webpack_require__(31);
-const mongoose_connection_1 = __webpack_require__(32);
-const { ObjectId } = mongoose_2.Types;
-let AuthorsService = AuthorsService_1 = class AuthorsService {
-    constructor(authorModel, postModel) {
-        this.authorModel = authorModel;
-        this.postModel = postModel;
-        this.logger = new common_1.Logger(AuthorsService_1.name);
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+
+class AuthorsModule {
+}
+AuthorsModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _author_entity__rspack_import_3.Author.name,
+                    schema: _author_entity__rspack_import_3.AuthorSchema
+                },
+                {
+                    name: _posts_post_entity__rspack_import_2.Post.name,
+                    schema: _posts_post_entity__rspack_import_2.PostSchema
+                }
+            ], _mongoose_connection__rspack_import_6.connectionName)
+        ],
+        providers: [
+            _authors_service__rspack_import_5.AuthorsService
+        ],
+        controllers: [
+            _authors_controller__rspack_import_4.AuthorsController
+        ],
+        exports: []
+    })
+], AuthorsModule);
+
+
+},
+29(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthorsService: () => (AuthorsService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var class_validator__rspack_import_2 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_2);
+/* import */ var mongoose__rspack_import_3 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_3_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_3);
+/* import */ var _posts_dto_post_response_dto__rspack_import_4 = __webpack_require__(30);
+/* import */ var _posts_post_entity__rspack_import_5 = __webpack_require__(24);
+/* import */ var _author_entity__rspack_import_6 = __webpack_require__(25);
+/* import */ var _dto_author_response_dto__rspack_import_7 = __webpack_require__(31);
+/* import */ var _mongoose_connection__rspack_import_8 = __webpack_require__(32);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+
+
+const { ObjectId } = mongoose__rspack_import_3.Types;
+class AuthorsService {
     async count() {
         try {
             return await this.authorModel.countDocuments().exec();
-        }
-        catch (error) {
+        } catch (error) {
             const msg = 'Erro ao contar os autores';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async findAll() {
         try {
             const authors = await this.authorModel.find().exec();
-            return authors.map(author_response_dto_1.AuthorResponseDTO.from);
-        }
-        catch (error) {
+            return authors.map(_dto_author_response_dto__rspack_import_7.AuthorResponseDTO.from);
+        } catch (error) {
             const msg = 'Erro ao buscar os autores';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async findOne(id) {
@@ -939,32 +1091,30 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
             if (author === null) {
                 return null;
             }
-            return author_response_dto_1.AuthorResponseDTO.from(author);
-        }
-        catch (error) {
+            return _dto_author_response_dto__rspack_import_7.AuthorResponseDTO.from(author);
+        } catch (error) {
             const msg = 'Erro ao buscar o autor';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async add(requestDto) {
-        await (0, class_validator_1.validateOrReject)(requestDto);
+        await (0,class_validator__rspack_import_2.validateOrReject)(requestDto);
         try {
             const newAuthor = new this.authorModel();
             newAuthor.realname = requestDto.name;
             newAuthor.nickname = requestDto.nickname;
             newAuthor.birthDate = requestDto.birthDate;
             const author = await newAuthor.save();
-            return author_response_dto_1.AuthorResponseDTO.from(author);
-        }
-        catch (error) {
+            return _dto_author_response_dto__rspack_import_7.AuthorResponseDTO.from(author);
+        } catch (error) {
             const msg = 'Erro ao gravar o autor';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async addPost(id, requestDto) {
-        await (0, class_validator_1.validateOrReject)(requestDto);
+        await (0,class_validator__rspack_import_2.validateOrReject)(requestDto);
         try {
             const newPost = new this.postModel(requestDto);
             const _id = new ObjectId(id);
@@ -972,71 +1122,151 @@ let AuthorsService = AuthorsService_1 = class AuthorsService {
             if (author === null) {
                 const msg = 'Erro ao gravar a postagem, author não encontrado';
                 this.logger.error(msg);
-                throw new common_1.BadRequestException(msg);
+                throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
             }
             newPost.author = author;
             newPost.creationDate = new Date().toISOString().slice(0, 10);
             const post = await newPost.save();
-            return post_response_dto_1.PostResponseDTO.from(post);
-        }
-        catch (error) {
+            return _posts_dto_post_response_dto__rspack_import_4.PostResponseDTO.from(post);
+        } catch (error) {
             const msg = 'Erro ao gravar a postagem';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async delete(id) {
         try {
             const _id = new ObjectId(id);
-            await this.postModel.deleteMany({ author: { $eq: _id } }).exec();
+            await this.postModel.deleteMany({
+                author: {
+                    $eq: _id
+                }
+            }).exec();
             return await this.authorModel.findByIdAndDelete(_id).exec();
-        }
-        catch (error) {
+        } catch (error) {
             const msg = 'Erro ao apagar o autor';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
-};
-exports.AuthorsService = AuthorsService;
-exports.AuthorsService = AuthorsService = AuthorsService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(author_entity_1.Author.name, mongoose_connection_1.connectionName)),
-    __param(1, (0, mongoose_1.InjectModel)(post_entity_1.Post.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
+    constructor(authorModel, postModel){
+        _define_property(this, "authorModel", void 0);
+        _define_property(this, "postModel", void 0);
+        _define_property(this, "logger", void 0);
+        this.authorModel = authorModel;
+        this.postModel = postModel;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(AuthorsService.name);
+    }
+}
+AuthorsService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_author_entity__rspack_import_6.Author.name, _mongoose_connection__rspack_import_8.connectionName)),
+    _ts_param(1, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_posts_post_entity__rspack_import_5.Post.name, _mongoose_connection__rspack_import_8.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_3.Model === "undefined" ? Object : mongoose__rspack_import_3.Model,
+        typeof mongoose__rspack_import_3.Model === "undefined" ? Object : mongoose__rspack_import_3.Model
+    ])
 ], AuthorsService);
 
 
-/***/ }),
-/* 30 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostResponseDTO = void 0;
-const author_response_dto_1 = __webpack_require__(31);
-class PostResponseDTO {
-    constructor(id, title, body, creationDate, author) {
-        this.id = id;
-        this.title = title;
-        this.body = body;
-        this.creationDate = creationDate;
-        this.author = author;
+},
+33(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthorAddRequestDTO: () => (AuthorAddRequestDTO)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+/* import */ var _common_messages_validation_messages_constants__rspack_import_1 = __webpack_require__(28);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
     }
 }
-exports.PostResponseDTO = PostResponseDTO;
-PostResponseDTO.from = ({ _id, title, body, creationDate, author, }) => new PostResponseDTO(_id.toHexString(), title, body, creationDate, author_response_dto_1.AuthorResponseDTO.from(author));
 
 
-/***/ }),
-/* 31 */
-/***/ ((__unused_webpack_module, exports) => {
+class AuthorAddRequestDTO {
+    constructor(){
+        _define_property(this, "name", void 0);
+        _define_property(this, "nickname", void 0);
+        _define_property(this, "birthDate", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], AuthorAddRequestDTO.prototype, "name", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], AuthorAddRequestDTO.prototype, "nickname", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    (0,class_validator__rspack_import_0.IsDateString)(undefined, {
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], AuthorAddRequestDTO.prototype, "birthDate", void 0);
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorResponseDTO = void 0;
+},
+31(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthorResponseDTO: () => (AuthorResponseDTO)
+});
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
 class AuthorResponseDTO {
-    constructor(id, name, nickname, birthDate, posts) {
+    constructor(id, name, nickname, birthDate, posts){
+        _define_property(this, "id", void 0);
+        _define_property(this, "name", void 0);
+        _define_property(this, "nickname", void 0);
+        _define_property(this, "birthDate", void 0);
+        _define_property(this, "posts", void 0);
         this.id = id;
         this.name = name;
         this.nickname = nickname;
@@ -1044,1021 +1274,1218 @@ class AuthorResponseDTO {
         this.posts = posts;
     }
 }
-exports.AuthorResponseDTO = AuthorResponseDTO;
-AuthorResponseDTO.from = ({ _id, realname, nickname, birthDate, posts, }) => new AuthorResponseDTO(_id.toHexString(), realname, nickname, birthDate, posts);
+_define_property(AuthorResponseDTO, "from", ({ _id, realname, nickname, birthDate, posts })=>new AuthorResponseDTO(_id.toHexString(), realname, nickname, birthDate, posts));
 
 
-/***/ }),
-/* 32 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.connectionName = void 0;
-exports.connectionName = 'blog-posts';
-
-
-/***/ }),
-/* 33 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthorAddRequestDTO = void 0;
-const class_validator_1 = __webpack_require__(20);
-const validation_messages_constants_1 = __webpack_require__(28);
-class AuthorAddRequestDTO {
+},
+27(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PostAddRequestDTO: () => (PostAddRequestDTO)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+/* import */ var _common_messages_validation_messages_constants__rspack_import_1 = __webpack_require__(28);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
 }
-exports.AuthorAddRequestDTO = AuthorAddRequestDTO;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], AuthorAddRequestDTO.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], AuthorAddRequestDTO.prototype, "nickname", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    (0, class_validator_1.IsDateString)(undefined, { message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], AuthorAddRequestDTO.prototype, "birthDate", void 0);
-
-
-/***/ }),
-/* 34 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostsModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const author_entity_1 = __webpack_require__(25);
-const post_entity_1 = __webpack_require__(24);
-const posts_controller_1 = __webpack_require__(35);
-const posts_service_1 = __webpack_require__(36);
-const mongoose_connection_1 = __webpack_require__(32);
-let PostsModule = class PostsModule {
-};
-exports.PostsModule = PostsModule;
-exports.PostsModule = PostsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: author_entity_1.Author.name, schema: author_entity_1.AuthorSchema },
-                { name: post_entity_1.Post.name, schema: post_entity_1.PostSchema },
-            ], mongoose_connection_1.connectionName),
-        ],
-        providers: [posts_service_1.PostsService],
-        controllers: [posts_controller_1.PostsController],
-        exports: [],
-    })
-], PostsModule);
-
-
-/***/ }),
-/* 35 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostsController = void 0;
-const common_1 = __webpack_require__(1);
-const posts_service_1 = __webpack_require__(36);
-let PostsController = class PostsController {
-    constructor(postsService) {
-        this.postsService = postsService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class PostAddRequestDTO {
+    constructor(){
+        _define_property(this, "title", void 0);
+        _define_property(this, "body", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], PostAddRequestDTO.prototype, "title", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], PostAddRequestDTO.prototype, "body", void 0);
+
+
+},
+30(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PostResponseDTO: () => (PostResponseDTO)
+});
+/* import */ var _authors_dto_author_response_dto__rspack_import_0 = __webpack_require__(31);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+
+class PostResponseDTO {
+    constructor(id, title, body, creationDate, author){
+        _define_property(this, "id", void 0);
+        _define_property(this, "title", void 0);
+        _define_property(this, "body", void 0);
+        _define_property(this, "creationDate", void 0);
+        _define_property(this, "author", void 0);
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.creationDate = creationDate;
+        this.author = author;
+    }
+}
+_define_property(PostResponseDTO, "from", ({ _id, title, body, creationDate, author })=>new PostResponseDTO(_id.toHexString(), title, body, creationDate, _authors_dto_author_response_dto__rspack_import_0.AuthorResponseDTO.from(author)));
+
+
+},
+24(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Post: () => (Post),
+  PostSchema: () => (PostSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var mongoose__rspack_import_1 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_1);
+/* import */ var _authors_author_entity__rspack_import_2 = __webpack_require__(25);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+class Post {
+    constructor(title, body, creationDate, author){
+        _define_property(this, "title", void 0);
+        _define_property(this, "body", void 0);
+        _define_property(this, "creationDate", void 0);
+        _define_property(this, "author", void 0);
+        this.title = title;
+        this.body = body;
+        this.creationDate = creationDate;
+        this.author = author;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
+], Post.prototype, "title", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
+], Post.prototype, "body", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
+], Post.prototype, "creationDate", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: mongoose__rspack_import_1.Types.ObjectId,
+        ref: 'Author'
+    }),
+    _ts_metadata("design:type", typeof _authors_author_entity__rspack_import_2.AuthorDocument === "undefined" ? Object : _authors_author_entity__rspack_import_2.AuthorDocument)
+], Post.prototype, "author", void 0);
+Post = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        collection: 'posts'
+    }),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        String,
+        String,
+        typeof _authors_author_entity__rspack_import_2.AuthorDocument === "undefined" ? Object : _authors_author_entity__rspack_import_2.AuthorDocument
+    ])
+], Post);
+const PostSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Post);
+
+
+},
+35(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PostsController: () => (PostsController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _posts_service__rspack_import_1 = __webpack_require__(36);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+class PostsController {
     findAll(authorName) {
         return this.postsService.findAll(authorName);
     }
     delete(id) {
         return this.postsService.delete(id);
     }
-};
-exports.PostsController = PostsController;
-__decorate([
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)('authorName')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
+    constructor(postsService){
+        _define_property(this, "postsService", void 0);
+        this.postsService = postsService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Query)('authorName')),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
 ], PostsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Delete)(':id'),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)('id')),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], PostsController.prototype, "delete", null);
-exports.PostsController = PostsController = __decorate([
-    (0, common_1.Controller)('posts'),
-    __metadata("design:paramtypes", [typeof (_a = typeof posts_service_1.PostsService !== "undefined" && posts_service_1.PostsService) === "function" ? _a : Object])
+PostsController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)('posts'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _posts_service__rspack_import_1.PostsService === "undefined" ? Object : _posts_service__rspack_import_1.PostsService
+    ])
 ], PostsController);
 
 
-/***/ }),
-/* 36 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+34(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PostsModule: () => (PostsModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _authors_author_entity__rspack_import_2 = __webpack_require__(25);
+/* import */ var _post_entity__rspack_import_3 = __webpack_require__(24);
+/* import */ var _posts_controller__rspack_import_4 = __webpack_require__(35);
+/* import */ var _posts_service__rspack_import_5 = __webpack_require__(36);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(32);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var PostsService_1;
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PostsService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const post_entity_1 = __webpack_require__(24);
-const post_response_dto_1 = __webpack_require__(30);
-const author_entity_1 = __webpack_require__(25);
-const mongoose_connection_1 = __webpack_require__(32);
-let PostsService = PostsService_1 = class PostsService {
-    constructor(authorModel, postModel) {
-        this.authorModel = authorModel;
-        this.postModel = postModel;
-        this.logger = new common_1.Logger(PostsService_1.name);
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+
+class PostsModule {
+}
+PostsModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _authors_author_entity__rspack_import_2.Author.name,
+                    schema: _authors_author_entity__rspack_import_2.AuthorSchema
+                },
+                {
+                    name: _post_entity__rspack_import_3.Post.name,
+                    schema: _post_entity__rspack_import_3.PostSchema
+                }
+            ], _mongoose_connection__rspack_import_6.connectionName)
+        ],
+        providers: [
+            _posts_service__rspack_import_5.PostsService
+        ],
+        controllers: [
+            _posts_controller__rspack_import_4.PostsController
+        ],
+        exports: []
+    })
+], PostsModule);
+
+
+},
+36(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PostsService: () => (PostsService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var mongoose__rspack_import_2 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_2);
+/* import */ var _post_entity__rspack_import_3 = __webpack_require__(24);
+/* import */ var _dto_post_response_dto__rspack_import_4 = __webpack_require__(30);
+/* import */ var _authors_author_entity__rspack_import_5 = __webpack_require__(25);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(32);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+class PostsService {
     async findAll(authorName) {
         try {
             let query = this.postModel.find();
             if (authorName) {
-                const authors = await this.authorModel
-                    .find()
-                    .where('realname')
-                    .regex(new RegExp(authorName, 'i'))
-                    .select('id')
-                    .exec();
-                query = query.where('author').in(authors.map((author) => author._id));
+                const authors = await this.authorModel.find().where('realname').regex(new RegExp(authorName, 'i')).select('id').exec();
+                query = query.where('author').in(authors.map((author)=>author._id));
             }
             const posts = await query.populate('author').sort('-creationDate').exec();
-            return posts.map(post_response_dto_1.PostResponseDTO.from);
-        }
-        catch (error) {
+            return posts.map(_dto_post_response_dto__rspack_import_4.PostResponseDTO.from);
+        } catch (error) {
             const msg = 'Erro ao buscar as postagens';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     async delete(id) {
         try {
-            const _id = new mongoose_2.Types.ObjectId(id);
+            const _id = new mongoose__rspack_import_2.Types.ObjectId(id);
             return await this.postModel.findByIdAndDelete(_id).exec();
-        }
-        catch (error) {
+        } catch (error) {
             const msg = 'Erro ao apagar a postagem';
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
-};
-exports.PostsService = PostsService;
-exports.PostsService = PostsService = PostsService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(author_entity_1.Author.name, mongoose_connection_1.connectionName)),
-    __param(1, (0, mongoose_1.InjectModel)(post_entity_1.Post.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
+    constructor(authorModel, postModel){
+        _define_property(this, "authorModel", void 0);
+        _define_property(this, "postModel", void 0);
+        _define_property(this, "logger", void 0);
+        this.authorModel = authorModel;
+        this.postModel = postModel;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(PostsService.name);
+    }
+}
+PostsService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_authors_author_entity__rspack_import_5.Author.name, _mongoose_connection__rspack_import_6.connectionName)),
+    _ts_param(1, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_post_entity__rspack_import_3.Post.name, _mongoose_connection__rspack_import_6.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model,
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model
+    ])
 ], PostsService);
 
 
-/***/ }),
-/* 37 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.forceString = exports.forceNumber = void 0;
-const forceNumber = (num) => Number(num) || 0;
-exports.forceNumber = forceNumber;
-const forceString = (str) => String(str) || '';
-exports.forceString = forceString;
-
-
-/***/ }),
-/* 38 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.moduleList = void 0;
-const mongoose_1 = __webpack_require__(9);
-const links_module_1 = __webpack_require__(39);
-const mongoose_connection_1 = __webpack_require__(44);
-const utils_1 = __webpack_require__(48);
-exports.moduleList = [
-    mongoose_1.MongooseModule.forRoot((0, utils_1.forceString)((_a = process.env.MONGO_URI_SHRTR) !== null && _a !== void 0 ? _a : process.env.MONGO_URI), { connectionName: mongoose_connection_1.connectionName }),
-    links_module_1.LinksModule,
-];
-
-
-/***/ }),
-/* 39 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinksModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const link_entity_1 = __webpack_require__(40);
-const links_controller_1 = __webpack_require__(41);
-const links_service_1 = __webpack_require__(42);
-const mongoose_connection_1 = __webpack_require__(44);
-let LinksModule = class LinksModule {
-};
-exports.LinksModule = LinksModule;
-exports.LinksModule = LinksModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: link_entity_1.Link.name, schema: link_entity_1.LinkSchema }], mongoose_connection_1.connectionName),
-        ],
-        providers: [links_service_1.LinksService],
-        controllers: [links_controller_1.LinksController],
-        exports: [],
-    })
-], LinksModule);
-
-
-/***/ }),
-/* 40 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinkSchema = exports.Link = void 0;
-const mongoose_1 = __webpack_require__(9);
-let Link = class Link {
-    constructor(shrt, link) {
-        this.shrt = shrt;
-        this.link = link;
-    }
-};
-exports.Link = Link;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
-], Link.prototype, "shrt", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, type: String }),
-    __metadata("design:type", String)
-], Link.prototype, "link", void 0);
-exports.Link = Link = __decorate([
-    (0, mongoose_1.Schema)({ collection: 'link' }),
-    __metadata("design:paramtypes", [String, String])
-], Link);
-exports.LinkSchema = mongoose_1.SchemaFactory.createForClass(Link);
-
-
-/***/ }),
-/* 41 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var LinksController_1;
-var _a, _b, _c, _d, _e, _f, _g;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinksController = void 0;
-const common_1 = __webpack_require__(1);
-const links_service_1 = __webpack_require__(42);
-const link_add_request_dto_1 = __webpack_require__(45);
-const http_interfaces_1 = __webpack_require__(47);
-let LinksController = LinksController_1 = class LinksController {
-    constructor(linksService) {
-        this.linksService = linksService;
-        this.logger = new common_1.Logger(LinksController_1.name);
-    }
-    async findAll() {
-        try {
-            return await this.linksService.findAll();
-        }
-        catch (err) {
-            this.logger.error(err);
-            throw new common_1.HttpException(err.message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async find(response, shrt) {
-        const redirectToError = () => response.status(302).redirect(`${process.env.SHRTR_HOME}?error`);
-        try {
-            const data = await this.linksService.findOneByShrt(shrt);
-            if ((data === null || data === void 0 ? void 0 : data.link) !== undefined) {
-                let { link } = data;
-                link = /https?:\/\//.test(link) ? link : `http://${link}`;
-                response.status(302).redirect(link);
-                return;
-            }
-            this.logger.error('Not found');
-            redirectToError();
-            return;
-        }
-        catch (err) {
-            this.logger.error(err);
-            redirectToError();
-        }
-    }
-    async count() {
-        try {
-            return await this.linksService.count();
-        }
-        catch (err) {
-            this.logger.error(err);
-            throw new common_1.HttpException(err.message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async add(requestDto) {
-        try {
-            const result = await this.linksService.generate(requestDto);
-            return result;
-        }
-        catch (err) {
-            this.logger.error(err);
-            throw new common_1.HttpException(err.message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-};
-exports.LinksController = LinksController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
-], LinksController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('@/:shrt'),
-    __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Param)('shrt')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof http_interfaces_1.ApiResponse !== "undefined" && http_interfaces_1.ApiResponse) === "function" ? _c : Object, String]),
-    __metadata("design:returntype", typeof (_d = typeof Promise !== "undefined" && Promise) === "function" ? _d : Object)
-], LinksController.prototype, "find", null);
-__decorate([
-    (0, common_1.Get)('count'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_e = typeof Promise !== "undefined" && Promise) === "function" ? _e : Object)
-], LinksController.prototype, "count", null);
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_f = typeof link_add_request_dto_1.LinkAddRequestDTO !== "undefined" && link_add_request_dto_1.LinkAddRequestDTO) === "function" ? _f : Object]),
-    __metadata("design:returntype", typeof (_g = typeof Promise !== "undefined" && Promise) === "function" ? _g : Object)
-], LinksController.prototype, "add", null);
-exports.LinksController = LinksController = LinksController_1 = __decorate([
-    (0, common_1.Controller)('links'),
-    __metadata("design:paramtypes", [typeof (_a = typeof links_service_1.LinksService !== "undefined" && links_service_1.LinksService) === "function" ? _a : Object])
-], LinksController);
-
-
-/***/ }),
-/* 42 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var LinksService_1;
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinksService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const link_entity_1 = __webpack_require__(40);
-const link_response_dto_1 = __webpack_require__(43);
-const mongoose_connection_1 = __webpack_require__(44);
-const { ObjectId } = mongoose_2.Types;
-let LinksService = LinksService_1 = class LinksService {
-    constructor(linkModel) {
-        this.linkModel = linkModel;
-        this.logger = new common_1.Logger(LinksService_1.name);
-    }
-    async findOneByShrt(shrt) {
-        try {
-            const link = await this.linkModel.findOne({ shrt }).exec();
-            if (link === null) {
-                return null;
-            }
-            return link_response_dto_1.LinkResponseDTO.from(link);
-        }
-        catch (error) {
-            const message = 'Error finding the link by alias';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async findOne(id) {
-        try {
-            const _id = new ObjectId(id);
-            const link = await this.linkModel.findById(_id).exec();
-            if (link === null) {
-                return null;
-            }
-            return link_response_dto_1.LinkResponseDTO.from(link);
-        }
-        catch (error) {
-            const message = 'Error finding the link';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async findAll() {
-        try {
-            const links = await this.linkModel.find().exec();
-            return links.map(link_response_dto_1.LinkResponseDTO.from);
-        }
-        catch (error) {
-            const message = 'Error finding links';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async existsByShrt(shrt) {
-        return await this.exists({ shrt });
-    }
-    async exists(query) {
-        var _a;
-        try {
-            return ((_a = (await this.linkModel.exists(query))) === null || _a === void 0 ? void 0 : _a._id) !== undefined;
-        }
-        catch (error) {
-            const message = 'Error validating existence of the link';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async count() {
-        try {
-            return await this.linkModel.countDocuments().exec();
-        }
-        catch (error) {
-            const message = 'Error counting links';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async add(requestDto) {
-        var _a;
-        try {
-            const newLink = new this.linkModel();
-            newLink.link = requestDto.link;
-            newLink.shrt = (_a = requestDto.shrt) !== null && _a !== void 0 ? _a : '';
-            const link = await newLink.save();
-            return link_response_dto_1.LinkResponseDTO.from(link);
-        }
-        catch (error) {
-            const message = 'Error adding the link';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-    async generate(requestDto, recursion = false) {
-        const regenerate = () => {
-            const shrt = (Math.random() * 9007199254740991)
-                .toString(36)
-                .replace('.', 'A');
-            return this.generate(Object.assign(Object.assign({}, requestDto), { shrt }), true);
-        };
-        try {
-            if (requestDto.shrt !== undefined && requestDto.shrt.length > 0) {
-                const exists = await this.existsByShrt(requestDto.shrt);
-                if (exists) {
-                    if (recursion) {
-                        return regenerate();
-                    }
-                    const message = 'The alias already exists, please try another';
-                    this.logger.error(message);
-                    return Promise.reject(new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST));
-                }
-                return this.add(requestDto);
-            }
-            return regenerate();
-        }
-        catch (error) {
-            const message = 'Error recording the link';
-            this.logger.error(message, error);
-            throw new common_1.HttpException(message, common_1.HttpStatus.BAD_REQUEST);
-        }
-    }
-};
-exports.LinksService = LinksService;
-exports.LinksService = LinksService = LinksService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(link_entity_1.Link.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
-], LinksService);
-
-
-/***/ }),
-/* 43 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinkResponseDTO = void 0;
-class LinkResponseDTO {
-    constructor(id, link, shrt) {
-        this.id = id;
-        this.link = link;
-        this.shrt = shrt;
-    }
-}
-exports.LinkResponseDTO = LinkResponseDTO;
-LinkResponseDTO.from = ({ _id, link, shrt }) => new LinkResponseDTO(_id.toHexString(), link, shrt);
-
-
-/***/ }),
-/* 44 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.connectionName = void 0;
-exports.connectionName = 'shrtr';
-
-
-/***/ }),
-/* 45 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LinkAddRequestDTO = void 0;
-const class_validator_1 = __webpack_require__(20);
-const validation_messages_constants_1 = __webpack_require__(46);
-class LinkAddRequestDTO {
-}
-exports.LinkAddRequestDTO = LinkAddRequestDTO;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: validation_messages_constants_1.ValidationMessages.IS_NOT_EMPTY }),
-    __metadata("design:type", String)
-], LinkAddRequestDTO.prototype, "link", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], LinkAddRequestDTO.prototype, "shrt", void 0);
-
-
-/***/ }),
-/* 46 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ValidationMessages = void 0;
-exports.ValidationMessages = Object.freeze({
-    IS_NOT_EMPTY: 'Campo $property não pode ser vazio.',
-    IS_NOT_DATE: 'Campo $property não é uma data válida.',
-    IS_NOT_NUMBER: 'Campo $property não é um número válido.',
+},
+32(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  connectionName: () => (connectionName)
 });
+const connectionName = 'blog-posts';
 
 
-/***/ }),
-/* 47 */
-/***/ ((__unused_webpack_module, exports) => {
+},
+98(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ApiToCheck: () => (ApiToCheck)
+});
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+class ApiToCheck {
+    constructor(name, uri){
+        _define_property(this, "name", void 0);
+        _define_property(this, "uri", void 0);
+        this.name = name;
+        this.uri = uri;
+    }
+}
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-/* 48 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.forceString = exports.forceNumber = void 0;
-const forceNumber = (num) => Number(num) || 0;
-exports.forceNumber = forceNumber;
-const forceString = (str) => String(str) || '';
-exports.forceString = forceString;
-
-
-/***/ }),
-/* 49 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.moduleList = void 0;
-const mongoose_1 = __webpack_require__(9);
-const auth_module_1 = __webpack_require__(50);
-const dishes_module_1 = __webpack_require__(57);
-const restaurants_module_1 = __webpack_require__(76);
-const users_module_1 = __webpack_require__(82);
-const mongoose_connection_1 = __webpack_require__(64);
-const utils_1 = __webpack_require__(56);
-exports.moduleList = [
-    mongoose_1.MongooseModule.forRoot((0, utils_1.forceString)((_a = process.env.MONGO_URI_RESTAURANTS) !== null && _a !== void 0 ? _a : process.env.MONGO_URI), { connectionName: mongoose_connection_1.connectionName }),
-    auth_module_1.AuthModule,
-    dishes_module_1.DishesModule,
-    restaurants_module_1.RestaurantsModule,
-    users_module_1.UsersModule,
-];
-
-
-/***/ }),
-/* 50 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+95(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CheckServicesModule: () => (CheckServicesModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _check_services_service__rspack_import_1 = __webpack_require__(96);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthModule = void 0;
-const common_1 = __webpack_require__(1);
-const jwt_1 = __webpack_require__(51);
-const passport_1 = __webpack_require__(52);
-const jwt_strategy_1 = __webpack_require__(53);
-let AuthModule = class AuthModule {
-};
-exports.AuthModule = AuthModule;
-exports.AuthModule = AuthModule = __decorate([
-    (0, common_1.Global)(),
-    (0, common_1.Module)({
-        imports: [
-            passport_1.PassportModule.register({ defaultStrategy: "jwt" }),
-            jwt_1.JwtModule.register({}),
+}
+
+
+class CheckServicesModule {
+}
+CheckServicesModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        providers: [
+            _check_services_service__rspack_import_1.CheckServicesService
         ],
-        providers: [jwt_strategy_1.JwtStrategy],
-        exports: [passport_1.PassportModule, jwt_1.JwtModule],
+        exports: []
+    })
+], CheckServicesModule);
+
+
+},
+96(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CheckServicesService: () => (CheckServicesService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_schedule__rspack_import_1 = __webpack_require__(94);
+/* import */ var _nestjs_schedule__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_schedule__rspack_import_1);
+/* import */ var axios__rspack_import_2 = __webpack_require__(97);
+/* import */ var axios__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(axios__rspack_import_2);
+/* import */ var class_transformer__rspack_import_3 = __webpack_require__(69);
+/* import */ var class_transformer__rspack_import_3_default = /*#__PURE__*/__webpack_require__.n(class_transformer__rspack_import_3);
+/* import */ var _api_to_check__rspack_import_4 = __webpack_require__(98);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+
+
+class CheckServicesService {
+    async CheckServices() {
+        const checkAllAPIs = process.env.CHECK_ALL_APIS?.toLowerCase() === 'true';
+        let apisToCheck = [];
+        try {
+            apisToCheck = (0,class_transformer__rspack_import_3.plainToInstance)(_api_to_check__rspack_import_4.ApiToCheck, JSON.parse(process.env.APIS_TO_CHECK || '[]'));
+        } catch (error) {
+            this.logger.error('Error casting Env var APIS_TO_CHECK', error);
+            return false;
+        }
+        return checkAllAPIs ? this.checkAllAPIs(apisToCheck) : this.checkRandomAPI(apisToCheck);
+    }
+    async checkAllAPIs(apisToCheck) {
+        for (const api of apisToCheck){
+            try {
+                await axios__rspack_import_2_default().get(api.uri);
+            } catch (error) {
+                this.logger.error(`Error checking API: ${api.name}`, error);
+                return false;
+            }
+        }
+        return true;
+    }
+    async checkRandomAPI(apisToCheck) {
+        const api = apisToCheck[Math.floor(Math.random() * apisToCheck.length)];
+        try {
+            await axios__rspack_import_2_default().get(api.uri);
+        } catch (error) {
+            this.logger.error(`Error checking API: ${api.name}`, error);
+            return false;
+        }
+        return true;
+    }
+    constructor(){
+        _define_property(this, "logger", new _nestjs_common__rspack_import_0.Logger(CheckServicesService.name));
+    }
+}
+_ts_decorate([
+    (0,_nestjs_schedule__rspack_import_1.Cron)('0/6 0-2,8-23 * * 1-5'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", Promise)
+], CheckServicesService.prototype, "CheckServices", null);
+CheckServicesService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [])
+], CheckServicesService);
+
+
+},
+50(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthModule: () => (AuthModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_jwt__rspack_import_1 = __webpack_require__(51);
+/* import */ var _nestjs_jwt__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_jwt__rspack_import_1);
+/* import */ var _nestjs_passport__rspack_import_2 = __webpack_require__(52);
+/* import */ var _nestjs_passport__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(_nestjs_passport__rspack_import_2);
+/* import */ var _jwt_strategy__rspack_import_3 = __webpack_require__(53);
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+class AuthModule {
+}
+AuthModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Global)(),
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_passport__rspack_import_2.PassportModule.register({
+                defaultStrategy: "jwt"
+            }),
+            _nestjs_jwt__rspack_import_1.JwtModule.register({})
+        ],
+        providers: [
+            _jwt_strategy__rspack_import_3.JwtStrategy
+        ],
+        exports: [
+            _nestjs_passport__rspack_import_2.PassportModule,
+            _nestjs_jwt__rspack_import_1.JwtModule
+        ]
     })
 ], AuthModule);
 
 
-/***/ }),
-/* 51 */
-/***/ ((module) => {
+},
+55(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  getjwtExpiresIn: () => (getjwtExpiresIn),
+  getjwtExpiresInRefresh: () => (getjwtExpiresInRefresh),
+  getjwtSecret: () => (getjwtSecret),
+  getjwtSecretRefresh: () => (getjwtSecretRefresh)
+});
+/* import */ var _utils__rspack_import_0 = __webpack_require__(56);
 
-module.exports = require("@nestjs/jwt");
-
-/***/ }),
-/* 52 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/passport");
-
-/***/ }),
-/* 53 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+const getjwtSecret = ()=>(0,_utils__rspack_import_0.forceString)(process.env.JWT_SECRET_RESTAURANTS ?? process.env.JWT_SECRET);
+const getjwtExpiresIn = ()=>process.env.JWT_EXPIRES_IN_RESTAURANTS ?? process.env.JWT_EXPIRES_IN ?? "1d";
+const getjwtSecretRefresh = ()=>process.env.JWT_SECRET_REFRESH_RESTAURANTS ?? process.env.JWT_REFRESH_SECRET ?? getjwtSecret();
+const getjwtExpiresInRefresh = ()=>{
+    const envInfo = process.env.JWT_EXPIRES_IN_REFRESH_RESTAURANTS ?? process.env.JWT_EXPIRES_IN_REFRESH;
+    return envInfo !== undefined ? envInfo : getjwtExpiresIn();
+};
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+53(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  JwtStrategy: () => (JwtStrategy)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_passport__rspack_import_1 = __webpack_require__(52);
+/* import */ var _nestjs_passport__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_passport__rspack_import_1);
+/* import */ var passport_jwt__rspack_import_2 = __webpack_require__(54);
+/* import */ var passport_jwt__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(passport_jwt__rspack_import_2);
+/* import */ var _jwt_env__rspack_import_3 = __webpack_require__(55);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.JwtStrategy = void 0;
-const common_1 = __webpack_require__(1);
-const passport_1 = __webpack_require__(52);
-const passport_jwt_1 = __webpack_require__(54);
-const jwt_env_1 = __webpack_require__(55);
-let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strategy) {
-    constructor() {
-        super({
-            jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
-            ignoreExpiration: false,
-            secretOrKey: (0, jwt_env_1.getjwtSecret)(),
-        });
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+
+class JwtStrategy extends (0,_nestjs_passport__rspack_import_1.PassportStrategy)(passport_jwt__rspack_import_2.Strategy) {
     validate(payload) {
         return {
             userId: payload.sub,
             username: payload.username,
-            role: payload.role,
+            role: payload.role
         };
     }
-};
-exports.JwtStrategy = JwtStrategy;
-exports.JwtStrategy = JwtStrategy = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    constructor(){
+        super({
+            jwtFromRequest: passport_jwt__rspack_import_2.ExtractJwt.fromAuthHeaderAsBearerToken(),
+            ignoreExpiration: false,
+            secretOrKey: (0,_jwt_env__rspack_import_3.getjwtSecret)()
+        });
+    }
+}
+JwtStrategy = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [])
 ], JwtStrategy);
 
 
-/***/ }),
-/* 54 */
-/***/ ((module) => {
+},
+88(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CurrentUser: () => (CurrentUser)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
 
-module.exports = require("passport-jwt");
+const CurrentUser = (0,_nestjs_common__rspack_import_0.createParamDecorator)((_data, ctx)=>{
+    const request = ctx.switchToHttp().getRequest();
+    return request.user;
+});
 
-/***/ }),
-/* 55 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+},
+68(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PaginationQueryDto: () => (PaginationQueryDto)
+});
+/* import */ var class_transformer__rspack_import_0 = __webpack_require__(69);
+/* import */ var class_transformer__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_transformer__rspack_import_0);
+/* import */ var class_validator__rspack_import_1 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_1);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getjwtExpiresInRefresh = exports.getjwtSecretRefresh = exports.getjwtExpiresIn = exports.getjwtSecret = void 0;
-const utils_1 = __webpack_require__(56);
-const getjwtSecret = () => { var _a; return (0, utils_1.forceString)((_a = process.env.JWT_SECRET_RESTAURANTS) !== null && _a !== void 0 ? _a : process.env.JWT_SECRET); };
-exports.getjwtSecret = getjwtSecret;
-const getjwtExpiresIn = () => {
-    var _a, _b;
-    return ((_b = (_a = process.env.JWT_EXPIRES_IN_RESTAURANTS) !== null && _a !== void 0 ? _a : process.env.JWT_EXPIRES_IN) !== null && _b !== void 0 ? _b : "1d");
+class PaginationQueryDto {
+    constructor(){
+        _define_property(this, "page", 1);
+        _define_property(this, "limit", 10);
+        _define_property(this, "name", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_1.IsOptional)(),
+    (0,class_transformer__rspack_import_0.Type)(()=>Number),
+    (0,class_validator__rspack_import_1.IsInt)(),
+    (0,class_validator__rspack_import_1.Min)(1),
+    _ts_metadata("design:type", Number)
+], PaginationQueryDto.prototype, "page", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_1.IsOptional)(),
+    (0,class_transformer__rspack_import_0.Type)(()=>Number),
+    (0,class_validator__rspack_import_1.IsInt)(),
+    (0,class_validator__rspack_import_1.Min)(1),
+    _ts_metadata("design:type", Number)
+], PaginationQueryDto.prototype, "limit", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_1.IsOptional)(),
+    (0,class_validator__rspack_import_1.IsString)(),
+    _ts_metadata("design:type", String)
+], PaginationQueryDto.prototype, "name", void 0);
+
+
+},
+74(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Role: () => (Role)
+});
+var Role = /*#__PURE__*/ function(Role) {
+    Role["ADMIN"] = "admin";
+    Role["USER"] = "user";
+    Role["VISITOR"] = "visitor";
+    return Role;
+}({});
+
+
+},
+70(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  JwtAuthGuard: () => (JwtAuthGuard)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_passport__rspack_import_1 = __webpack_require__(52);
+/* import */ var _nestjs_passport__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_passport__rspack_import_1);
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+class JwtAuthGuard extends (0,_nestjs_passport__rspack_import_1.AuthGuard)("jwt") {
+}
+JwtAuthGuard = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)()
+], JwtAuthGuard);
+
+
+},
+71(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PermissionsGuard: () => (PermissionsGuard)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_core__rspack_import_1 = __webpack_require__(2);
+/* import */ var _nestjs_core__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__rspack_import_1);
+/* import */ var _permissions_require_permission_decorator__rspack_import_2 = __webpack_require__(72);
+/* import */ var _permissions_permissions_matrix__rspack_import_3 = __webpack_require__(73);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+
+class PermissionsGuard {
+    canActivate(context) {
+        const required = this.reflector.getAllAndOverride(_permissions_require_permission_decorator__rspack_import_2.PERMISSION_KEY, [
+            context.getHandler(),
+            context.getClass()
+        ]);
+        if (!required) return true;
+        const request = context.switchToHttp().getRequest();
+        const user = request.user;
+        if (!user) {
+            throw new _nestjs_common__rspack_import_0.ForbiddenException("Usuário não autenticado");
+        }
+        const allowed = (0,_permissions_permissions_matrix__rspack_import_3.hasPermission)(user.role, required.module, required.action);
+        if (!allowed) {
+            throw new _nestjs_common__rspack_import_0.ForbiddenException(`A role "${user.role}" não possui permissão de "${required.action}" em "${required.module}"`);
+        }
+        return true;
+    }
+    constructor(reflector){
+        _define_property(this, "reflector", void 0);
+        this.reflector = reflector;
+    }
+}
+PermissionsGuard = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _nestjs_core__rspack_import_1.Reflector === "undefined" ? Object : _nestjs_core__rspack_import_1.Reflector
+    ])
+], PermissionsGuard);
+
+
+},
+63(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  paginate: () => (paginate),
+  paginateWithQuery: () => (paginateWithQuery)
+});
+async function paginateWithQuery(model, query, extraFilter = {}) {
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
+    const filter = {
+        ...extraFilter
+    };
+    if (query.name) {
+        filter.name = {
+            $regex: query.name,
+            $options: "i"
+        };
+    }
+    return paginate(model, filter, page, limit);
+}
+async function paginate(model, filter = {}, page = 1, limit = 10) {
+    const [data, total] = await Promise.all([
+        model.find(filter).skip((page - 1) * limit).limit(limit).sort({
+            createdAt: -1
+        }).exec(),
+        model.countDocuments(filter)
+    ]);
+    return {
+        data,
+        total,
+        page,
+        limit,
+        totalPages: Math.max(Math.ceil(total / limit), 1)
+    };
+}
+
+
+},
+75(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  acceptVisitors: () => (acceptVisitors),
+  visitorUsername: () => (visitorUsername)
+});
+const acceptVisitors = ()=>process.env.ENABLE_VISITORS === "true";
+const visitorUsername = ()=>process.env.VISITORS_USERNAME ?? "visitor";
+
+
+},
+73(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ActionEnum: () => (ActionEnum),
+  ModuleNameEnum: () => (ModuleNameEnum),
+  PERMISSIONS: () => (PERMISSIONS),
+  hasPermission: () => (hasPermission)
+});
+/* import */ var _enums_role_enum__rspack_import_0 = __webpack_require__(74);
+/* import */ var _permissions_env__rspack_import_1 = __webpack_require__(75);
+
+
+var ModuleNameEnum = /*#__PURE__*/ function(ModuleNameEnum) {
+    ModuleNameEnum["DISHES"] = "dishes";
+    ModuleNameEnum["RESTAURANTS"] = "restaurants";
+    ModuleNameEnum["USERS"] = "users";
+    return ModuleNameEnum;
+}({});
+var ActionEnum = /*#__PURE__*/ function(ActionEnum) {
+    ActionEnum["CREATE"] = "create";
+    ActionEnum["READ"] = "read";
+    ActionEnum["UPDATE"] = "update";
+    ActionEnum["DELETE"] = "delete";
+    return ActionEnum;
+}({});
+const getFullAccess = ()=>({
+        create: true,
+        read: true,
+        update: true,
+        delete: true
+    });
+const getOnlyReadAccess = ()=>({
+        create: false,
+        read: true,
+        update: false,
+        delete: false
+    });
+const getNoAccess = ()=>({
+        create: false,
+        read: false,
+        update: false,
+        delete: false
+    });
+const PERMISSIONS = {
+    [_enums_role_enum__rspack_import_0.Role.ADMIN]: {
+        dishes: getFullAccess(),
+        restaurants: getFullAccess(),
+        users: getFullAccess()
+    },
+    [_enums_role_enum__rspack_import_0.Role.USER]: {
+        dishes: getFullAccess(),
+        restaurants: getOnlyReadAccess(),
+        users: getOnlyReadAccess()
+    },
+    [_enums_role_enum__rspack_import_0.Role.VISITOR]: {
+        dishes: getOnlyReadAccess(),
+        restaurants: getOnlyReadAccess(),
+        users: getNoAccess()
+    }
 };
-exports.getjwtExpiresIn = getjwtExpiresIn;
-const getjwtSecretRefresh = () => {
-    var _a, _b;
-    return (_b = (_a = process.env.JWT_SECRET_REFRESH_RESTAURANTS) !== null && _a !== void 0 ? _a : process.env.JWT_REFRESH_SECRET) !== null && _b !== void 0 ? _b : (0, exports.getjwtSecret)();
-};
-exports.getjwtSecretRefresh = getjwtSecretRefresh;
-const getjwtExpiresInRefresh = () => {
-    var _a;
-    const envInfo = (_a = process.env.JWT_EXPIRES_IN_REFRESH_RESTAURANTS) !== null && _a !== void 0 ? _a : process.env.JWT_EXPIRES_IN_REFRESH;
-    return envInfo !== undefined ? envInfo : (0, exports.getjwtExpiresIn)();
-};
-exports.getjwtExpiresInRefresh = getjwtExpiresInRefresh;
+function hasPermission(role, module, action) {
+    if (role === _enums_role_enum__rspack_import_0.Role.VISITOR && !(0,_permissions_env__rspack_import_1.acceptVisitors)()) {
+        return false;
+    }
+    return PERMISSIONS[role]?.[module]?.[action] ?? false;
+}
 
 
-/***/ }),
-/* 56 */
-/***/ ((__unused_webpack_module, exports) => {
+},
+72(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  PERMISSION_KEY: () => (PERMISSION_KEY),
+  RequirePermission: () => (RequirePermission)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+
+const PERMISSION_KEY = "required_permission";
+const RequirePermission = (module, action)=>(0,_nestjs_common__rspack_import_0.SetMetadata)(PERMISSION_KEY, {
+        module,
+        action
+    });
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.forceString = exports.forceNumber = void 0;
-exports.applyToJSONTransform = applyToJSONTransform;
-const forceNumber = (num) => Number(num) || 0;
-exports.forceNumber = forceNumber;
-const forceString = (str) => String(str) || "";
-exports.forceString = forceString;
+},
+56(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  applyToJSONTransform: () => (applyToJSONTransform),
+  forceNumber: () => (forceNumber),
+  forceString: () => (forceString)
+});
+const forceNumber = (num)=>Number(num) || 0;
+const forceString = (str)=>String(str) || "";
 function applyToJSONTransform(schema, omitFields = []) {
     schema.set("toJSON", {
         virtuals: true,
         versionKey: false,
-        transform: (_doc, ret) => {
-            var _a;
-            ret.id = (_a = ret._id) === null || _a === void 0 ? void 0 : _a.toString();
+        transform: (_doc, ret)=>{
+            ret.id = ret._id?.toString();
             delete ret._id;
-            for (const field of omitFields) {
+            for (const field of omitFields){
                 delete ret[field];
             }
             return ret;
-        },
+        }
     });
 }
 
 
-/***/ }),
-/* 57 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+},
+49(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  moduleList: () => (moduleList)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var _common_auth_auth_module__rspack_import_1 = __webpack_require__(50);
+/* import */ var _modules_dishes_dishes_module__rspack_import_2 = __webpack_require__(57);
+/* import */ var _modules_restaurants_restaurants_module__rspack_import_3 = __webpack_require__(76);
+/* import */ var _modules_users_users_module__rspack_import_4 = __webpack_require__(82);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(64);
+/* import */ var _common_utils__rspack_import_6 = __webpack_require__(56);
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DishesModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const dish_schema_1 = __webpack_require__(58);
-const restaurant_schema_1 = __webpack_require__(59);
-const dishes_controller_1 = __webpack_require__(60);
-const dishes_service_1 = __webpack_require__(61);
-const mongoose_connection_1 = __webpack_require__(64);
-let DishesModule = class DishesModule {
-};
-exports.DishesModule = DishesModule;
-exports.DishesModule = DishesModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: dish_schema_1.Dish.name, schema: dish_schema_1.DishSchema },
-                { name: restaurant_schema_1.Restaurant.name, schema: restaurant_schema_1.RestaurantSchema },
-            ], mongoose_connection_1.connectionName),
-        ],
-        controllers: [dishes_controller_1.DishesController],
-        providers: [dishes_service_1.DishesService],
-        exports: [dishes_service_1.DishesService],
-    })
-], DishesModule);
 
 
-/***/ }),
-/* 58 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DishSchema = exports.Dish = void 0;
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const utils_1 = __webpack_require__(56);
-let Dish = class Dish {
-};
-exports.Dish = Dish;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true, index: true }),
-    __metadata("design:type", String)
-], Dish.prototype, "name", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, min: 0 }),
-    __metadata("design:type", Number)
-], Dish.prototype, "price", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        type: mongoose_2.Types.ObjectId,
-        ref: "Restaurant",
-        required: true,
-        index: true,
+
+const moduleList = [
+    _nestjs_mongoose__rspack_import_0.MongooseModule.forRoot((0,_common_utils__rspack_import_6.forceString)(process.env.MONGO_URI_RESTAURANTS ?? process.env.MONGO_URI), {
+        connectionName: _mongoose_connection__rspack_import_5.connectionName
     }),
-    __metadata("design:type", typeof (_a = typeof mongoose_2.Types !== "undefined" && mongoose_2.Types.ObjectId) === "function" ? _a : Object)
-], Dish.prototype, "restaurant_id", void 0);
-exports.Dish = Dish = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true, collection: "dishes" })
-], Dish);
-exports.DishSchema = mongoose_1.SchemaFactory.createForClass(Dish);
-(0, utils_1.applyToJSONTransform)(exports.DishSchema);
+    _common_auth_auth_module__rspack_import_1.AuthModule,
+    _modules_dishes_dishes_module__rspack_import_2.DishesModule,
+    _modules_restaurants_restaurants_module__rspack_import_3.RestaurantsModule,
+    _modules_users_users_module__rspack_import_4.UsersModule
+];
 
 
-/***/ }),
-/* 59 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+60(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  DishesController: () => (DishesController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _dishes_service__rspack_import_1 = __webpack_require__(61);
+/* import */ var _dto_create_dish_dto__rspack_import_2 = __webpack_require__(65);
+/* import */ var _dto_update_dish_dto__rspack_import_3 = __webpack_require__(66);
+/* import */ var _common_dto_pagination_query_dto__rspack_import_4 = __webpack_require__(68);
+/* import */ var _common_guards_jwt_auth_guard__rspack_import_5 = __webpack_require__(70);
+/* import */ var _common_guards_permissions_guard__rspack_import_6 = __webpack_require__(71);
+/* import */ var _common_permissions_require_permission_decorator__rspack_import_7 = __webpack_require__(72);
+/* import */ var _common_permissions_permissions_matrix__rspack_import_8 = __webpack_require__(73);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RestaurantSchema = exports.Restaurant = void 0;
-const mongoose_1 = __webpack_require__(9);
-const utils_1 = __webpack_require__(56);
-let Restaurant = class Restaurant {
-};
-exports.Restaurant = Restaurant;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true, index: true }),
-    __metadata("design:type", String)
-], Restaurant.prototype, "name", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true }),
-    __metadata("design:type", String)
-], Restaurant.prototype, "phone", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true }),
-    __metadata("design:type", String)
-], Restaurant.prototype, "address", void 0);
-exports.Restaurant = Restaurant = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true, collection: "restaurants" })
-], Restaurant);
-exports.RestaurantSchema = mongoose_1.SchemaFactory.createForClass(Restaurant);
-(0, utils_1.applyToJSONTransform)(exports.RestaurantSchema);
-
-
-/***/ }),
-/* 60 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DishesController = void 0;
-const common_1 = __webpack_require__(1);
-const dishes_service_1 = __webpack_require__(61);
-const create_dish_dto_1 = __webpack_require__(65);
-const update_dish_dto_1 = __webpack_require__(66);
-const pagination_query_dto_1 = __webpack_require__(68);
-const jwt_auth_guard_1 = __webpack_require__(70);
-const permissions_guard_1 = __webpack_require__(71);
-const require_permission_decorator_1 = __webpack_require__(72);
-const permissions_matrix_1 = __webpack_require__(73);
-let DishesController = class DishesController {
-    constructor(dishesService) {
-        this.dishesService = dishesService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+
+
+class DishesController {
     create(dto) {
         return this.dishesService.create(dto);
     }
@@ -2074,92 +2501,201 @@ let DishesController = class DishesController {
     remove(id) {
         return this.dishesService.remove(id);
     }
-};
-exports.DishesController = DishesController;
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.DISHES, permissions_matrix_1.ActionEnum.CREATE),
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_dish_dto_1.CreateDishDto !== "undefined" && create_dish_dto_1.CreateDishDto) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
+    constructor(dishesService){
+        _define_property(this, "dishesService", void 0);
+        this.dishesService = dishesService;
+    }
+}
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.DISHES, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.CREATE),
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_create_dish_dto__rspack_import_2.CreateDishDto === "undefined" ? Object : _dto_create_dish_dto__rspack_import_2.CreateDishDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], DishesController.prototype, "create", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.DISHES, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof pagination_query_dto_1.PaginationQueryDto !== "undefined" && pagination_query_dto_1.PaginationQueryDto) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.DISHES, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Query)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_dto_pagination_query_dto__rspack_import_4.PaginationQueryDto === "undefined" ? Object : _common_dto_pagination_query_dto__rspack_import_4.PaginationQueryDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], DishesController.prototype, "findAll", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.DISHES, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.DISHES, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], DishesController.prototype, "findOne", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.DISHES, permissions_matrix_1.ActionEnum.UPDATE),
-    (0, common_1.Patch)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_d = typeof update_dish_dto_1.UpdateDishDto !== "undefined" && update_dish_dto_1.UpdateDishDto) === "function" ? _d : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.DISHES, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.UPDATE),
+    (0,_nestjs_common__rspack_import_0.Patch)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        typeof _dto_update_dish_dto__rspack_import_3.UpdateDishDto === "undefined" ? Object : _dto_update_dish_dto__rspack_import_3.UpdateDishDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], DishesController.prototype, "update", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.DISHES, permissions_matrix_1.ActionEnum.DELETE),
-    (0, common_1.Delete)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.DISHES, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.DELETE),
+    (0,_nestjs_common__rspack_import_0.Delete)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], DishesController.prototype, "remove", null);
-exports.DishesController = DishesController = __decorate([
-    (0, common_1.Controller)("dishes"),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    __metadata("design:paramtypes", [typeof (_a = typeof dishes_service_1.DishesService !== "undefined" && dishes_service_1.DishesService) === "function" ? _a : Object])
+DishesController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)("dishes"),
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_5.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_6.PermissionsGuard),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dishes_service__rspack_import_1.DishesService === "undefined" ? Object : _dishes_service__rspack_import_1.DishesService
+    ])
 ], DishesController);
 
 
-/***/ }),
-/* 61 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+57(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  DishesModule: () => (DishesModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _schemas_dish_schema__rspack_import_2 = __webpack_require__(58);
+/* import */ var _restaurants_schemas_restaurant_schema__rspack_import_3 = __webpack_require__(59);
+/* import */ var _dishes_controller__rspack_import_4 = __webpack_require__(60);
+/* import */ var _dishes_service__rspack_import_5 = __webpack_require__(61);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(64);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DishesService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const dish_schema_1 = __webpack_require__(58);
-const paginate_1 = __webpack_require__(62);
-const mongoose_connection_1 = __webpack_require__(64);
-const restaurant_schema_1 = __webpack_require__(59);
-let DishesService = class DishesService {
-    constructor(dishModel, restaurantModel) {
-        this.dishModel = dishModel;
-        this.restaurantModel = restaurantModel;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+
+class DishesModule {
+}
+DishesModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _schemas_dish_schema__rspack_import_2.Dish.name,
+                    schema: _schemas_dish_schema__rspack_import_2.DishSchema
+                },
+                {
+                    name: _restaurants_schemas_restaurant_schema__rspack_import_3.Restaurant.name,
+                    schema: _restaurants_schemas_restaurant_schema__rspack_import_3.RestaurantSchema
+                }
+            ], _mongoose_connection__rspack_import_6.connectionName)
+        ],
+        controllers: [
+            _dishes_controller__rspack_import_4.DishesController
+        ],
+        providers: [
+            _dishes_service__rspack_import_5.DishesService
+        ],
+        exports: [
+            _dishes_service__rspack_import_5.DishesService
+        ]
+    })
+], DishesModule);
+
+
+},
+61(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  DishesService: () => (DishesService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var mongoose__rspack_import_2 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_2);
+/* import */ var _schemas_dish_schema__rspack_import_3 = __webpack_require__(58);
+/* import */ var _helpers_paginate__rspack_import_4 = __webpack_require__(62);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(64);
+/* import */ var _restaurants_schemas_restaurant_schema__rspack_import_6 = __webpack_require__(59);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+class DishesService {
     async ensureRestaurantExists(restaurantId) {
-        const exists = await this.restaurantModel.exists({ _id: restaurantId });
+        const exists = await this.restaurantModel.exists({
+            _id: restaurantId
+        });
         if (!exists) {
-            throw new common_1.NotFoundException("Restaurante informado não existe");
+            throw new _nestjs_common__rspack_import_0.NotFoundException("Restaurante informado não existe");
         }
     }
     async create(dto) {
@@ -2167,12 +2703,12 @@ let DishesService = class DishesService {
         return new this.dishModel(dto).save();
     }
     findAll(query) {
-        return (0, paginate_1.paginateDishes)(this.dishModel, query);
+        return (0,_helpers_paginate__rspack_import_4.paginateDishes)(this.dishModel, query);
     }
     async findById(id) {
         const dish = await this.dishModel.findById(id);
         if (!dish) {
-            throw new common_1.NotFoundException("Prato não encontrado");
+            throw new _nestjs_common__rspack_import_0.NotFoundException("Prato não encontrado");
         }
         return dish;
     }
@@ -2187,450 +2723,418 @@ let DishesService = class DishesService {
     async remove(id) {
         const dish = await this.findById(id);
         await dish.deleteOne();
-        return { deleted: true };
+        return {
+            deleted: true
+        };
     }
-};
-exports.DishesService = DishesService;
-exports.DishesService = DishesService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(dish_schema_1.Dish.name, mongoose_connection_1.connectionName)),
-    __param(1, (0, mongoose_1.InjectModel)(restaurant_schema_1.Restaurant.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
+    constructor(dishModel, restaurantModel){
+        _define_property(this, "dishModel", void 0);
+        _define_property(this, "restaurantModel", void 0);
+        this.dishModel = dishModel;
+        this.restaurantModel = restaurantModel;
+    }
+}
+DishesService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_schemas_dish_schema__rspack_import_3.Dish.name, _mongoose_connection__rspack_import_5.connectionName)),
+    _ts_param(1, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_restaurants_schemas_restaurant_schema__rspack_import_6.Restaurant.name, _mongoose_connection__rspack_import_5.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model,
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model
+    ])
 ], DishesService);
 
 
-/***/ }),
-/* 62 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+},
+65(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CreateDishDto: () => (CreateDishDto)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class CreateDishDto {
+    constructor(){
+        _define_property(this, "name", void 0);
+        _define_property(this, "price", void 0);
+        _define_property(this, "restaurant_id", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateDishDto.prototype, "name", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsNumber)(),
+    (0,class_validator__rspack_import_0.IsPositive)(),
+    _ts_metadata("design:type", Number)
+], CreateDishDto.prototype, "price", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsMongoId)(),
+    _ts_metadata("design:type", String)
+], CreateDishDto.prototype, "restaurant_id", void 0);
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.paginateDishes = paginateDishes;
-const paginate_1 = __webpack_require__(63);
+},
+66(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UpdateDishDto: () => (UpdateDishDto)
+});
+/* import */ var _nestjs_mapped_types__rspack_import_0 = __webpack_require__(67);
+/* import */ var _nestjs_mapped_types__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mapped_types__rspack_import_0);
+/* import */ var _create_dish_dto__rspack_import_1 = __webpack_require__(65);
+
+
+class UpdateDishDto extends (0,_nestjs_mapped_types__rspack_import_0.PartialType)(_create_dish_dto__rspack_import_1.CreateDishDto) {
+}
+
+
+},
+62(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  paginateDishes: () => (paginateDishes)
+});
+/* import */ var _common_helpers_paginate__rspack_import_0 = __webpack_require__(63);
+
 async function paginateDishes(model, query, extraFilter = {}) {
-    var _a, _b;
-    const page = (_a = query.page) !== null && _a !== void 0 ? _a : 1;
-    const limit = (_b = query.limit) !== null && _b !== void 0 ? _b : 10;
-    const filter = Object.assign({}, extraFilter);
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
+    const filter = {
+        ...extraFilter
+    };
     if (query.name) {
         filter.name = {
             $regex: query.name,
-            $options: "i",
+            $options: "i"
         };
     }
     if (query.restaurant) {
         filter.restaurant_id = query.restaurant;
     }
-    return (0, paginate_1.paginate)(model, filter, page, limit);
+    return (0,_common_helpers_paginate__rspack_import_0.paginate)(model, filter, page, limit);
 }
 
 
-/***/ }),
-/* 63 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.paginateWithQuery = paginateWithQuery;
-exports.paginate = paginate;
-async function paginateWithQuery(model, query, extraFilter = {}) {
-    var _a, _b;
-    const page = (_a = query.page) !== null && _a !== void 0 ? _a : 1;
-    const limit = (_b = query.limit) !== null && _b !== void 0 ? _b : 10;
-    const filter = Object.assign({}, extraFilter);
-    if (query.name) {
-        filter.name = {
-            $regex: query.name,
-            $options: "i",
-        };
+},
+58(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Dish: () => (Dish),
+  DishSchema: () => (DishSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var mongoose__rspack_import_1 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_1);
+/* import */ var _common_utils__rspack_import_2 = __webpack_require__(56);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
-    return paginate(model, filter, page, limit);
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 }
-async function paginate(model, filter = {}, page = 1, limit = 10) {
-    const [data, total] = await Promise.all([
-        model
-            .find(filter)
-            .skip((page - 1) * limit)
-            .limit(limit)
-            .sort({ createdAt: -1 })
-            .exec(),
-        model.countDocuments(filter),
-    ]);
-    return {
-        data,
-        total,
-        page,
-        limit,
-        totalPages: Math.max(Math.ceil(total / limit), 1),
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+class Dish {
+    constructor(){
+        _define_property(this, "name", void 0);
+        _define_property(this, "price", void 0);
+        _define_property(this, "restaurant_id", void 0);
+    }
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        trim: true,
+        index: true
+    }),
+    _ts_metadata("design:type", String)
+], Dish.prototype, "name", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        min: 0
+    }),
+    _ts_metadata("design:type", Number)
+], Dish.prototype, "price", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        type: mongoose__rspack_import_1.Types.ObjectId,
+        ref: "Restaurant",
+        required: true,
+        index: true
+    }),
+    _ts_metadata("design:type", typeof mongoose__rspack_import_1.Types === "undefined" || typeof mongoose__rspack_import_1.Types.ObjectId === "undefined" ? Object : mongoose__rspack_import_1.Types.ObjectId)
+], Dish.prototype, "restaurant_id", void 0);
+Dish = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        timestamps: true,
+        collection: "dishes"
+    })
+], Dish);
+const DishSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Dish);
+(0,_common_utils__rspack_import_2.applyToJSONTransform)(DishSchema);
+
+
+},
+79(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CreateRestaurantDto: () => (CreateRestaurantDto)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class CreateRestaurantDto {
+    constructor(){
+        _define_property(this, "name", void 0);
+        _define_property(this, "phone", void 0);
+        _define_property(this, "address", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateRestaurantDto.prototype, "name", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateRestaurantDto.prototype, "phone", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateRestaurantDto.prototype, "address", void 0);
+
+
+},
+80(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UpdateRestaurantDto: () => (UpdateRestaurantDto)
+});
+/* import */ var _nestjs_mapped_types__rspack_import_0 = __webpack_require__(67);
+/* import */ var _nestjs_mapped_types__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mapped_types__rspack_import_0);
+/* import */ var _create_restaurant_dto__rspack_import_1 = __webpack_require__(79);
+
+
+class UpdateRestaurantDto extends (0,_nestjs_mapped_types__rspack_import_0.PartialType)(_create_restaurant_dto__rspack_import_1.CreateRestaurantDto) {
+}
+
+
+},
+81(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  RestaurantsOpenController: () => (RestaurantsOpenController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _restaurants_service__rspack_import_1 = __webpack_require__(78);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class RestaurantsOpenController {
+    count() {
+        return this.restaurantsService.count();
+    }
+    constructor(restaurantsService){
+        _define_property(this, "restaurantsService", void 0);
+        this.restaurantsService = restaurantsService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)("count"),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", typeof Promise === "undefined" ? Object : Promise)
+], RestaurantsOpenController.prototype, "count", null);
+RestaurantsOpenController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)("restaurants-open"),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _restaurants_service__rspack_import_1.RestaurantsService === "undefined" ? Object : _restaurants_service__rspack_import_1.RestaurantsService
+    ])
+], RestaurantsOpenController);
+
+
+},
+77(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  RestaurantsController: () => (RestaurantsController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _restaurants_service__rspack_import_1 = __webpack_require__(78);
+/* import */ var _dto_create_restaurant_dto__rspack_import_2 = __webpack_require__(79);
+/* import */ var _dto_update_restaurant_dto__rspack_import_3 = __webpack_require__(80);
+/* import */ var _common_dto_pagination_query_dto__rspack_import_4 = __webpack_require__(68);
+/* import */ var _common_guards_jwt_auth_guard__rspack_import_5 = __webpack_require__(70);
+/* import */ var _common_guards_permissions_guard__rspack_import_6 = __webpack_require__(71);
+/* import */ var _common_permissions_require_permission_decorator__rspack_import_7 = __webpack_require__(72);
+/* import */ var _common_permissions_permissions_matrix__rspack_import_8 = __webpack_require__(73);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
     };
 }
 
 
-/***/ }),
-/* 64 */
-/***/ ((__unused_webpack_module, exports) => {
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.connectionName = void 0;
-exports.connectionName = "restaurants";
 
 
-/***/ }),
-/* 65 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateDishDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-class CreateDishDto {
-}
-exports.CreateDishDto = CreateDishDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateDishDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsPositive)(),
-    __metadata("design:type", Number)
-], CreateDishDto.prototype, "price", void 0);
-__decorate([
-    (0, class_validator_1.IsMongoId)(),
-    __metadata("design:type", String)
-], CreateDishDto.prototype, "restaurant_id", void 0);
 
-
-/***/ }),
-/* 66 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateDishDto = void 0;
-const mapped_types_1 = __webpack_require__(67);
-const create_dish_dto_1 = __webpack_require__(65);
-class UpdateDishDto extends (0, mapped_types_1.PartialType)(create_dish_dto_1.CreateDishDto) {
-}
-exports.UpdateDishDto = UpdateDishDto;
-
-
-/***/ }),
-/* 67 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/mapped-types");
-
-/***/ }),
-/* 68 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PaginationQueryDto = void 0;
-const class_transformer_1 = __webpack_require__(69);
-const class_validator_1 = __webpack_require__(20);
-class PaginationQueryDto {
-    constructor() {
-        this.page = 1;
-        this.limit = 10;
-    }
-}
-exports.PaginationQueryDto = PaginationQueryDto;
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_transformer_1.Type)(() => Number),
-    (0, class_validator_1.IsInt)(),
-    (0, class_validator_1.Min)(1),
-    __metadata("design:type", Number)
-], PaginationQueryDto.prototype, "page", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_transformer_1.Type)(() => Number),
-    (0, class_validator_1.IsInt)(),
-    (0, class_validator_1.Min)(1),
-    __metadata("design:type", Number)
-], PaginationQueryDto.prototype, "limit", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], PaginationQueryDto.prototype, "name", void 0);
-
-
-/***/ }),
-/* 69 */
-/***/ ((module) => {
-
-module.exports = require("class-transformer");
-
-/***/ }),
-/* 70 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.JwtAuthGuard = void 0;
-const common_1 = __webpack_require__(1);
-const passport_1 = __webpack_require__(52);
-let JwtAuthGuard = class JwtAuthGuard extends (0, passport_1.AuthGuard)("jwt") {
-};
-exports.JwtAuthGuard = JwtAuthGuard;
-exports.JwtAuthGuard = JwtAuthGuard = __decorate([
-    (0, common_1.Injectable)()
-], JwtAuthGuard);
-
-
-/***/ }),
-/* 71 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PermissionsGuard = void 0;
-const common_1 = __webpack_require__(1);
-const core_1 = __webpack_require__(2);
-const require_permission_decorator_1 = __webpack_require__(72);
-const permissions_matrix_1 = __webpack_require__(73);
-let PermissionsGuard = class PermissionsGuard {
-    constructor(reflector) {
-        this.reflector = reflector;
-    }
-    canActivate(context) {
-        const required = this.reflector.getAllAndOverride(require_permission_decorator_1.PERMISSION_KEY, [context.getHandler(), context.getClass()]);
-        if (!required)
-            return true;
-        const request = context.switchToHttp().getRequest();
-        const user = request.user;
-        if (!user) {
-            throw new common_1.ForbiddenException("Usuário não autenticado");
-        }
-        const allowed = (0, permissions_matrix_1.hasPermission)(user.role, required.module, required.action);
-        if (!allowed) {
-            throw new common_1.ForbiddenException(`A role "${user.role}" não possui permissão de "${required.action}" em "${required.module}"`);
-        }
-        return true;
-    }
-};
-exports.PermissionsGuard = PermissionsGuard;
-exports.PermissionsGuard = PermissionsGuard = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
-], PermissionsGuard);
-
-
-/***/ }),
-/* 72 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RequirePermission = exports.PERMISSION_KEY = void 0;
-const common_1 = __webpack_require__(1);
-exports.PERMISSION_KEY = "required_permission";
-const RequirePermission = (module, action) => (0, common_1.SetMetadata)(exports.PERMISSION_KEY, { module, action });
-exports.RequirePermission = RequirePermission;
-
-
-/***/ }),
-/* 73 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PERMISSIONS = exports.ActionEnum = exports.ModuleNameEnum = void 0;
-exports.hasPermission = hasPermission;
-const role_enum_1 = __webpack_require__(74);
-const permissions_env_1 = __webpack_require__(75);
-var ModuleNameEnum;
-(function (ModuleNameEnum) {
-    ModuleNameEnum["DISHES"] = "dishes";
-    ModuleNameEnum["RESTAURANTS"] = "restaurants";
-    ModuleNameEnum["USERS"] = "users";
-})(ModuleNameEnum || (exports.ModuleNameEnum = ModuleNameEnum = {}));
-var ActionEnum;
-(function (ActionEnum) {
-    ActionEnum["CREATE"] = "create";
-    ActionEnum["READ"] = "read";
-    ActionEnum["UPDATE"] = "update";
-    ActionEnum["DELETE"] = "delete";
-})(ActionEnum || (exports.ActionEnum = ActionEnum = {}));
-const getFullAccess = () => ({
-    create: true,
-    read: true,
-    update: true,
-    delete: true,
-});
-const getOnlyReadAccess = () => ({
-    create: false,
-    read: true,
-    update: false,
-    delete: false,
-});
-const getNoAccess = () => ({
-    create: false,
-    read: false,
-    update: false,
-    delete: false,
-});
-exports.PERMISSIONS = {
-    [role_enum_1.Role.ADMIN]: {
-        dishes: getFullAccess(),
-        restaurants: getFullAccess(),
-        users: getFullAccess(),
-    },
-    [role_enum_1.Role.USER]: {
-        dishes: getFullAccess(),
-        restaurants: getOnlyReadAccess(),
-        users: getOnlyReadAccess(),
-    },
-    [role_enum_1.Role.VISITOR]: {
-        dishes: getOnlyReadAccess(),
-        restaurants: getOnlyReadAccess(),
-        users: getNoAccess(),
-    },
-};
-function hasPermission(role, module, action) {
-    var _a, _b, _c;
-    if (role === role_enum_1.Role.VISITOR && !(0, permissions_env_1.acceptVisitors)()) {
-        return false;
-    }
-    return (_c = (_b = (_a = exports.PERMISSIONS[role]) === null || _a === void 0 ? void 0 : _a[module]) === null || _b === void 0 ? void 0 : _b[action]) !== null && _c !== void 0 ? _c : false;
-}
-
-
-/***/ }),
-/* 74 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Role = void 0;
-var Role;
-(function (Role) {
-    Role["ADMIN"] = "admin";
-    Role["USER"] = "user";
-    Role["VISITOR"] = "visitor";
-})(Role || (exports.Role = Role = {}));
-
-
-/***/ }),
-/* 75 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.visitorUsername = exports.acceptVisitors = void 0;
-const acceptVisitors = () => process.env.ENABLE_VISITORS === "true";
-exports.acceptVisitors = acceptVisitors;
-const visitorUsername = () => { var _a; return (_a = process.env.VISITORS_USERNAME) !== null && _a !== void 0 ? _a : "visitor"; };
-exports.visitorUsername = visitorUsername;
-
-
-/***/ }),
-/* 76 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RestaurantsModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const restaurant_schema_1 = __webpack_require__(59);
-const restaurants_controller_1 = __webpack_require__(77);
-const restaurants_service_1 = __webpack_require__(78);
-const mongoose_connection_1 = __webpack_require__(64);
-const restaurants_open_controller_1 = __webpack_require__(81);
-let RestaurantsModule = class RestaurantsModule {
-};
-exports.RestaurantsModule = RestaurantsModule;
-exports.RestaurantsModule = RestaurantsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: restaurant_schema_1.Restaurant.name, schema: restaurant_schema_1.RestaurantSchema }], mongoose_connection_1.connectionName),
-        ],
-        controllers: [restaurants_controller_1.RestaurantsController, restaurants_open_controller_1.RestaurantsOpenController],
-        providers: [restaurants_service_1.RestaurantsService],
-        exports: [restaurants_service_1.RestaurantsService],
-    })
-], RestaurantsModule);
-
-
-/***/ }),
-/* 77 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RestaurantsController = void 0;
-const common_1 = __webpack_require__(1);
-const restaurants_service_1 = __webpack_require__(78);
-const create_restaurant_dto_1 = __webpack_require__(79);
-const update_restaurant_dto_1 = __webpack_require__(80);
-const pagination_query_dto_1 = __webpack_require__(68);
-const jwt_auth_guard_1 = __webpack_require__(70);
-const permissions_guard_1 = __webpack_require__(71);
-const require_permission_decorator_1 = __webpack_require__(72);
-const permissions_matrix_1 = __webpack_require__(73);
-let RestaurantsController = class RestaurantsController {
-    constructor(restaurantsService) {
-        this.restaurantsService = restaurantsService;
-    }
+class RestaurantsController {
     create(dto) {
         return this.restaurantsService.create(dto);
     }
@@ -2646,108 +3150,209 @@ let RestaurantsController = class RestaurantsController {
     remove(id) {
         return this.restaurantsService.remove(id);
     }
-};
-exports.RestaurantsController = RestaurantsController;
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.RESTAURANTS, permissions_matrix_1.ActionEnum.CREATE),
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_restaurant_dto_1.CreateRestaurantDto !== "undefined" && create_restaurant_dto_1.CreateRestaurantDto) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
+    constructor(restaurantsService){
+        _define_property(this, "restaurantsService", void 0);
+        this.restaurantsService = restaurantsService;
+    }
+}
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.RESTAURANTS, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.CREATE),
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_create_restaurant_dto__rspack_import_2.CreateRestaurantDto === "undefined" ? Object : _dto_create_restaurant_dto__rspack_import_2.CreateRestaurantDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], RestaurantsController.prototype, "create", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.RESTAURANTS, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof pagination_query_dto_1.PaginationQueryDto !== "undefined" && pagination_query_dto_1.PaginationQueryDto) === "function" ? _c : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.RESTAURANTS, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Query)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_dto_pagination_query_dto__rspack_import_4.PaginationQueryDto === "undefined" ? Object : _common_dto_pagination_query_dto__rspack_import_4.PaginationQueryDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], RestaurantsController.prototype, "findAll", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.RESTAURANTS, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.RESTAURANTS, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], RestaurantsController.prototype, "findOne", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.RESTAURANTS, permissions_matrix_1.ActionEnum.UPDATE),
-    (0, common_1.Patch)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_d = typeof update_restaurant_dto_1.UpdateRestaurantDto !== "undefined" && update_restaurant_dto_1.UpdateRestaurantDto) === "function" ? _d : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.RESTAURANTS, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.UPDATE),
+    (0,_nestjs_common__rspack_import_0.Patch)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        typeof _dto_update_restaurant_dto__rspack_import_3.UpdateRestaurantDto === "undefined" ? Object : _dto_update_restaurant_dto__rspack_import_3.UpdateRestaurantDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], RestaurantsController.prototype, "update", null);
-__decorate([
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.RESTAURANTS, permissions_matrix_1.ActionEnum.DELETE),
-    (0, common_1.Delete)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_common_permissions_require_permission_decorator__rspack_import_7.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_8.ModuleNameEnum.RESTAURANTS, _common_permissions_permissions_matrix__rspack_import_8.ActionEnum.DELETE),
+    (0,_nestjs_common__rspack_import_0.Delete)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], RestaurantsController.prototype, "remove", null);
-exports.RestaurantsController = RestaurantsController = __decorate([
-    (0, common_1.Controller)("restaurants"),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    __metadata("design:paramtypes", [typeof (_a = typeof restaurants_service_1.RestaurantsService !== "undefined" && restaurants_service_1.RestaurantsService) === "function" ? _a : Object])
+RestaurantsController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)("restaurants"),
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_5.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_6.PermissionsGuard),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _restaurants_service__rspack_import_1.RestaurantsService === "undefined" ? Object : _restaurants_service__rspack_import_1.RestaurantsService
+    ])
 ], RestaurantsController);
 
 
-/***/ }),
-/* 78 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+76(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  RestaurantsModule: () => (RestaurantsModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _schemas_restaurant_schema__rspack_import_2 = __webpack_require__(59);
+/* import */ var _restaurants_controller__rspack_import_3 = __webpack_require__(77);
+/* import */ var _restaurants_service__rspack_import_4 = __webpack_require__(78);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(64);
+/* import */ var _restaurants_open_controller__rspack_import_6 = __webpack_require__(81);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var RestaurantsService_1;
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RestaurantsService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const mongoose_2 = __webpack_require__(14);
-const restaurant_schema_1 = __webpack_require__(59);
-const paginate_1 = __webpack_require__(63);
-const mongoose_connection_1 = __webpack_require__(64);
-let RestaurantsService = RestaurantsService_1 = class RestaurantsService {
-    constructor(restaurantModel) {
-        this.restaurantModel = restaurantModel;
-        this.logger = new common_1.Logger(RestaurantsService_1.name);
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+
+class RestaurantsModule {
+}
+RestaurantsModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _schemas_restaurant_schema__rspack_import_2.Restaurant.name,
+                    schema: _schemas_restaurant_schema__rspack_import_2.RestaurantSchema
+                }
+            ], _mongoose_connection__rspack_import_5.connectionName)
+        ],
+        controllers: [
+            _restaurants_controller__rspack_import_3.RestaurantsController,
+            _restaurants_open_controller__rspack_import_6.RestaurantsOpenController
+        ],
+        providers: [
+            _restaurants_service__rspack_import_4.RestaurantsService
+        ],
+        exports: [
+            _restaurants_service__rspack_import_4.RestaurantsService
+        ]
+    })
+], RestaurantsModule);
+
+
+},
+78(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  RestaurantsService: () => (RestaurantsService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var mongoose__rspack_import_2 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_2);
+/* import */ var _schemas_restaurant_schema__rspack_import_3 = __webpack_require__(59);
+/* import */ var _common_helpers_paginate__rspack_import_4 = __webpack_require__(63);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(64);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+class RestaurantsService {
     async count() {
         try {
             return await this.restaurantModel.countDocuments().exec();
-        }
-        catch (error) {
+        } catch (error) {
             const msg = "Erro ao contar os restaurantes";
             this.logger.error(msg, error);
-            throw new common_1.BadRequestException(msg);
+            throw new _nestjs_common__rspack_import_0.BadRequestException(msg);
         }
     }
     create(dto) {
         return new this.restaurantModel(dto).save();
     }
     findAll(query) {
-        return (0, paginate_1.paginateWithQuery)(this.restaurantModel, query);
+        return (0,_common_helpers_paginate__rspack_import_4.paginateWithQuery)(this.restaurantModel, query);
     }
     async findById(id) {
         const restaurant = await this.restaurantModel.findById(id);
         if (!restaurant) {
-            throw new common_1.NotFoundException("Restaurante não encontrado");
+            throw new _nestjs_common__rspack_import_0.NotFoundException("Restaurante não encontrado");
         }
         return restaurant;
     }
@@ -2759,629 +3364,647 @@ let RestaurantsService = RestaurantsService_1 = class RestaurantsService {
     async remove(id) {
         const restaurant = await this.findById(id);
         await restaurant.deleteOne();
-        return { deleted: true };
+        return {
+            deleted: true
+        };
     }
-};
-exports.RestaurantsService = RestaurantsService;
-exports.RestaurantsService = RestaurantsService = RestaurantsService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(restaurant_schema_1.Restaurant.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
+    constructor(restaurantModel){
+        _define_property(this, "restaurantModel", void 0);
+        _define_property(this, "logger", void 0);
+        this.restaurantModel = restaurantModel;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(RestaurantsService.name);
+    }
+}
+RestaurantsService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_schemas_restaurant_schema__rspack_import_3.Restaurant.name, _mongoose_connection__rspack_import_5.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model
+    ])
 ], RestaurantsService);
 
 
-/***/ }),
-/* 79 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateRestaurantDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-class CreateRestaurantDto {
-}
-exports.CreateRestaurantDto = CreateRestaurantDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateRestaurantDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateRestaurantDto.prototype, "phone", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateRestaurantDto.prototype, "address", void 0);
-
-
-/***/ }),
-/* 80 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateRestaurantDto = void 0;
-const mapped_types_1 = __webpack_require__(67);
-const create_restaurant_dto_1 = __webpack_require__(79);
-class UpdateRestaurantDto extends (0, mapped_types_1.PartialType)(create_restaurant_dto_1.CreateRestaurantDto) {
-}
-exports.UpdateRestaurantDto = UpdateRestaurantDto;
-
-
-/***/ }),
-/* 81 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RestaurantsOpenController = void 0;
-const common_1 = __webpack_require__(1);
-const restaurants_service_1 = __webpack_require__(78);
-let RestaurantsOpenController = class RestaurantsOpenController {
-    constructor(restaurantsService) {
-        this.restaurantsService = restaurantsService;
-    }
-    count() {
-        return this.restaurantsService.count();
-    }
-};
-exports.RestaurantsOpenController = RestaurantsOpenController;
-__decorate([
-    (0, common_1.Get)("count"),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_b = typeof Promise !== "undefined" && Promise) === "function" ? _b : Object)
-], RestaurantsOpenController.prototype, "count", null);
-exports.RestaurantsOpenController = RestaurantsOpenController = __decorate([
-    (0, common_1.Controller)("restaurants-open"),
-    __metadata("design:paramtypes", [typeof (_a = typeof restaurants_service_1.RestaurantsService !== "undefined" && restaurants_service_1.RestaurantsService) === "function" ? _a : Object])
-], RestaurantsOpenController);
-
-
-/***/ }),
-/* 82 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersModule = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const user_schema_1 = __webpack_require__(83);
-const auth_controller_1 = __webpack_require__(85);
-const users_controller_1 = __webpack_require__(90);
-const users_service_1 = __webpack_require__(86);
-const mongoose_connection_1 = __webpack_require__(64);
-let UsersModule = class UsersModule {
-};
-exports.UsersModule = UsersModule;
-exports.UsersModule = UsersModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }], mongoose_connection_1.connectionName),
-        ],
-        controllers: [auth_controller_1.AuthController, users_controller_1.UsersController],
-        providers: [users_service_1.UsersService],
-        exports: [users_service_1.UsersService],
-    })
-], UsersModule);
-
-
-/***/ }),
-/* 83 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+},
+59(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Restaurant: () => (Restaurant),
+  RestaurantSchema: () => (RestaurantSchema)
 });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var _common_utils__rspack_import_1 = __webpack_require__(56);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserSchema = exports.User = void 0;
-const mongoose_1 = __webpack_require__(9);
-const bcrypt = __importStar(__webpack_require__(84));
-const role_enum_1 = __webpack_require__(74);
-const utils_1 = __webpack_require__(56);
-const SALT_ROUNDS = 10;
-let User = class User {
-};
-exports.User = User;
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, unique: true, trim: true, index: true }),
-    __metadata("design:type", String)
-], User.prototype, "username", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class Restaurant {
+    constructor(){
+        _define_property(this, "name", void 0);
+        _define_property(this, "phone", void 0);
+        _define_property(this, "address", void 0);
+    }
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
         required: true,
-        type: String,
-        enum: role_enum_1.Role,
-        default: role_enum_1.Role.USER,
+        trim: true,
+        index: true
     }),
-    __metadata("design:type", typeof (_a = typeof role_enum_1.Role !== "undefined" && role_enum_1.Role) === "function" ? _a : Object)
-], User.prototype, "role", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "lastName", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ default: true }),
-    __metadata("design:type", Boolean)
-], User.prototype, "enabled", void 0);
-exports.User = User = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true, collection: "users" })
-], User);
-exports.UserSchema = mongoose_1.SchemaFactory.createForClass(User);
-exports.UserSchema.pre("save", async function () {
-    const user = this;
-    if (!user.isModified("password")) {
-        return;
-    }
-    user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
+    _ts_metadata("design:type", String)
+], Restaurant.prototype, "name", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        trim: true
+    }),
+    _ts_metadata("design:type", String)
+], Restaurant.prototype, "phone", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        trim: true
+    }),
+    _ts_metadata("design:type", String)
+], Restaurant.prototype, "address", void 0);
+Restaurant = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        timestamps: true,
+        collection: "restaurants"
+    })
+], Restaurant);
+const RestaurantSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Restaurant);
+(0,_common_utils__rspack_import_1.applyToJSONTransform)(RestaurantSchema);
+
+
+},
+85(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  AuthController: () => (AuthController)
 });
-exports.UserSchema.methods.comparePassword = function (candidate) {
-    return bcrypt.compare(candidate, this.password);
-};
-(0, utils_1.applyToJSONTransform)(exports.UserSchema, ["password"]);
-
-
-/***/ }),
-/* 84 */
-/***/ ((module) => {
-
-module.exports = require("bcrypt");
-
-/***/ }),
-/* 85 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _users_service__rspack_import_1 = __webpack_require__(86);
+/* import */ var _dto_login_user_dto__rspack_import_2 = __webpack_require__(87);
+/* import */ var _common_auth_jwt_strategy__rspack_import_3 = __webpack_require__(53);
+/* import */ var _common_decorators_current_user_decorator__rspack_import_4 = __webpack_require__(88);
+/* import */ var _dto_refresh_token_dto__rspack_import_5 = __webpack_require__(89);
+/* import */ var _common_guards_jwt_auth_guard__rspack_import_6 = __webpack_require__(70);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthController = void 0;
-const common_1 = __webpack_require__(1);
-const users_service_1 = __webpack_require__(86);
-const login_user_dto_1 = __webpack_require__(87);
-const jwt_strategy_1 = __webpack_require__(53);
-const current_user_decorator_1 = __webpack_require__(88);
-const refresh_token_dto_1 = __webpack_require__(89);
-const jwt_auth_guard_1 = __webpack_require__(70);
-let AuthController = class AuthController {
-    constructor(usersService) {
-        this.usersService = usersService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+class AuthController {
     login(dto) {
         return this.usersService.login(dto);
     }
     refreshToken(currentUser, dto) {
         return this.usersService.refreshToken(currentUser, dto);
     }
-};
-exports.AuthController = AuthController;
-__decorate([
-    (0, common_1.Post)("login"),
-    (0, common_1.HttpCode)(common_1.HttpStatus.OK),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof login_user_dto_1.LoginUserDto !== "undefined" && login_user_dto_1.LoginUserDto) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
+    constructor(usersService){
+        _define_property(this, "usersService", void 0);
+        this.usersService = usersService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Post)("login"),
+    (0,_nestjs_common__rspack_import_0.HttpCode)(_nestjs_common__rspack_import_0.HttpStatus.OK),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_login_user_dto__rspack_import_2.LoginUserDto === "undefined" ? Object : _dto_login_user_dto__rspack_import_2.LoginUserDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], AuthController.prototype, "login", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, common_1.Post)("refresh-token"),
-    (0, common_1.HttpCode)(common_1.HttpStatus.OK),
-    __param(0, (0, current_user_decorator_1.CurrentUser)()),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof jwt_strategy_1.RequestUser !== "undefined" && jwt_strategy_1.RequestUser) === "function" ? _c : Object, typeof (_d = typeof refresh_token_dto_1.RefreshTokenDto !== "undefined" && refresh_token_dto_1.RefreshTokenDto) === "function" ? _d : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard),
+    (0,_nestjs_common__rspack_import_0.Post)("refresh-token"),
+    (0,_nestjs_common__rspack_import_0.HttpCode)(_nestjs_common__rspack_import_0.HttpStatus.OK),
+    _ts_param(0, (0,_common_decorators_current_user_decorator__rspack_import_4.CurrentUser)()),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_auth_jwt_strategy__rspack_import_3.RequestUser === "undefined" ? Object : _common_auth_jwt_strategy__rspack_import_3.RequestUser,
+        typeof _dto_refresh_token_dto__rspack_import_5.RefreshTokenDto === "undefined" ? Object : _dto_refresh_token_dto__rspack_import_5.RefreshTokenDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], AuthController.prototype, "refreshToken", null);
-exports.AuthController = AuthController = __decorate([
-    (0, common_1.Controller)("auth"),
-    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersService !== "undefined" && users_service_1.UsersService) === "function" ? _a : Object])
+AuthController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)("auth"),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _users_service__rspack_import_1.UsersService === "undefined" ? Object : _users_service__rspack_import_1.UsersService
+    ])
 ], AuthController);
 
 
-/***/ }),
-/* 86 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var UsersService_1;
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersService = void 0;
-const common_1 = __webpack_require__(1);
-const mongoose_1 = __webpack_require__(9);
-const jwt_1 = __webpack_require__(51);
-const mongoose_2 = __webpack_require__(14);
-const user_schema_1 = __webpack_require__(83);
-const paginate_1 = __webpack_require__(63);
-const mongoose_connection_1 = __webpack_require__(64);
-const role_enum_1 = __webpack_require__(74);
-const permissions_env_1 = __webpack_require__(75);
-const jwt_env_1 = __webpack_require__(55);
-const conflictError = "Nome de usuário já está em uso";
-const notFoundError = "Usuário não encontrado";
-const userOrPassError = "Usuário ou senha inválidos";
-let UsersService = UsersService_1 = class UsersService {
-    constructor(userModel, jwtService) {
-        this.userModel = userModel;
-        this.jwtService = jwtService;
-        this.logger = new common_1.Logger(UsersService_1.name);
-    }
-    async create(dto) {
-        if (dto.username === (0, permissions_env_1.visitorUsername)()) {
-            throw new common_1.ConflictException("O username não pode ser usado");
-        }
-        const existing = await this.userModel.findOne({ username: dto.username });
-        if (existing) {
-            throw new common_1.ConflictException(conflictError);
-        }
-        const created = new this.userModel(dto);
-        return created.save();
-    }
-    findAll(query) {
-        return (0, paginate_1.paginateWithQuery)(this.userModel, query);
-    }
-    async findById(id) {
-        const user = await this.userModel.findById(id);
-        if (!user) {
-            throw new common_1.NotFoundException(notFoundError);
-        }
-        return user;
-    }
-    async update(id, dto) {
-        const user = await this.findById(id);
-        if (dto.username && dto.username !== user.username) {
-            const existing = await this.userModel.findOne({ username: dto.username });
-            if (existing) {
-                throw new common_1.ConflictException(conflictError);
-            }
-        }
-        Object.assign(user, dto);
-        return user.save();
-    }
-    async disable(id) {
-        const user = await this.findById(id);
-        user.enabled = false;
-        return user.save();
-    }
-    async enable(id) {
-        const user = await this.findById(id);
-        user.enabled = true;
-        return user.save();
-    }
-    async changeOwnPassword(userId, dto) {
-        const user = await this.findById(userId);
-        const isMatch = await user.comparePassword(dto.currentPassword);
-        if (!isMatch) {
-            throw new common_1.UnauthorizedException("Senha atual incorreta");
-        }
-        user.password = dto.newPassword;
-        await user.save();
-        return { success: true };
-    }
-    async login(dto) {
-        if ((0, permissions_env_1.acceptVisitors)() && dto.username === (0, permissions_env_1.visitorUsername)()) {
-            if (dto.password !== (0, permissions_env_1.visitorUsername)()) {
-                throw new common_1.UnauthorizedException(userOrPassError);
-            }
-            return this.loginAsVisitor();
-        }
-        const user = await this.userModel.findOne({ username: dto.username });
-        if (!user) {
-            throw new common_1.UnauthorizedException(userOrPassError);
-        }
-        if (!user.enabled) {
-            throw new common_1.UnauthorizedException("Usuário desabilitado");
-        }
-        const isMatch = await user.comparePassword(dto.password);
-        if (!isMatch) {
-            throw new common_1.UnauthorizedException(userOrPassError);
-        }
-        return Object.assign(Object.assign({}, (await this.generateTokens(user))), { user: {
-                username: user.username,
-                role: user.role,
-                name: user.name,
-                lastName: user.lastName,
-            } });
-    }
-    async refreshToken(currentUser, dto) {
-        if ((0, permissions_env_1.acceptVisitors)() && currentUser.username === (0, permissions_env_1.visitorUsername)()) {
-            const { accessToken, refreshToken } = await this.loginAsVisitor();
-            return { accessToken, refreshToken };
-        }
-        const user = await this.checkRefreshToken(currentUser, dto);
-        return this.generateTokens(user);
-    }
-    async checkRefreshToken(currentUser, dto) {
-        const id = this.jwtService.decode(dto.refreshToken)["sub"];
-        if (id !== currentUser.userId) {
-            this.logger.error("O usuário não é compatível com a requisição");
-            throw new common_1.NotFoundException(notFoundError);
-        }
-        const user = await this.userModel.findById(id);
-        if (!user) {
-            throw new common_1.NotFoundException(notFoundError);
-        }
-        try {
-            this.jwtService.verify(dto.refreshToken, {
-                secret: (0, jwt_env_1.getjwtSecretRefresh)(),
-            });
-            return user;
-        }
-        catch (error) {
-            const err = error;
-            this.logger.error("Erro ao validar o token", error);
-            if (err.name === "JsonWebTokenError") {
-                throw new common_1.UnauthorizedException("Assinatura Inválida");
-            }
-            if (err.name === "TokenExpiredError") {
-                throw new common_1.UnauthorizedException("Token Expirado");
-            }
-            throw new common_1.UnauthorizedException(err.name);
-        }
-    }
-    async loginAsVisitor() {
-        const username = (0, permissions_env_1.visitorUsername)();
-        const role = role_enum_1.Role.VISITOR;
-        return Object.assign(Object.assign({}, (await this.generateTokens({
-            id: username,
-            username,
-            role,
-        }))), { user: {
-                username,
-                role,
-                name: username,
-                lastName: username,
-            } });
-    }
-    async generateTokens(user) {
-        return {
-            accessToken: await this.generateAccessToken(user),
-            refreshToken: await this.generateRefreshToken(user),
-        };
-    }
-    async generateAccessToken(user) {
-        const options = {
-            secret: (0, jwt_env_1.getjwtSecret)(),
-            expiresIn: (0, jwt_env_1.getjwtExpiresIn)(),
-        };
-        return this.generateToken(user, options);
-    }
-    async generateRefreshToken(user) {
-        const options = {
-            secret: (0, jwt_env_1.getjwtSecretRefresh)(),
-            expiresIn: (0, jwt_env_1.getjwtExpiresInRefresh)(),
-        };
-        return this.generateToken(user, options);
-    }
-    async generateToken(user, options) {
-        const payload = {
-            sub: user.id,
-            username: user.username,
-            role: user.role,
-        };
-        const token = await this.jwtService.signAsync(payload, options);
-        return token;
-    }
-};
-exports.UsersService = UsersService;
-exports.UsersService = UsersService = UsersService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name, mongoose_connection_1.connectionName)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object])
-], UsersService);
-
-
-/***/ }),
-/* 87 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LoginUserDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-class LoginUserDto {
+},
+93(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ChangePasswordDto: () => (ChangePasswordDto)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
 }
-exports.LoginUserDto = LoginUserDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class ChangePasswordDto {
+    constructor(){
+        _define_property(this, "currentPassword", void 0);
+        _define_property(this, "newPassword", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    _ts_metadata("design:type", String)
+], ChangePasswordDto.prototype, "currentPassword", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(6),
+    _ts_metadata("design:type", String)
+], ChangePasswordDto.prototype, "newPassword", void 0);
+
+
+},
+91(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  CreateUserDto: () => (CreateUserDto)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+/* import */ var _common_enums_role_enum__rspack_import_1 = __webpack_require__(74);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class CreateUserDto {
+    constructor(){
+        _define_property(this, "username", void 0);
+        _define_property(this, "password", void 0);
+        _define_property(this, "role", void 0);
+        _define_property(this, "name", void 0);
+        _define_property(this, "lastName", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(3),
+    _ts_metadata("design:type", String)
+], CreateUserDto.prototype, "username", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(6),
+    _ts_metadata("design:type", String)
+], CreateUserDto.prototype, "password", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsEnum)(_common_enums_role_enum__rspack_import_1.Role),
+    _ts_metadata("design:type", typeof _common_enums_role_enum__rspack_import_1.Role === "undefined" ? Object : _common_enums_role_enum__rspack_import_1.Role)
+], CreateUserDto.prototype, "role", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateUserDto.prototype, "name", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
+], CreateUserDto.prototype, "lastName", void 0);
+
+
+},
+87(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LoginUserDto: () => (LoginUserDto)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class LoginUserDto {
+    constructor(){
+        _define_property(this, "username", void 0);
+        _define_property(this, "password", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    _ts_metadata("design:type", String)
 ], LoginUserDto.prototype, "username", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
 ], LoginUserDto.prototype, "password", void 0);
 
 
-/***/ }),
-/* 88 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CurrentUser = void 0;
-const common_1 = __webpack_require__(1);
-exports.CurrentUser = (0, common_1.createParamDecorator)((_data, ctx) => {
-    const request = ctx.switchToHttp().getRequest();
-    return request.user;
+},
+89(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  RefreshTokenDto: () => (RefreshTokenDto)
 });
-
-
-/***/ }),
-/* 89 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RefreshTokenDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-class RefreshTokenDto {
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
 }
-exports.RefreshTokenDto = RefreshTokenDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class RefreshTokenDto {
+    constructor(){
+        _define_property(this, "refreshToken", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.MinLength)(1),
+    _ts_metadata("design:type", String)
 ], RefreshTokenDto.prototype, "refreshToken", void 0);
 
 
-/***/ }),
-/* 90 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+},
+92(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UpdateUserDto: () => (UpdateUserDto)
+});
+/* import */ var _nestjs_mapped_types__rspack_import_0 = __webpack_require__(67);
+/* import */ var _nestjs_mapped_types__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mapped_types__rspack_import_0);
+/* import */ var _create_user_dto__rspack_import_1 = __webpack_require__(91);
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+class UpdateUserDto extends (0,_nestjs_mapped_types__rspack_import_0.PartialType)((0,_nestjs_mapped_types__rspack_import_0.OmitType)(_create_user_dto__rspack_import_1.CreateUserDto, [
+    "password"
+])) {
+}
+
+
+},
+83(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  User: () => (User),
+  UserSchema: () => (UserSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var bcrypt__rspack_import_1 = __webpack_require__(84);
+/* import */ var bcrypt__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(bcrypt__rspack_import_1);
+/* import */ var _common_enums_role_enum__rspack_import_2 = __webpack_require__(74);
+/* import */ var _common_utils__rspack_import_3 = __webpack_require__(56);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d, _e, _f, _g;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersController = void 0;
-const common_1 = __webpack_require__(1);
-const users_service_1 = __webpack_require__(86);
-const create_user_dto_1 = __webpack_require__(91);
-const update_user_dto_1 = __webpack_require__(92);
-const change_password_dto_1 = __webpack_require__(93);
-const pagination_query_dto_1 = __webpack_require__(68);
-const jwt_auth_guard_1 = __webpack_require__(70);
-const permissions_guard_1 = __webpack_require__(71);
-const require_permission_decorator_1 = __webpack_require__(72);
-const current_user_decorator_1 = __webpack_require__(88);
-const jwt_strategy_1 = __webpack_require__(53);
-const permissions_matrix_1 = __webpack_require__(73);
-let UsersController = class UsersController {
-    constructor(usersService) {
-        this.usersService = usersService;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
     }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+
+
+const SALT_ROUNDS = 10;
+class User {
+    constructor(){
+        _define_property(this, "username", void 0);
+        _define_property(this, "password", void 0);
+        _define_property(this, "role", void 0);
+        _define_property(this, "name", void 0);
+        _define_property(this, "lastName", void 0);
+        _define_property(this, "enabled", void 0);
+    }
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        unique: true,
+        trim: true,
+        index: true
+    }),
+    _ts_metadata("design:type", String)
+], User.prototype, "username", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true
+    }),
+    _ts_metadata("design:type", String)
+], User.prototype, "password", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String,
+        enum: _common_enums_role_enum__rspack_import_2.Role,
+        default: _common_enums_role_enum__rspack_import_2.Role.USER
+    }),
+    _ts_metadata("design:type", typeof _common_enums_role_enum__rspack_import_2.Role === "undefined" ? Object : _common_enums_role_enum__rspack_import_2.Role)
+], User.prototype, "role", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        trim: true
+    }),
+    _ts_metadata("design:type", String)
+], User.prototype, "name", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        trim: true
+    }),
+    _ts_metadata("design:type", String)
+], User.prototype, "lastName", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        default: true
+    }),
+    _ts_metadata("design:type", Boolean)
+], User.prototype, "enabled", void 0);
+User = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        timestamps: true,
+        collection: "users"
+    })
+], User);
+const UserSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(User);
+UserSchema.pre("save", async function() {
+    const user = this;
+    if (!user.isModified("password")) {
+        return;
+    }
+    user.password = await bcrypt__rspack_import_1.hash(user.password, SALT_ROUNDS);
+});
+UserSchema.methods.comparePassword = function(candidate) {
+    return bcrypt__rspack_import_1.compare(candidate, this.password);
+};
+(0,_common_utils__rspack_import_3.applyToJSONTransform)(UserSchema, [
+    "password"
+]);
+
+
+},
+90(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UsersController: () => (UsersController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _users_service__rspack_import_1 = __webpack_require__(86);
+/* import */ var _dto_create_user_dto__rspack_import_2 = __webpack_require__(91);
+/* import */ var _dto_update_user_dto__rspack_import_3 = __webpack_require__(92);
+/* import */ var _dto_change_password_dto__rspack_import_4 = __webpack_require__(93);
+/* import */ var _common_dto_pagination_query_dto__rspack_import_5 = __webpack_require__(68);
+/* import */ var _common_guards_jwt_auth_guard__rspack_import_6 = __webpack_require__(70);
+/* import */ var _common_guards_permissions_guard__rspack_import_7 = __webpack_require__(71);
+/* import */ var _common_permissions_require_permission_decorator__rspack_import_8 = __webpack_require__(72);
+/* import */ var _common_decorators_current_user_decorator__rspack_import_9 = __webpack_require__(88);
+/* import */ var _common_auth_jwt_strategy__rspack_import_10 = __webpack_require__(53);
+/* import */ var _common_permissions_permissions_matrix__rspack_import_11 = __webpack_require__(73);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class UsersController {
     getOwnProfile(currentUser) {
         return this.usersService.findById(currentUser.userId);
     }
@@ -3406,348 +4029,1216 @@ let UsersController = class UsersController {
     enable(id) {
         return this.usersService.enable(id);
     }
-};
-exports.UsersController = UsersController;
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, common_1.Get)("me"),
-    __param(0, (0, current_user_decorator_1.CurrentUser)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof jwt_strategy_1.RequestUser !== "undefined" && jwt_strategy_1.RequestUser) === "function" ? _b : Object]),
-    __metadata("design:returntype", void 0)
+    constructor(usersService){
+        _define_property(this, "usersService", void 0);
+        this.usersService = usersService;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard),
+    (0,_nestjs_common__rspack_import_0.Get)("me"),
+    _ts_param(0, (0,_common_decorators_current_user_decorator__rspack_import_9.CurrentUser)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_auth_jwt_strategy__rspack_import_10.RequestUser === "undefined" ? Object : _common_auth_jwt_strategy__rspack_import_10.RequestUser
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "getOwnProfile", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, common_1.Patch)("me/password"),
-    __param(0, (0, current_user_decorator_1.CurrentUser)()),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof jwt_strategy_1.RequestUser !== "undefined" && jwt_strategy_1.RequestUser) === "function" ? _c : Object, typeof (_d = typeof change_password_dto_1.ChangePasswordDto !== "undefined" && change_password_dto_1.ChangePasswordDto) === "function" ? _d : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard),
+    (0,_nestjs_common__rspack_import_0.Patch)("me/password"),
+    _ts_param(0, (0,_common_decorators_current_user_decorator__rspack_import_9.CurrentUser)()),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_auth_jwt_strategy__rspack_import_10.RequestUser === "undefined" ? Object : _common_auth_jwt_strategy__rspack_import_10.RequestUser,
+        typeof _dto_change_password_dto__rspack_import_4.ChangePasswordDto === "undefined" ? Object : _dto_change_password_dto__rspack_import_4.ChangePasswordDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "changeOwnPassword", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.CREATE),
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_e = typeof create_user_dto_1.CreateUserDto !== "undefined" && create_user_dto_1.CreateUserDto) === "function" ? _e : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.CREATE),
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_create_user_dto__rspack_import_2.CreateUserDto === "undefined" ? Object : _dto_create_user_dto__rspack_import_2.CreateUserDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "create", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_f = typeof pagination_query_dto_1.PaginationQueryDto !== "undefined" && pagination_query_dto_1.PaginationQueryDto) === "function" ? _f : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Query)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_dto_pagination_query_dto__rspack_import_5.PaginationQueryDto === "undefined" ? Object : _common_dto_pagination_query_dto__rspack_import_5.PaginationQueryDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.READ),
-    (0, common_1.Get)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.READ),
+    (0,_nestjs_common__rspack_import_0.Get)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.UPDATE),
-    (0, common_1.Patch)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_g = typeof update_user_dto_1.UpdateUserDto !== "undefined" && update_user_dto_1.UpdateUserDto) === "function" ? _g : Object]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.UPDATE),
+    (0,_nestjs_common__rspack_import_0.Patch)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        typeof _dto_update_user_dto__rspack_import_3.UpdateUserDto === "undefined" ? Object : _dto_update_user_dto__rspack_import_3.UpdateUserDto
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "update", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.DELETE),
-    (0, common_1.Delete)(":id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.DELETE),
+    (0,_nestjs_common__rspack_import_0.Delete)(":id"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "disable", null);
-__decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, permissions_guard_1.PermissionsGuard),
-    (0, require_permission_decorator_1.RequirePermission)(permissions_matrix_1.ModuleNameEnum.USERS, permissions_matrix_1.ActionEnum.DELETE),
-    (0, common_1.Patch)(":id/enable"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.UseGuards)(_common_guards_jwt_auth_guard__rspack_import_6.JwtAuthGuard, _common_guards_permissions_guard__rspack_import_7.PermissionsGuard),
+    (0,_common_permissions_require_permission_decorator__rspack_import_8.RequirePermission)(_common_permissions_permissions_matrix__rspack_import_11.ModuleNameEnum.USERS, _common_permissions_permissions_matrix__rspack_import_11.ActionEnum.DELETE),
+    (0,_nestjs_common__rspack_import_0.Patch)(":id/enable"),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Param)("id")),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String
+    ]),
+    _ts_metadata("design:returntype", void 0)
 ], UsersController.prototype, "enable", null);
-exports.UsersController = UsersController = __decorate([
-    (0, common_1.Controller)("users"),
-    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersService !== "undefined" && users_service_1.UsersService) === "function" ? _a : Object])
+UsersController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)("users"),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _users_service__rspack_import_1.UsersService === "undefined" ? Object : _users_service__rspack_import_1.UsersService
+    ])
 ], UsersController);
 
 
-/***/ }),
-/* 91 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+82(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UsersModule: () => (UsersModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _schemas_user_schema__rspack_import_2 = __webpack_require__(83);
+/* import */ var _auth_controller__rspack_import_3 = __webpack_require__(85);
+/* import */ var _users_controller__rspack_import_4 = __webpack_require__(90);
+/* import */ var _users_service__rspack_import_5 = __webpack_require__(86);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(64);
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateUserDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-const role_enum_1 = __webpack_require__(74);
-class CreateUserDto {
 }
-exports.CreateUserDto = CreateUserDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(3),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "username", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(6),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "password", void 0);
-__decorate([
-    (0, class_validator_1.IsEnum)(role_enum_1.Role),
-    __metadata("design:type", typeof (_a = typeof role_enum_1.Role !== "undefined" && role_enum_1.Role) === "function" ? _a : Object)
-], CreateUserDto.prototype, "role", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "lastName", void 0);
 
 
-/***/ }),
-/* 92 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateUserDto = void 0;
-const mapped_types_1 = __webpack_require__(67);
-const create_user_dto_1 = __webpack_require__(91);
-class UpdateUserDto extends (0, mapped_types_1.PartialType)((0, mapped_types_1.OmitType)(create_user_dto_1.CreateUserDto, ["password"])) {
+
+
+
+class UsersModule {
 }
-exports.UpdateUserDto = UpdateUserDto;
+UsersModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _schemas_user_schema__rspack_import_2.User.name,
+                    schema: _schemas_user_schema__rspack_import_2.UserSchema
+                }
+            ], _mongoose_connection__rspack_import_6.connectionName)
+        ],
+        controllers: [
+            _auth_controller__rspack_import_3.AuthController,
+            _users_controller__rspack_import_4.UsersController
+        ],
+        providers: [
+            _users_service__rspack_import_5.UsersService
+        ],
+        exports: [
+            _users_service__rspack_import_5.UsersService
+        ]
+    })
+], UsersModule);
 
 
-/***/ }),
-/* 93 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+},
+86(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  UsersService: () => (UsersService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _nestjs_jwt__rspack_import_2 = __webpack_require__(51);
+/* import */ var _nestjs_jwt__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(_nestjs_jwt__rspack_import_2);
+/* import */ var mongoose__rspack_import_3 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_3_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_3);
+/* import */ var _schemas_user_schema__rspack_import_4 = __webpack_require__(83);
+/* import */ var _common_helpers_paginate__rspack_import_5 = __webpack_require__(63);
+/* import */ var _mongoose_connection__rspack_import_6 = __webpack_require__(64);
+/* import */ var _common_enums_role_enum__rspack_import_7 = __webpack_require__(74);
+/* import */ var _common_permissions_permissions_env__rspack_import_8 = __webpack_require__(75);
+/* import */ var _common_auth_jwt_env__rspack_import_9 = __webpack_require__(55);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ChangePasswordDto = void 0;
-const class_validator_1 = __webpack_require__(20);
-class ChangePasswordDto {
 }
-exports.ChangePasswordDto = ChangePasswordDto;
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], ChangePasswordDto.prototype, "currentPassword", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(6),
-    __metadata("design:type", String)
-], ChangePasswordDto.prototype, "newPassword", void 0);
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
 
 
-/***/ }),
-/* 94 */
-/***/ ((module) => {
 
+
+
+
+
+
+
+
+const conflictError = "Nome de usuário já está em uso";
+const notFoundError = "Usuário não encontrado";
+const userOrPassError = "Usuário ou senha inválidos";
+class UsersService {
+    async create(dto) {
+        if (dto.username === (0,_common_permissions_permissions_env__rspack_import_8.visitorUsername)()) {
+            throw new _nestjs_common__rspack_import_0.ConflictException("O username não pode ser usado");
+        }
+        const existing = await this.userModel.findOne({
+            username: dto.username
+        });
+        if (existing) {
+            throw new _nestjs_common__rspack_import_0.ConflictException(conflictError);
+        }
+        const created = new this.userModel(dto);
+        return created.save();
+    }
+    findAll(query) {
+        return (0,_common_helpers_paginate__rspack_import_5.paginateWithQuery)(this.userModel, query);
+    }
+    async findById(id) {
+        const user = await this.userModel.findById(id);
+        if (!user) {
+            throw new _nestjs_common__rspack_import_0.NotFoundException(notFoundError);
+        }
+        return user;
+    }
+    async update(id, dto) {
+        const user = await this.findById(id);
+        if (dto.username && dto.username !== user.username) {
+            const existing = await this.userModel.findOne({
+                username: dto.username
+            });
+            if (existing) {
+                throw new _nestjs_common__rspack_import_0.ConflictException(conflictError);
+            }
+        }
+        Object.assign(user, dto);
+        return user.save();
+    }
+    async disable(id) {
+        const user = await this.findById(id);
+        user.enabled = false;
+        return user.save();
+    }
+    async enable(id) {
+        const user = await this.findById(id);
+        user.enabled = true;
+        return user.save();
+    }
+    async changeOwnPassword(userId, dto) {
+        const user = await this.findById(userId);
+        const isMatch = await user.comparePassword(dto.currentPassword);
+        if (!isMatch) {
+            throw new _nestjs_common__rspack_import_0.UnauthorizedException("Senha atual incorreta");
+        }
+        user.password = dto.newPassword;
+        await user.save();
+        return {
+            success: true
+        };
+    }
+    async login(dto) {
+        if ((0,_common_permissions_permissions_env__rspack_import_8.acceptVisitors)() && dto.username === (0,_common_permissions_permissions_env__rspack_import_8.visitorUsername)()) {
+            if (dto.password !== (0,_common_permissions_permissions_env__rspack_import_8.visitorUsername)()) {
+                throw new _nestjs_common__rspack_import_0.UnauthorizedException(userOrPassError);
+            }
+            return this.loginAsVisitor();
+        }
+        const user = await this.userModel.findOne({
+            username: dto.username
+        });
+        if (!user) {
+            throw new _nestjs_common__rspack_import_0.UnauthorizedException(userOrPassError);
+        }
+        if (!user.enabled) {
+            throw new _nestjs_common__rspack_import_0.UnauthorizedException("Usuário desabilitado");
+        }
+        const isMatch = await user.comparePassword(dto.password);
+        if (!isMatch) {
+            throw new _nestjs_common__rspack_import_0.UnauthorizedException(userOrPassError);
+        }
+        return {
+            ...await this.generateTokens(user),
+            user: {
+                username: user.username,
+                role: user.role,
+                name: user.name,
+                lastName: user.lastName
+            }
+        };
+    }
+    async refreshToken(currentUser, dto) {
+        if ((0,_common_permissions_permissions_env__rspack_import_8.acceptVisitors)() && currentUser.username === (0,_common_permissions_permissions_env__rspack_import_8.visitorUsername)()) {
+            const { accessToken, refreshToken } = await this.loginAsVisitor();
+            return {
+                accessToken,
+                refreshToken
+            };
+        }
+        const user = await this.checkRefreshToken(currentUser, dto);
+        return this.generateTokens(user);
+    }
+    async checkRefreshToken(currentUser, dto) {
+        const id = this.jwtService.decode(dto.refreshToken)["sub"];
+        if (id !== currentUser.userId) {
+            this.logger.error("O usuário não é compatível com a requisição");
+            throw new _nestjs_common__rspack_import_0.NotFoundException(notFoundError);
+        }
+        const user = await this.userModel.findById(id);
+        if (!user) {
+            throw new _nestjs_common__rspack_import_0.NotFoundException(notFoundError);
+        }
+        try {
+            this.jwtService.verify(dto.refreshToken, {
+                secret: (0,_common_auth_jwt_env__rspack_import_9.getjwtSecretRefresh)()
+            });
+            return user;
+        } catch (error) {
+            const err = error;
+            this.logger.error("Erro ao validar o token", error);
+            if (err.name === "JsonWebTokenError") {
+                throw new _nestjs_common__rspack_import_0.UnauthorizedException("Assinatura Inválida");
+            }
+            if (err.name === "TokenExpiredError") {
+                throw new _nestjs_common__rspack_import_0.UnauthorizedException("Token Expirado");
+            }
+            throw new _nestjs_common__rspack_import_0.UnauthorizedException(err.name);
+        }
+    }
+    async loginAsVisitor() {
+        const username = (0,_common_permissions_permissions_env__rspack_import_8.visitorUsername)();
+        const role = _common_enums_role_enum__rspack_import_7.Role.VISITOR;
+        return {
+            ...await this.generateTokens({
+                id: username,
+                username,
+                role
+            }),
+            user: {
+                username,
+                role,
+                name: username,
+                lastName: username
+            }
+        };
+    }
+    async generateTokens(user) {
+        return {
+            accessToken: await this.generateAccessToken(user),
+            refreshToken: await this.generateRefreshToken(user)
+        };
+    }
+    async generateAccessToken(user) {
+        const options = {
+            secret: (0,_common_auth_jwt_env__rspack_import_9.getjwtSecret)(),
+            expiresIn: (0,_common_auth_jwt_env__rspack_import_9.getjwtExpiresIn)()
+        };
+        return this.generateToken(user, options);
+    }
+    async generateRefreshToken(user) {
+        const options = {
+            secret: (0,_common_auth_jwt_env__rspack_import_9.getjwtSecretRefresh)(),
+            expiresIn: (0,_common_auth_jwt_env__rspack_import_9.getjwtExpiresInRefresh)()
+        };
+        return this.generateToken(user, options);
+    }
+    async generateToken(user, options) {
+        const payload = {
+            sub: user.id,
+            username: user.username,
+            role: user.role
+        };
+        const token = await this.jwtService.signAsync(payload, options);
+        return token;
+    }
+    constructor(userModel, jwtService){
+        _define_property(this, "userModel", void 0);
+        _define_property(this, "jwtService", void 0);
+        _define_property(this, "logger", void 0);
+        this.userModel = userModel;
+        this.jwtService = jwtService;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(UsersService.name);
+    }
+}
+UsersService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_schemas_user_schema__rspack_import_4.User.name, _mongoose_connection__rspack_import_6.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_3.Model === "undefined" ? Object : mongoose__rspack_import_3.Model,
+        typeof _nestjs_jwt__rspack_import_2.JwtService === "undefined" ? Object : _nestjs_jwt__rspack_import_2.JwtService
+    ])
+], UsersService);
+
+
+},
+64(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  connectionName: () => (connectionName)
+});
+const connectionName = "restaurants";
+
+
+},
+47(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+
+
+
+},
+46(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  ValidationMessages: () => (ValidationMessages)
+});
+const ValidationMessages = Object.freeze({
+    IS_NOT_EMPTY: 'Campo $property não pode ser vazio.',
+    IS_NOT_DATE: 'Campo $property não é uma data válida.',
+    IS_NOT_NUMBER: 'Campo $property não é um número válido.'
+});
+
+
+},
+48(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  forceNumber: () => (forceNumber),
+  forceString: () => (forceString)
+});
+const forceNumber = (num)=>Number(num) || 0;
+const forceString = (str)=>String(str) || '';
+
+
+},
+38(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  moduleList: () => (moduleList)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+/* import */ var _modules_links_links_module__rspack_import_1 = __webpack_require__(39);
+/* import */ var _mongoose_connection__rspack_import_2 = __webpack_require__(44);
+/* import */ var _common_utils__rspack_import_3 = __webpack_require__(48);
+
+
+
+
+const moduleList = [
+    _nestjs_mongoose__rspack_import_0.MongooseModule.forRoot((0,_common_utils__rspack_import_3.forceString)(process.env.MONGO_URI_SHRTR ?? process.env.MONGO_URI), {
+        connectionName: _mongoose_connection__rspack_import_2.connectionName
+    }),
+    _modules_links_links_module__rspack_import_1.LinksModule
+];
+
+
+},
+45(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LinkAddRequestDTO: () => (LinkAddRequestDTO)
+});
+/* import */ var class_validator__rspack_import_0 = __webpack_require__(20);
+/* import */ var class_validator__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(class_validator__rspack_import_0);
+/* import */ var _common_messages_validation_messages_constants__rspack_import_1 = __webpack_require__(46);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+
+class LinkAddRequestDTO {
+    constructor(){
+        _define_property(this, "link", void 0);
+        _define_property(this, "shrt", void 0);
+    }
+}
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsNotEmpty)({
+        message: _common_messages_validation_messages_constants__rspack_import_1.ValidationMessages.IS_NOT_EMPTY
+    }),
+    _ts_metadata("design:type", String)
+], LinkAddRequestDTO.prototype, "link", void 0);
+_ts_decorate([
+    (0,class_validator__rspack_import_0.IsString)(),
+    (0,class_validator__rspack_import_0.IsOptional)(),
+    _ts_metadata("design:type", String)
+], LinkAddRequestDTO.prototype, "shrt", void 0);
+
+
+},
+43(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LinkResponseDTO: () => (LinkResponseDTO)
+});
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+class LinkResponseDTO {
+    constructor(id, link, shrt){
+        _define_property(this, "id", void 0);
+        _define_property(this, "link", void 0);
+        _define_property(this, "shrt", void 0);
+        this.id = id;
+        this.link = link;
+        this.shrt = shrt;
+    }
+}
+_define_property(LinkResponseDTO, "from", ({ _id, link, shrt })=>new LinkResponseDTO(_id.toHexString(), link, shrt));
+
+
+},
+40(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  Link: () => (Link),
+  LinkSchema: () => (LinkSchema)
+});
+/* import */ var _nestjs_mongoose__rspack_import_0 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_0);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+
+class Link {
+    constructor(shrt, link){
+        _define_property(this, "shrt", void 0);
+        _define_property(this, "link", void 0);
+        this.shrt = shrt;
+        this.link = link;
+    }
+}
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
+], Link.prototype, "shrt", void 0);
+_ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Prop)({
+        required: true,
+        type: String
+    }),
+    _ts_metadata("design:type", String)
+], Link.prototype, "link", void 0);
+Link = _ts_decorate([
+    (0,_nestjs_mongoose__rspack_import_0.Schema)({
+        collection: 'link'
+    }),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        String,
+        String
+    ])
+], Link);
+const LinkSchema = _nestjs_mongoose__rspack_import_0.SchemaFactory.createForClass(Link);
+
+
+},
+41(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LinksController: () => (LinksController)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _links_service__rspack_import_1 = __webpack_require__(42);
+/* import */ var _dto_link_add_request_dto__rspack_import_2 = __webpack_require__(45);
+/* import */ var _common_interfaces_http_interfaces__rspack_import_3 = __webpack_require__(47);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+class LinksController {
+    async findAll() {
+        try {
+            return await this.linksService.findAll();
+        } catch (err) {
+            this.logger.error(err);
+            throw new _nestjs_common__rspack_import_0.HttpException(err.message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async find(response, shrt) {
+        const redirectToError = ()=>response.status(302).redirect(`${process.env.SHRTR_HOME}?error`);
+        try {
+            const data = await this.linksService.findOneByShrt(shrt);
+            if (data?.link !== undefined) {
+                let { link } = data;
+                link = /https?:\/\//.test(link) ? link : `http://${link}`;
+                response.status(302).redirect(link);
+                return;
+            }
+            this.logger.error('Not found');
+            redirectToError();
+            return;
+        } catch (err) {
+            this.logger.error(err);
+            redirectToError();
+        }
+    }
+    async count() {
+        try {
+            return await this.linksService.count();
+        } catch (err) {
+            this.logger.error(err);
+            throw new _nestjs_common__rspack_import_0.HttpException(err.message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async add(requestDto) {
+        try {
+            const result = await this.linksService.generate(requestDto);
+            return result;
+        } catch (err) {
+            this.logger.error(err);
+            throw new _nestjs_common__rspack_import_0.HttpException(err.message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    constructor(linksService){
+        _define_property(this, "linksService", void 0);
+        _define_property(this, "logger", void 0);
+        this.linksService = linksService;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(LinksController.name);
+    }
+}
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)(),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", Promise)
+], LinksController.prototype, "findAll", null);
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)('@/:shrt'),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Res)()),
+    _ts_param(1, (0,_nestjs_common__rspack_import_0.Param)('shrt')),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _common_interfaces_http_interfaces__rspack_import_3.ApiResponse === "undefined" ? Object : _common_interfaces_http_interfaces__rspack_import_3.ApiResponse,
+        String
+    ]),
+    _ts_metadata("design:returntype", Promise)
+], LinksController.prototype, "find", null);
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Get)('count'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", []),
+    _ts_metadata("design:returntype", Promise)
+], LinksController.prototype, "count", null);
+_ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Post)(),
+    _ts_param(0, (0,_nestjs_common__rspack_import_0.Body)()),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _dto_link_add_request_dto__rspack_import_2.LinkAddRequestDTO === "undefined" ? Object : _dto_link_add_request_dto__rspack_import_2.LinkAddRequestDTO
+    ]),
+    _ts_metadata("design:returntype", Promise)
+], LinksController.prototype, "add", null);
+LinksController = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Controller)('links'),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof _links_service__rspack_import_1.LinksService === "undefined" ? Object : _links_service__rspack_import_1.LinksService
+    ])
+], LinksController);
+
+
+},
+39(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LinksModule: () => (LinksModule)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var _link_entity__rspack_import_2 = __webpack_require__(40);
+/* import */ var _links_controller__rspack_import_3 = __webpack_require__(41);
+/* import */ var _links_service__rspack_import_4 = __webpack_require__(42);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(44);
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+
+
+
+
+
+class LinksModule {
+}
+LinksModule = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Module)({
+        imports: [
+            _nestjs_mongoose__rspack_import_1.MongooseModule.forFeature([
+                {
+                    name: _link_entity__rspack_import_2.Link.name,
+                    schema: _link_entity__rspack_import_2.LinkSchema
+                }
+            ], _mongoose_connection__rspack_import_5.connectionName)
+        ],
+        providers: [
+            _links_service__rspack_import_4.LinksService
+        ],
+        controllers: [
+            _links_controller__rspack_import_3.LinksController
+        ],
+        exports: []
+    })
+], LinksModule);
+
+
+},
+42(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  LinksService: () => (LinksService)
+});
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_mongoose__rspack_import_1 = __webpack_require__(9);
+/* import */ var _nestjs_mongoose__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_mongoose__rspack_import_1);
+/* import */ var mongoose__rspack_import_2 = __webpack_require__(14);
+/* import */ var mongoose__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(mongoose__rspack_import_2);
+/* import */ var _link_entity__rspack_import_3 = __webpack_require__(40);
+/* import */ var _dto_link_response_dto__rspack_import_4 = __webpack_require__(43);
+/* import */ var _mongoose_connection__rspack_import_5 = __webpack_require__(44);
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else obj[key] = value;
+    return obj;
+}
+function _ts_decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") {
+        r = Reflect.decorate(decorators, target, key, desc);
+    } else {
+        for(var i = decorators.length - 1; i >= 0; i--){
+            if (d = decorators[i]) {
+                r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+            }
+        }
+    }
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function _ts_metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") {
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+}
+function _ts_param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+
+
+
+
+
+
+const { ObjectId } = mongoose__rspack_import_2.Types;
+class LinksService {
+    async findOneByShrt(shrt) {
+        try {
+            const link = await this.linkModel.findOne({
+                shrt
+            }).exec();
+            if (link === null) {
+                return null;
+            }
+            return _dto_link_response_dto__rspack_import_4.LinkResponseDTO.from(link);
+        } catch (error) {
+            const message = 'Error finding the link by alias';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async findOne(id) {
+        try {
+            const _id = new ObjectId(id);
+            const link = await this.linkModel.findById(_id).exec();
+            if (link === null) {
+                return null;
+            }
+            return _dto_link_response_dto__rspack_import_4.LinkResponseDTO.from(link);
+        } catch (error) {
+            const message = 'Error finding the link';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async findAll() {
+        try {
+            const links = await this.linkModel.find().exec();
+            return links.map(_dto_link_response_dto__rspack_import_4.LinkResponseDTO.from);
+        } catch (error) {
+            const message = 'Error finding links';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async existsByShrt(shrt) {
+        return await this.exists({
+            shrt
+        });
+    }
+    async exists(query) {
+        try {
+            return (await this.linkModel.exists(query))?._id !== undefined;
+        } catch (error) {
+            const message = 'Error validating existence of the link';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async count() {
+        try {
+            return await this.linkModel.countDocuments().exec();
+        } catch (error) {
+            const message = 'Error counting links';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async add(requestDto) {
+        try {
+            const newLink = new this.linkModel();
+            newLink.link = requestDto.link;
+            newLink.shrt = requestDto.shrt ?? '';
+            const link = await newLink.save();
+            return _dto_link_response_dto__rspack_import_4.LinkResponseDTO.from(link);
+        } catch (error) {
+            const message = 'Error adding the link';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    async generate(requestDto, recursion = false) {
+        const regenerate = ()=>{
+            const shrt = (Math.random() * 9007199254740991).toString(36).replace('.', 'A');
+            return this.generate({
+                ...requestDto,
+                shrt
+            }, true);
+        };
+        try {
+            if (requestDto.shrt !== undefined && requestDto.shrt.length > 0) {
+                const exists = await this.existsByShrt(requestDto.shrt);
+                if (exists) {
+                    if (recursion) {
+                        return regenerate();
+                    }
+                    const message = 'The alias already exists, please try another';
+                    this.logger.error(message);
+                    return Promise.reject(new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST));
+                }
+                return this.add(requestDto);
+            }
+            return regenerate();
+        } catch (error) {
+            const message = 'Error recording the link';
+            this.logger.error(message, error);
+            throw new _nestjs_common__rspack_import_0.HttpException(message, _nestjs_common__rspack_import_0.HttpStatus.BAD_REQUEST);
+        }
+    }
+    constructor(linkModel){
+        _define_property(this, "linkModel", void 0);
+        _define_property(this, "logger", void 0);
+        this.linkModel = linkModel;
+        this.logger = new _nestjs_common__rspack_import_0.Logger(LinksService.name);
+    }
+}
+LinksService = _ts_decorate([
+    (0,_nestjs_common__rspack_import_0.Injectable)(),
+    _ts_param(0, (0,_nestjs_mongoose__rspack_import_1.InjectModel)(_link_entity__rspack_import_3.Link.name, _mongoose_connection__rspack_import_5.connectionName)),
+    _ts_metadata("design:type", Function),
+    _ts_metadata("design:paramtypes", [
+        typeof mongoose__rspack_import_2.Model === "undefined" ? Object : mongoose__rspack_import_2.Model
+    ])
+], LinksService);
+
+
+},
+44(__unused_rspack_module, __webpack_exports__, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+__webpack_require__.d(__webpack_exports__, {
+  connectionName: () => (connectionName)
+});
+const connectionName = 'shrtr';
+
+
+},
+1(module) {
+module.exports = require("@nestjs/common");
+
+},
+6(module) {
+module.exports = require("@nestjs/config");
+
+},
+2(module) {
+module.exports = require("@nestjs/core");
+
+},
+51(module) {
+module.exports = require("@nestjs/jwt");
+
+},
+67(module) {
+module.exports = require("@nestjs/mapped-types");
+
+},
+9(module) {
+module.exports = require("@nestjs/mongoose");
+
+},
+52(module) {
+module.exports = require("@nestjs/passport");
+
+},
+3(module) {
+module.exports = require("@nestjs/platform-fastify");
+
+},
+94(module) {
 module.exports = require("@nestjs/schedule");
 
-/***/ }),
-/* 95 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CheckServicesModule = void 0;
-const common_1 = __webpack_require__(1);
-const check_services_service_1 = __webpack_require__(96);
-let CheckServicesModule = class CheckServicesModule {
-};
-exports.CheckServicesModule = CheckServicesModule;
-exports.CheckServicesModule = CheckServicesModule = __decorate([
-    (0, common_1.Module)({
-        providers: [check_services_service_1.CheckServicesService],
-        exports: [],
-    })
-], CheckServicesModule);
-
-
-/***/ }),
-/* 96 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var CheckServicesService_1;
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CheckServicesService = void 0;
-const common_1 = __webpack_require__(1);
-const schedule_1 = __webpack_require__(94);
-const axios_1 = __importDefault(__webpack_require__(97));
-const class_transformer_1 = __webpack_require__(69);
-const api_to_check_1 = __webpack_require__(98);
-let CheckServicesService = CheckServicesService_1 = class CheckServicesService {
-    constructor() {
-        this.logger = new common_1.Logger(CheckServicesService_1.name);
-    }
-    async CheckServices() {
-        var _a;
-        const checkAllAPIs = ((_a = process.env.CHECK_ALL_APIS) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === 'true';
-        let apisToCheck = [];
-        try {
-            apisToCheck = (0, class_transformer_1.plainToInstance)(api_to_check_1.ApiToCheck, JSON.parse(process.env.APIS_TO_CHECK || '[]'));
-        }
-        catch (error) {
-            this.logger.error('Error casting Env var APIS_TO_CHECK', error);
-            return false;
-        }
-        return checkAllAPIs
-            ? this.checkAllAPIs(apisToCheck)
-            : this.checkRandomAPI(apisToCheck);
-    }
-    async checkAllAPIs(apisToCheck) {
-        for (const api of apisToCheck) {
-            try {
-                await axios_1.default.get(api.uri);
-            }
-            catch (error) {
-                this.logger.error(`Error checking API: ${api.name}`, error);
-                return false;
-            }
-        }
-        return true;
-    }
-    async checkRandomAPI(apisToCheck) {
-        const api = apisToCheck[Math.floor(Math.random() * apisToCheck.length)];
-        try {
-            await axios_1.default.get(api.uri);
-        }
-        catch (error) {
-            this.logger.error(`Error checking API: ${api.name}`, error);
-            return false;
-        }
-        return true;
-    }
-};
-exports.CheckServicesService = CheckServicesService;
-__decorate([
-    (0, schedule_1.Cron)('0/6 0-2,8-23 * * 1-5'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", typeof (_a = typeof Promise !== "undefined" && Promise) === "function" ? _a : Object)
-], CheckServicesService.prototype, "CheckServices", null);
-exports.CheckServicesService = CheckServicesService = CheckServicesService_1 = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
-], CheckServicesService);
-
-
-/***/ }),
-/* 97 */
-/***/ ((module) => {
-
+},
+97(module) {
 module.exports = require("axios");
 
-/***/ }),
-/* 98 */
-/***/ ((__unused_webpack_module, exports) => {
+},
+84(module) {
+module.exports = require("bcrypt");
 
+},
+69(module) {
+module.exports = require("class-transformer");
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ApiToCheck = void 0;
-class ApiToCheck {
-    constructor(name, uri) {
-        this.name = name;
-        this.uri = uri;
-    }
+},
+20(module) {
+module.exports = require("class-validator");
+
+},
+4(module) {
+module.exports = require("helmet");
+
+},
+14(module) {
+module.exports = require("mongoose");
+
+},
+54(module) {
+module.exports = require("passport-jwt");
+
+},
+17(module) {
+module.exports = require("crypto");
+
+},
+
+});
+// The module cache
+var __webpack_module_cache__ = {};
+
+// The require function
+function __webpack_require__(moduleId) {
+
+// Check if module is in cache
+var cachedModule = __webpack_module_cache__[moduleId];
+if (cachedModule !== undefined) {
+return cachedModule.exports;
 }
-exports.ApiToCheck = ApiToCheck;
+// Create a new module (and put it into the cache)
+var module = (__webpack_module_cache__[moduleId] = {
+exports: {}
+});
+// Execute the module function
+__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+
+// Return the exports of the module
+return module.exports;
+
+}
+
+// webpack/runtime/compat_get_default_export
+(() => {
+// getDefaultExport function for compatibility with non-ESM modules
+__webpack_require__.n = (module) => {
+	var getter = module && module.__esModule ?
+		() => (module['default']) :
+		() => (module);
+	__webpack_require__.d(getter, { a: getter });
+	return getter;
+};
+
+})();
+// webpack/runtime/define_property_getters
+(() => {
+__webpack_require__.d = (exports, getters, values) => {
+	var define = (defs, kind) => {
+		for(var key in defs) {
+			if(__webpack_require__.o(defs, key) && !__webpack_require__.o(exports, key)) {
+				Object.defineProperty(exports, key, { enumerable: true, [kind]: defs[key] });
+			}
+		}
+	};
+	define(getters, "get");
+	define(values, "value");
+};
+})();
+// webpack/runtime/has_own_property
+(() => {
+__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+})();
+// webpack/runtime/make_namespace_object
+(() => {
+// define __esModule on exports
+__webpack_require__.r = (exports) => {
+	if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+	}
+	Object.defineProperty(exports, '__esModule', { value: true });
+};
+})();
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+__webpack_require__.r(__webpack_exports__);
+/* import */ var _nestjs_common__rspack_import_0 = __webpack_require__(1);
+/* import */ var _nestjs_common__rspack_import_0_default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__rspack_import_0);
+/* import */ var _nestjs_core__rspack_import_1 = __webpack_require__(2);
+/* import */ var _nestjs_core__rspack_import_1_default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__rspack_import_1);
+/* import */ var _nestjs_platform_fastify__rspack_import_2 = __webpack_require__(3);
+/* import */ var _nestjs_platform_fastify__rspack_import_2_default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_fastify__rspack_import_2);
+/* import */ var helmet__rspack_import_3 = __webpack_require__(4);
+/* import */ var helmet__rspack_import_3_default = /*#__PURE__*/__webpack_require__.n(helmet__rspack_import_3);
+/* import */ var _app_module__rspack_import_4 = __webpack_require__(5);
 
 
-/***/ })
-/******/ 	]);
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(0);
-/******/ 	
-/******/ })()
+
+
+
+const bootstrap = async ()=>{
+    const app = await _nestjs_core__rspack_import_1.NestFactory.create(_app_module__rspack_import_4.AppModule, new _nestjs_platform_fastify__rspack_import_2.FastifyAdapter());
+    app.enableCors({
+        origin: '*',
+        methods: [
+            'GET',
+            'POST',
+            'PUT',
+            'DELETE',
+            'OPTIONS',
+            'PATCH'
+        ],
+        credentials: true
+    });
+    app.use(helmet__rspack_import_3_default()());
+    app.useGlobalPipes(new _nestjs_common__rspack_import_0.ValidationPipe({
+        transform: true
+    }));
+    await app.listen(process.env.PORT ?? 3000, process.env.ADDRESS ?? 'localhost');
+};
+bootstrap();
+
+})();
+
+})()
 ;
+//# sourceMappingURL=main.js.map
