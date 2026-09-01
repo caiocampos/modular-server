@@ -1,1 +1,1 @@
-import './main.js';
+await import './main.js';
