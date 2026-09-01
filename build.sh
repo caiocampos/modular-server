@@ -5,7 +5,7 @@ cp src/modules-expose.txt src/modules-expose.ts
 
 yarn build:rspack
 
-echo "require(\"./main\");" > dist/index.js
+echo "import './main';" > dist/index.js
 
 echo "# .gitignore
 node_modules/
