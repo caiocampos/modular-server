@@ -1,1 +1,1 @@
-(async () => { await import('./main.js'); })()
+require("./main");
