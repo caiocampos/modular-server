@@ -1272,9 +1272,9 @@
     es-toolkit "1.51.0"
 
 "@nestjs/core@^12.0":
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-12.0.1.tgz#b74691cf5a634ad0b56c0755b7c3c62522862c6e"
-  integrity sha512-rU6tAi8vDdyzHgN0iW0J4UJvziroOqzHqzlqL7phOSPizaXVEePfv+OUOsdJEOh0Qd14mslc3udOheLrAEcZow==
+  version "12.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-12.0.3.tgz#e1b5cc1868a396818bb884b6763e52849f021e85"
+  integrity sha512-Ouv++gAXOL50S8K8n6AN19QGmw51rnIo6v7y9AqUYoaf0NcZlufTu5XTDeC2RtpMz8oXRr9nykBngRjflcoQKA==
   dependencies:
     uid "2.0.2"
     fast-safe-stringify "2.1.1"
