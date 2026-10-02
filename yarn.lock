@@ -1278,10 +1278,10 @@
   resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-12.0.0.tgz#b37af80aed4370cdbf81c65b0ca7f503e1add09f"
   integrity sha512-FM9ioo2Dyj+cC7aeO4g19ijAXoRaHlW/GQZFbgXsM4Z9pyQedA8yOseb7ivfqlPwUKJlH9PFgeWniu6c0vb6dw==
 
-"@nestjs/platform-fastify@^12.0":
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.0.4.tgz#41d4e05bff6c1545ec6564f1f3107f1a41da74a4"
-  integrity sha512-8IcdzHNedQpf5O+Q/GIbwOAOJgEfbcRjwMrSoTrNmo4hU/5h5VXwSTLZw++7M6W9fT7DcgrrfywirPrMabZCNg==
+"@nestjs/platform-fastify@^12.1":
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.1.1.tgz#ef9fc89a567b814630342a529a9dc6facbfba848"
+  integrity sha512-7w5Cm/bI2f4fly5VmOhtKv25bwM8LoLpWGCB0fzPCTDRnEosIbLO3mWhBRHGAdPWE/N52LS14L0w+1/ZzsdFqw==
   dependencies:
     "@fastify/cors" "11.3.0"
     "@fastify/formbody" "9.0.0"
