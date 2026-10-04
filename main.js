@@ -5239,6 +5239,7 @@ bootstrap();
 
 })();
 
+module.exports = __webpack_exports__;
 })()
 ;
 //# sourceMappingURL=main.js.map
