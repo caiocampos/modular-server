@@ -1279,9 +1279,9 @@
   integrity sha512-FM9ioo2Dyj+cC7aeO4g19ijAXoRaHlW/GQZFbgXsM4Z9pyQedA8yOseb7ivfqlPwUKJlH9PFgeWniu6c0vb6dw==
 
 "@nestjs/platform-fastify@^12.1":
-  version "12.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.1.1.tgz#ef9fc89a567b814630342a529a9dc6facbfba848"
-  integrity sha512-7w5Cm/bI2f4fly5VmOhtKv25bwM8LoLpWGCB0fzPCTDRnEosIbLO3mWhBRHGAdPWE/N52LS14L0w+1/ZzsdFqw==
+  version "12.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.1.2.tgz#28c182f760f6191facec6f138a9b72246dc8396b"
+  integrity sha512-368wP4jqPp2D8Uyw6RXrURAfeDDSMNjx5dBxmOW4IgbCu8+tgUllamc6k/w2Wy7xp+E9bmbwyxb9SpYXh9z2CA==
   dependencies:
     "@fastify/cors" "11.3.0"
     "@fastify/formbody" "9.0.0"
