@@ -1487,11 +1487,11 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^12.3":
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-12.3.2.tgz#cc6c2026032900d2e95df2ecbaf2b81ca1aedb28"
-  integrity sha512-l1m+uHTp4hJ1K+Gw8ENrLSj2TxZlKVre7aoluUdxMHCodK2kZnpjvD8H8Oh460hj/Z6PDJ/m9r6t8NIK6OyDxA==
+  version "12.3.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-12.3.3.tgz#74708fdbf289d1b00f7a0b724335e2fabc079fbf"
+  integrity sha512-JSrRkq0gVRaj8JMi7fjDcw7m7XoiPO9RfRi4w+8fRQIm0xkwVJU0BWkhq+4tjQNCQionZBbvzG1WWK3KfebtrA==
   dependencies:
-    tslib "2.8.1"
+    tslib "2.9.1"
 
 "@noble/hashes@^1.1.5":
   version "1.8.0"
