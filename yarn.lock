@@ -1419,10 +1419,10 @@
     dotenv-expand "13.0.0"
     es-toolkit "1.52.0"
 
-"@nestjs/core@^12.3":
-  version "12.3.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-12.3.3.tgz#d77ab0962690863cf7bd2e7229b2685d9db737ae"
-  integrity sha512-RElBJf+lxWEKNo/2CN1b8A7hvHmdMCEcXa3Hw2MW79W/PfX3A0gEtdc3o3hRneBd6MxmEvL95miZ/qvZS1W5kw==
+"@nestjs/core@^12.4":
+  version "12.4.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-12.4.0.tgz#1624d03908f833fb61ba253d742105696862ab90"
+  integrity sha512-gUH66sFy9gaZrmwMWC2LfM3R0Tacxautms+NgoIJ05J6YtvBbCyRlNslqtDC2f0wDVduswRWErIrJtIHtKon4w==
   dependencies:
     uid "2.0.2"
     fast-safe-stringify "2.1.1"
