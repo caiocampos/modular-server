@@ -24,7 +24,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^12.4",
+    "@nestjs/common": "^12.5",
     "@nestjs/config": "^12.1",
     "@nestjs/core": "^12.4",
     "@nestjs/jwt": "^12.0",
