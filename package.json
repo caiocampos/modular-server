@@ -50,7 +50,7 @@
     "@nestjs/cli": "^12.0",
     "@nestjs/schematics": "^12.0",
     "@nestjs/testing": "^12.5",
-    "@rspack/core": "^2.3.1",
+    "@rspack/core": "^2.3.2",
     "@types/bcrypt": "^6.0",
     "@types/jest": "^30.0",
     "@types/node": "^26.6",
