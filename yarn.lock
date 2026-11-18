@@ -1451,9 +1451,9 @@
     tslib "2.9.1"
 
 "@nestjs/schedule@^12.0":
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/schedule/-/schedule-12.0.3.tgz#4547cbc37f2bc174f454ffff42e73bd1796731f0"
-  integrity sha512-7G0HMYKXirWFoD72zY6ieSwwwe+AruJgHDR4BJ0pg0FseA0iR2q+e1c1T0Sv10uHNXT2xiPAFFnPa0yO4lY5eQ==
+  version "12.0.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/schedule/-/schedule-12.0.4.tgz#560dc4fbae928488bcb61dd0c6945506e0255591"
+  integrity sha512-C797UxK2mOB8kTSwEfHmwy3Ut72qSLkS/BLFHR3jPW/NZKZkqGFpoX5Ga3QlLdeugCg6NxrXhvgOMxioHhFzXg==
   dependencies:
     cron "4.4.0"
 
