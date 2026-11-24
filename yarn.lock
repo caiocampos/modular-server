@@ -608,10 +608,10 @@
     ajv-formats "^3.0.1"
     fast-uri "^3.0.0"
 
-"@fastify/cors@11.4.1":
-  version "11.4.1"
-  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-11.4.1.tgz#1add9203dbfd7bc67457449084109d078821778a"
-  integrity sha512-WuPATGGyc3YzpOfumovBJ4xC2RPBBFyDFElwldFRBCgM2G27xH9DnXTho9+nc2Ho6gLD1hKTetdOntR+G38+7A==
+"@fastify/cors@11.4.3":
+  version "11.4.3"
+  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-11.4.3.tgz#56418e5cdd01723227a1c209593c965d5bf6114f"
+  integrity sha512-6NNFNR1i9t1oG1WlQftwc2ugElFm4cG75ylYyGNiKKiyxlVGueneup9MQ9Nd3eI4lT6kVOJaxV1Jqa727/E4jg==
   dependencies:
     fastify-plugin "^6.0.0"
     toad-cache "^3.7.0"
@@ -633,10 +633,10 @@
   dependencies:
     fast-json-stringify "^6.0.0"
 
-"@fastify/formbody@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@fastify/formbody/-/formbody-9.0.1.tgz#5b1444b5d2c5225cfec6ed02a0002070453d1b0f"
-  integrity sha512-QaUet4NQavwnl6iPYMaf5hJC2N7kRPOmC58RhDiFThfg7Hcc8X2LdpcEfmaOEBimq5z7yZLy1e1q+PIv3o3tFQ==
+"@fastify/formbody@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@fastify/formbody/-/formbody-9.0.2.tgz#d3ddc60e5207c8022d71c05095d42a431ea29ec8"
+  integrity sha512-VJdbcbFlsp7xTAY5/Qrc8SZPyuke0YymWCe11INALPTQfRh2+0y1lnaosJwWIN7GtFfcBa+RBo4VnhxjW2kDNQ==
   dependencies:
     fast-querystring "^1.1.2"
     fastify-plugin "^6.0.0"
@@ -653,15 +653,15 @@
   dependencies:
     dequal "^2.0.3"
 
-"@fastify/middie@9.3.6":
-  version "9.3.6"
-  resolved "https://registry.yarnpkg.com/@fastify/middie/-/middie-9.3.6.tgz#9e8e89cbecf1eb4509d8eb004809824639ec34a3"
-  integrity sha512-Uvl+1tDXriJsNv3GvC7IDKFVOvNGnsXp+YC6hxKKeMK/00L3NWzmNftI02nHz0xU0VPQlUbESHuGsUNIfn6CVQ==
+"@fastify/middie@9.3.7":
+  version "9.3.7"
+  resolved "https://registry.yarnpkg.com/@fastify/middie/-/middie-9.3.7.tgz#1bacf961606aa4e966d1f13cc03abc0904d225cd"
+  integrity sha512-Th/Htlg81STi0RYdK5zA9LggfpOCsqd5t4RiLKSE25IS7Zv6zNd9nouPdlsYHE3wdt3EkBAbp58Ltsn0HOroCA==
   dependencies:
     "@fastify/error" "^4.0.0"
     fastify-plugin "^6.0.0"
     find-my-way "^9.5.0"
-    path-to-regexp "^8.1.0"
+    path-to-regexp "^9.0.0"
     reusify "^1.0.4"
 
 "@fastify/proxy-addr@^5.0.0":
@@ -1458,18 +1458,18 @@
   resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-12.0.2.tgz#dcf0a4eeefb3278a0fb8994ca26de6e62604fb8f"
   integrity sha512-ukOGcJ5FUQRYx0EC57gaR72IYfXmBNUSRNJL5QH8RlRk3G41QhcXC6De3rGwJrGVrQodCI3aW4E2H953I06B0Q==
 
-"@nestjs/platform-fastify@^12.5":
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.5.0.tgz#1ffabc4752769faed2f16a78ca28d2fe642bb8b6"
-  integrity sha512-u0R9z1FbgrSjoQTsufHrcZ5As2XDhjmQ2eejpWodYEPZXZAahT5sEoGPd03AusEvlX5Bh89hiavLWxeglpR6mg==
+"@nestjs/platform-fastify@^12.6":
+  version "12.6.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-12.6.0.tgz#750ab3eaeb1e6f34ce42a547cc1bf571e75ff4ef"
+  integrity sha512-d/fxT9zmcBoXpDp9Csv13g6/N5KWnNe2beDxas3/b5xlYB0CS7nMwr9aekZYi/pt16gyf50NR1hmNPXinaZ4ng==
   dependencies:
-    "@fastify/cors" "11.4.1"
-    "@fastify/formbody" "9.0.1"
-    "@fastify/middie" "9.3.6"
+    "@fastify/cors" "11.4.3"
+    "@fastify/formbody" "9.0.2"
+    "@fastify/middie" "9.3.7"
     fast-querystring "1.1.2"
     fastify "5.12.8"
-    find-my-way "9.10.0"
-    light-my-request "6.8.0"
+    find-my-way "9.10.2"
+    light-my-request "6.8.1"
     path-to-regexp "8.4.2"
     tslib "2.9.1"
 
@@ -3288,10 +3288,10 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-my-way@9.10.0, find-my-way@^9.10.0, find-my-way@^9.5.0:
-  version "9.10.0"
-  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-9.10.0.tgz#4e91651f61f9fed7af95d436e5beb8de762e1fb7"
-  integrity sha512-eru+uCPQ2g+nLBkf84MHP/KyNNMar0BDy0j+i8Fb72GF9/YHBZ58q7FODUtfVV7XU9nfRUHXSmaM8NmZcIbZ4Q==
+find-my-way@9.10.2, find-my-way@^9.10.0, find-my-way@^9.5.0:
+  version "9.10.2"
+  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-9.10.2.tgz#688a137e54077c6a202698dd7a9b33d36d3549da"
+  integrity sha512-gbLMuTm2FV5QiRh/eM0uhL4nyOvbSqqa2K3mASAtkIqxvY8ZmoLOCLMd2syLWT/SyhrvOR7GPxOKj/kcV6o8bg==
   dependencies:
     fast-deep-equal "^3.1.3"
     fast-querystring "^1.0.0"
@@ -4235,10 +4235,10 @@ libphonenumber-js@^1.11.1:
   resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.12.7.tgz#e4372cdee413b64bb1600dfde293a7fdc1ba812a"
   integrity sha512-0nYZSNj/QEikyhcM5RZFXGlCB/mr4PVamnT1C2sKBnDDTYndrvbybYjvg+PMqAndQHlLbwQ3socolnL3WWTUFA==
 
-light-my-request@6.8.0, light-my-request@^6.0.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/light-my-request/-/light-my-request-6.8.0.tgz#332b19888b40988eca169bb67b465fb2f5418cc3"
-  integrity sha512-5Q8PjoSEdtGIB8fikZsTem5vgRo4F2mR6vUKTDW/H1g6MtAt8e3duQbg/QxL5yzg6BZhor2KOUm3hhWMWLTZwg==
+light-my-request@6.8.1, light-my-request@^6.0.0:
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/light-my-request/-/light-my-request-6.8.1.tgz#94259477da0710f02d19f609377a7c0fb89e2d7a"
+  integrity sha512-20biUK0HAIPG9BZOK3/4s8uVAkAoi1+qW55lciHZCR0puTWipBgyMPEUjqXDWLjsZeqfO6DGsuwW5eyfsTGtyg==
   dependencies:
     "@fastify/deepmerge" "^3.1.0"
     cookie "^2.0.0"
@@ -4733,10 +4733,15 @@ path-scurry@^3.0.0:
     lru-cache "^11.0.0"
     minipass "^7.1.2"
 
-path-to-regexp@8.4.2, path-to-regexp@^8.1.0:
+path-to-regexp@8.4.2:
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-8.4.2.tgz#795c420c4f7ca45c5b887366f622ee0c9852cccd"
   integrity sha512-qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==
+
+path-to-regexp@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-9.0.0.tgz#f6b516e6b5dbfbe9034a6fc1289bc687b26b70c7"
+  integrity sha512-kfo5HIFCfEH24bcHSWEFIfrwiCsm/DXR+j1fc0696VIdWkICdAcKH2LxRClvz5HQcG4iCQpb4qBZ7pttGPG/dA==
 
 pause@0.0.1:
   version "0.0.1"
